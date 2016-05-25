@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{C89CF8C3-A6D5-4E93-96B7-C30C6CACAF2C}</ProjectGuid>
+    <ProjectGuid>{D9C5886C-2A17-469A-811B-855FE1430F7A}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AppServicios</RootNamespace>
-    <AssemblyName>AppServicios</AssemblyName>
+    <RootNamespace>AppWeb.Servicios</RootNamespace>
+    <AssemblyName>AppWeb.Servicios</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -83,9 +83,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>12176</DevelopmentServerPort>
+          <DevelopmentServerPort>13332</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:12176/</IISUrl>
+          <IISUrl>http://localhost:13332/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
