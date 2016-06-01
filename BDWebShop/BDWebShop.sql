@@ -76,31 +76,33 @@ create table TCliente
 )
 go
 
---Creación de la tabla TCompra:
-if OBJECT_ID('TCompra') is not null
-	drop table TCompra
+--Creación de la tabla TOrdenVenta:
+if OBJECT_ID('TOrdenVenta') is not null
+	drop table TOrdenVenta
 go	
-create table TCompra
+create table TOrdenVenta
 (
-	CodCompra varchar(10) not null constraint pk_CodCompra primary key (CodCompra),
+	NroVenta int constraint pk_NroVenta primary key (NroVenta) identity,
 	CodCliente int constraint fk_CodCliente foreign key references TCliente(CodCliente),
 	Total money,
-	FechaCompra datetime default getdate(),
+	FechaVenta datetime default getdate(),
 	FechaEntrega  datetime
 )
 go
 
---Creación de la tabla TDetalleCompra:
-if OBJECT_ID('TDetalleCompras') is not null
-	drop table TDetalleCompras
+--Creación de la tabla TDetalleVenta:
+if OBJECT_ID('TDetalleVenta') is not null
+	drop table TDetalleVenta
 go	
-create table TDetalleCompras
+create table TDetalleVenta
 (
-	CodCompra varchar(10) constraint fk_CodCompra foreign key references TCompra(CodCompra),
+	NroDetalleVenta int identity,
+	NroVenta int constraint fk_NroVenta foreign key references TOrdenVenta(NroVenta),
 	CodProducto varchar(6) constraint fk_CodProducto foreign key references TProducto(CodProducto),
 	Cantidad integer,
-	Precio money
-	constraint pk_CodDetalleCompras primary key (CodCompra,CodProducto)
+	PrecioUnitario money,
+	Total money,
+	constraint pk_CodDetalleVenta primary key (NroVenta,NroDetalleVenta)
 )
 go
 
@@ -123,66 +125,15 @@ create table  TDireccionEnvio
 )
 go
 
---Creación de Tablas Pasarela:
---Creación de la tabla TClientePasarela:
-if OBJECT_ID('TClientePasarela') is not null
-	drop table TClientePasarela
+--Creación de la tabla TCabeceraVentas: 
+if OBJECT_ID('TCabeceraVenta') is not null
+	drop table TCabeceraVenta
 go	
-
-create table TClientePasarela
+create table TCabeceraVenta
 (
-	CodCliente int not null primary key,
-	Nombres varchar(30),
-	Apellidos varchar(50),
-	Cuidad varchar(20),
-	Provincia varchar(20),
-	Distrito varchar(20),
-	Estado varchar(20),
-	TipoDocumento varchar(10),
-	DNI char(8)
-)
-go
-
---Creación de la tabla TCuentaAhorro:
-if OBJECT_ID('TCuentaAhorroPasarela') is not null
-	drop table TCuentaAhorroPasarela
-go	
-create table TCuentaAhorroPasarela
-(
-	NroCuenta  varchar(16)not null primary key,
-	TipoDeCuenta varchar(40),
-	Banco varchar(40),
-	CodCliente int,
-	foreign key (CodCliente) references TClientePasarela(CodCliente)
-)
-go
-
---Creación de la tabla TTarjeta:
-if OBJECT_ID('TTarjetaPasarela') is not null
-	drop table TTarjetaPasarela
-go	
-create table TTarjetaPasarela
-(
-	NroTarjeta varchar(16)not null primary key,
-	TipoTarjeta varchar(40),
-	Contrasena char(40),
-	NroCuenta  varchar(16),
-	foreign key (NroCuenta) references TCuentaAhorroPasarela(NroCuenta)
-)
-go 
-
---Creación de la tabla TMovimiento:
-if OBJECT_ID('TMovimientoPasarela') is not null
-	drop table TMovimientoPasarela
-go	
-create table TMovimientoPasarela
-(
-	RegistroMovimiento int not null primary key,
-	FechaMovimiento DateTime,
-	MontoRetiro Decimal,
-	SaldoDisponible Decimal,
-	NroTarjeta varchar(16),
-    Activo varchar(1),
-	foreign key (NroTarjeta) references TTarjetaPasarela(NroTarjeta)
+	NroCabeceraVenta int primary key identity,
+	NroVenta int,
+	Total money,
+	foreign key (NroVenta) references TOrdenVenta(NroVenta)
 )
 go
