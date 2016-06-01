@@ -96,32 +96,12 @@ if OBJECT_ID('TDetalleVenta') is not null
 go	
 create table TDetalleVenta
 (
-	NroDetalleVenta int identity,
+	NroDetalleVenta int identity primary key,
 	NroVenta int constraint fk_NroVenta foreign key references TOrdenVenta(NroVenta),
 	CodProducto varchar(6) constraint fk_CodProducto foreign key references TProducto(CodProducto),
 	Cantidad integer,
 	PrecioUnitario money,
-	Total money,
-	constraint pk_CodDetalleVenta primary key (NroVenta,NroDetalleVenta)
-)
-go
-
---Creación de la tabla TDireccionEnvio:
-if OBJECT_ID('TDireccionEnvio') is not null
-	drop table TDireccionEnvio
-go	
-create table  TDireccionEnvio
-(
-	CodDireccionEnvio int not null constraint pk_CodDireccionEnvio primary key (CodDireccionEnvio) IDENTITY (1, 1),
-	Nombre varchar (30),	
-	Provincia varchar(30),
-	Ciudad varchar(30),
-	Distrito  varchar(20),
-	Direccion  varchar(30),
-	Telefono  varchar(10),
-	NombreDestinatario  varchar(20),
-	ApellidoDestinatario varchar(30),
-	CodCliente int constraint fk_CodDireccionEnvio foreign  key references TCliente (CodCliente)
+	Total money
 )
 go
 
@@ -130,10 +110,15 @@ if OBJECT_ID('TCabeceraVenta') is not null
 	drop table TCabeceraVenta
 go	
 create table TCabeceraVenta
-(
-	NroCabeceraVenta int primary key identity,
+(	
+	NroDetalleVenta int,
+	CodCliente int,	
 	NroVenta int,
-	Total money,
-	foreign key (NroVenta) references TOrdenVenta(NroVenta)
+	FechaVenta datetime,
+	Total money,	
+	foreign key (CodCliente) references TCliente(CodCliente),
+	foreign key (NroVenta) references TOrdenVenta(NroVenta),
+	foreign key (NroDetalleVenta) references TDetalleVenta(NroDetalleVenta),
+	constraint pk_CabeVenta primary key (CodCliente,NroDetalleVenta)
 )
 go
