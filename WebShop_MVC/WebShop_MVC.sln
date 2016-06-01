@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppWeb", "AppWeb\AppWeb.csproj", "{45A3D887-EB70-4E04-93E7-0B9F8C609373}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppWeb.Tests", "AppWeb.Tests\AppWeb.Tests.csproj", "{D6FD235A-7CB2-48FA-9B52-41DE3C717518}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Servicios", "Servicios", "{AF03FC0A-18A3-43EE-84C6-34782D322477}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentacion", "Presentacion", "{9BEDF9E5-7312-4F1D-A176-4B4FF46066B9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pruebas", "Pruebas", "{ADD2588E-867F-4F71-8911-D5AF3FF096A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{53D882D0-079D-44AF-994C-3C5CDC249C19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppWeb.Framework", "AppWeb.Framework\AppWeb.Framework.csproj", "{50EF0F34-4E12-46FD-8BD5-FD6228C5C8E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppWeb.Servicios", "AppWeb.Servicios\AppWeb.Servicios.csproj", "{D9C5886C-2A17-469A-811B-855FE1430F7A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45A3D887-EB70-4E04-93E7-0B9F8C609373}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45A3D887-EB70-4E04-93E7-0B9F8C609373}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45A3D887-EB70-4E04-93E7-0B9F8C609373}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45A3D887-EB70-4E04-93E7-0B9F8C609373}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6FD235A-7CB2-48FA-9B52-41DE3C717518}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6FD235A-7CB2-48FA-9B52-41DE3C717518}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6FD235A-7CB2-48FA-9B52-41DE3C717518}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6FD235A-7CB2-48FA-9B52-41DE3C717518}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50EF0F34-4E12-46FD-8BD5-FD6228C5C8E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50EF0F34-4E12-46FD-8BD5-FD6228C5C8E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50EF0F34-4E12-46FD-8BD5-FD6228C5C8E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50EF0F34-4E12-46FD-8BD5-FD6228C5C8E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9C5886C-2A17-469A-811B-855FE1430F7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9C5886C-2A17-469A-811B-855FE1430F7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9C5886C-2A17-469A-811B-855FE1430F7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9C5886C-2A17-469A-811B-855FE1430F7A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{45A3D887-EB70-4E04-93E7-0B9F8C609373} = {9BEDF9E5-7312-4F1D-A176-4B4FF46066B9}
+		{D6FD235A-7CB2-48FA-9B52-41DE3C717518} = {ADD2588E-867F-4F71-8911-D5AF3FF096A3}
+		{50EF0F34-4E12-46FD-8BD5-FD6228C5C8E3} = {53D882D0-079D-44AF-994C-3C5CDC249C19}
+		{D9C5886C-2A17-469A-811B-855FE1430F7A} = {AF03FC0A-18A3-43EE-84C6-34782D322477}
+	EndGlobalSection
+EndGlobal
