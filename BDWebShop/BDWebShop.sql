@@ -61,7 +61,7 @@ create table TCliente
 	CodCliente int not null constraint pk_CodCliente primary key(CodCliente) IDENTITY (1, 1),
 	Nombres varchar(25),
 	Apellidos varchar(40),
-	Sexo  char(1),
+	Genero  char(1),
 	TipoDocumento  varchar(20),
 	NroDocumento varchar(20),
 	Email  varchar(30)not null constraint uq_Email unique nonclustered, 
@@ -101,7 +101,6 @@ create table TDetalleVenta
 	CodProducto varchar(6) constraint fk_CodProducto foreign key references TProducto(CodProducto),
 	Cantidad integer,
 	PrecioUnitario money,
-	Total money
 )
 go
 
@@ -112,12 +111,9 @@ go
 create table TCabeceraVenta
 (	
 	NroDetalleVenta int,
-	CodCliente int,	
-	NroVenta int,
-	FechaVenta datetime,
-	Total money,	
-	foreign key (CodCliente) references TCliente(CodCliente),
-	foreign key (NroVenta) references TOrdenVenta(NroVenta),
+	CodCliente int,
+	FechaVenta datetime,	
+	foreign key (CodCliente) references TCliente(CodCliente),	
 	foreign key (NroDetalleVenta) references TDetalleVenta(NroDetalleVenta),
 	constraint pk_CabeVenta primary key (CodCliente,NroDetalleVenta)
 )
