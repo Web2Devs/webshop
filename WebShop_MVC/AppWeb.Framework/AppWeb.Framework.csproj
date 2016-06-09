@@ -39,6 +39,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,11 +48,70 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DB\Control\Categoria.cs" />
+    <Compile Include="DB\Interfaz\IEntidadDB.cs" />
+    <Compile Include="DB\Model\ModelShop.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelShop.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Model\ModelShop.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Model\ModelShop.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelShop.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Model\TCabeceraVenta.cs">
+      <DependentUpon>ModelShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Model\TCategoria.cs">
+      <DependentUpon>ModelShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Model\TCliente.cs">
+      <DependentUpon>ModelShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Model\TDetalleVenta.cs">
+      <DependentUpon>ModelShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Model\TOrdenVenta.cs">
+      <DependentUpon>ModelShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Model\TProducto.cs">
+      <DependentUpon>ModelShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Model\TSubCategoria.cs">
+      <DependentUpon>ModelShop.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="DB\Model\ModelShop.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelShop.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DB\Model\ModelShop.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelShop.edmx</DependentUpon>
+      <LastGenOutput>ModelShop.Context.cs</LastGenOutput>
+    </None>
+    <None Include="DB\Model\ModelShop.edmx.diagram">
+      <DependentUpon>ModelShop.edmx</DependentUpon>
+    </None>
+    <None Include="DB\Model\ModelShop.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelShop.edmx</DependentUpon>
+      <LastGenOutput>ModelShop.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

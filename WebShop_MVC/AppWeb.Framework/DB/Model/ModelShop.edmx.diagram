@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a857ded4e6f244a89a5b857f2398cf7c" Name="Diagram1">
+        <EntityTypeShape EntityType="BDWebShopModel.TCabeceraVenta" Width="1.5" PointX="2.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDWebShopModel.TCategoria" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDWebShopModel.TCliente" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDWebShopModel.TDetalleVenta" Width="1.5" PointX="5.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDWebShopModel.TOrdenVenta" Width="1.5" PointX="2.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDWebShopModel.TProducto" Width="1.5" PointX="5.125" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDWebShopModel.TSubCategoria" Width="1.5" PointX="3.125" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="BDWebShopModel.FK__TCabecera__CodCl__24927208" ManuallyRouted="false" />
+        <AssociationConnector Association="BDWebShopModel.FK__TCabecera__NroDe__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="BDWebShopModel.fk_CodCategoria" ManuallyRouted="false" />
+        <AssociationConnector Association="BDWebShopModel.fk_CodCliente" ManuallyRouted="false" />
+        <AssociationConnector Association="BDWebShopModel.fk_CodProducto" ManuallyRouted="false" />
+        <AssociationConnector Association="BDWebShopModel.fk_NroVenta" ManuallyRouted="false" />
+        <AssociationConnector Association="BDWebShopModel.fk_CodSubCategoria" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
