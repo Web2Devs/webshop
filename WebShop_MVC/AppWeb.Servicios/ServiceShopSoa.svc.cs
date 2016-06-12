@@ -8,34 +8,41 @@ namespace AppWeb.Servicios
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
     public class ServiceShopSoa : IServiceShopSoa
     {
-        private Categoria cateDao = new Categoria();
         /// <summary>
         /// Agregar nueva Categoria
         /// </summary>
         /// <param name="categoria"></param>
         /// <returns>int codigo</returns>
-        public int AgregarCategoria(TCategoria categoria)
+        public TCategoria AgregarCategoria(TCategoria categoria)
         {
             using (Categoria cate = new Categoria())
             {
-                cate.Create(categoria);
-                return categoria.CodCategoria;
+                return cate.Create(categoria);
             }
         }
 
-        public int AgregarCliente(TCliente cliente)
+        public TCliente AgregarCliente(TCliente cliente)
         {
-            return 1;
+            using (Cliente cli = new Cliente())
+            {
+                return cli.Create(cliente);
+            }
         }
 
-        public int AgregarProducto(TProducto producto)
+        public TProducto AgregarProducto(TProducto producto)
         {
-            return 1;
+            using (Producto pro = new Producto())
+            {
+                return pro.Create(producto);
+            }
         }
 
-        public int AgregarSubCategoria(TSubCategoria subCategoria)
+        public TSubCategoria AgregarSubCategoria(TSubCategoria subCategoria)
         {
-            return 1;
+            using (SubCategoria subcate = new SubCategoria())
+            {
+                return subcate.Create(subCategoria);
+            }
         }
     }
 }

@@ -7,12 +7,12 @@ namespace AppWeb.Servicios
     public interface IServiceShopSoa
     {
         [OperationContract]
-        int AgregarCliente(TCliente cliente);
+        TCliente AgregarCliente(TCliente cliente);
         [OperationContract]
-        int AgregarProducto(TProducto producto);
+        TProducto AgregarProducto(TProducto producto);
         [OperationContract]
-        int AgregarSubCategoria(TSubCategoria subCategoria);
+        TSubCategoria AgregarSubCategoria(TSubCategoria subCategoria);
         [OperationContract]
-        int AgregarCategoria(TCategoria categoria);
+        TCategoria AgregarCategoria(TCategoria categoria);
     }
 }
