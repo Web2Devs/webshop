@@ -19,7 +19,7 @@ if OBJECT_ID('TCategoria') is not null
 go	
 create table TCategoria
 (
-	CodCategoria  varchar(2) not null constraint pk_CodCategoria primary key(CodCategoria),
+	CodCategoria  int identity constraint pk_CodCategoria primary key(CodCategoria),
 	Nombre varchar(20)
 )
 go
@@ -30,11 +30,10 @@ if OBJECT_ID('TSubCategoria') is not null
 go	
 create table TSubCategoria
 (
-	CodSubCategoria  varchar(4) not null constraint pk_CodSubCategoria primary key(CodSubCategoria),
+	CodSubCategoria  int identity not null constraint pk_CodSubCategoria primary key(CodSubCategoria),
 	Nombre varchar(25),
-	CodCategoria varchar(2) not null constraint fk_CodCategoria foreign key references TCategoria(CodCategoria)
+	CodCategoria int not null constraint fk_CodCategoria foreign key references TCategoria(CodCategoria)
 )
-
 go
 
 --Creación de la tabla TProducto:
@@ -43,13 +42,13 @@ if OBJECT_ID('TProducto') is not null
 go	
 create table TProducto
 (
-	CodProducto varchar(6) not null constraint pk_CodProducto primary key (CodProducto),
+	CodProducto int identity not null constraint pk_CodProducto primary key (CodProducto),
 	Nombre  varchar(35),
 	Descripcion nvarchar(2000),
 	Especificacion varchar(40),
 	Stock int,
 	Precio money CONSTRAINT prod_precio DEFAULT (0),
-	CodSubCategoria  varchar(4) not null constraint fk_CodSubCategoria foreign key references TSubCategoria(CodSubCategoria)
+	CodSubCategoria  int not null constraint fk_CodSubCategoria foreign key references TSubCategoria(CodSubCategoria)
 )
 go
 --Creación de la tabla TCliente:
@@ -98,7 +97,7 @@ create table TDetalleVenta
 (
 	NroDetalleVenta int identity primary key,
 	NroVenta int constraint fk_NroVenta foreign key references TOrdenVenta(NroVenta),
-	CodProducto varchar(6) constraint fk_CodProducto foreign key references TProducto(CodProducto),
+	CodProducto int constraint fk_CodProducto foreign key references TProducto(CodProducto),
 	Cantidad integer,
 	PrecioUnitario money,
 )
