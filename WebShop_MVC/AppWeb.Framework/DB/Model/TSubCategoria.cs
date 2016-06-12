@@ -19,9 +19,9 @@ namespace AppWeb.Framework.DB.Model
             this.TProducto = new HashSet<TProducto>();
         }
     
-        public string CodSubCategoria { get; set; }
+        public int CodSubCategoria { get; set; }
         public string Nombre { get; set; }
-        public string CodCategoria { get; set; }
+        public int CodCategoria { get; set; }
     
         public virtual TCategoria TCategoria { get; set; }
         public virtual ICollection<TProducto> TProducto { get; set; }

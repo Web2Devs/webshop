@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BDWebShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BDWebShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="TCabeceraVenta">
           <Key>
             <PropertyRef Name="NroDetalleVenta" />
@@ -18,7 +18,7 @@
           <Key>
             <PropertyRef Name="CodCategoria" />
           </Key>
-          <Property Name="CodCategoria" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="CodCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="TCliente">
@@ -47,7 +47,7 @@
           </Key>
           <Property Name="NroDetalleVenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NroVenta" Type="int" />
-          <Property Name="CodProducto" Type="varchar" MaxLength="6" />
+          <Property Name="CodProducto" Type="int" />
           <Property Name="Cantidad" Type="int" />
           <Property Name="PrecioUnitario" Type="money" />
         </EntityType>
@@ -65,21 +65,21 @@
           <Key>
             <PropertyRef Name="CodProducto" />
           </Key>
-          <Property Name="CodProducto" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="CodProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="35" />
           <Property Name="Descripcion" Type="nvarchar" MaxLength="2000" />
           <Property Name="Especificacion" Type="varchar" MaxLength="40" />
           <Property Name="Stock" Type="int" />
           <Property Name="Precio" Type="money" />
-          <Property Name="CodSubCategoria" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="CodSubCategoria" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TSubCategoria">
           <Key>
             <PropertyRef Name="CodSubCategoria" />
           </Key>
-          <Property Name="CodSubCategoria" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="CodSubCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="25" />
-          <Property Name="CodCategoria" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="CodCategoria" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK__TCabecera__CodCl__24927208">
           <End Role="TCliente" Type="Self.TCliente" Multiplicity="1" />
@@ -202,11 +202,47 @@
             <End Role="TDetalleVenta" EntitySet="TDetalleVenta" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BDWebShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BDWebShopEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TCabeceraVenta" EntityType="BDWebShopModel.TCabeceraVenta" />
+          <EntitySet Name="TCategoria" EntityType="BDWebShopModel.TCategoria" />
+          <EntitySet Name="TCliente" EntityType="BDWebShopModel.TCliente" />
+          <EntitySet Name="TDetalleVenta" EntityType="BDWebShopModel.TDetalleVenta" />
+          <EntitySet Name="TOrdenVenta" EntityType="BDWebShopModel.TOrdenVenta" />
+          <EntitySet Name="TProducto" EntityType="BDWebShopModel.TProducto" />
+          <EntitySet Name="TSubCategoria" EntityType="BDWebShopModel.TSubCategoria" />
+          <AssociationSet Name="FK__TCabecera__CodCl__24927208" Association="BDWebShopModel.FK__TCabecera__CodCl__24927208">
+            <End Role="TCliente" EntitySet="TCliente" />
+            <End Role="TCabeceraVenta" EntitySet="TCabeceraVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TCabecera__NroDe__25869641" Association="BDWebShopModel.FK__TCabecera__NroDe__25869641">
+            <End Role="TDetalleVenta" EntitySet="TDetalleVenta" />
+            <End Role="TCabeceraVenta" EntitySet="TCabeceraVenta" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CodCategoria" Association="BDWebShopModel.fk_CodCategoria">
+            <End Role="TCategoria" EntitySet="TCategoria" />
+            <End Role="TSubCategoria" EntitySet="TSubCategoria" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CodCliente" Association="BDWebShopModel.fk_CodCliente">
+            <End Role="TCliente" EntitySet="TCliente" />
+            <End Role="TOrdenVenta" EntitySet="TOrdenVenta" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CodProducto" Association="BDWebShopModel.fk_CodProducto">
+            <End Role="TProducto" EntitySet="TProducto" />
+            <End Role="TDetalleVenta" EntitySet="TDetalleVenta" />
+          </AssociationSet>
+          <AssociationSet Name="fk_NroVenta" Association="BDWebShopModel.fk_NroVenta">
+            <End Role="TOrdenVenta" EntitySet="TOrdenVenta" />
+            <End Role="TDetalleVenta" EntitySet="TDetalleVenta" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CodSubCategoria" Association="BDWebShopModel.fk_CodSubCategoria">
+            <End Role="TSubCategoria" EntitySet="TSubCategoria" />
+            <End Role="TProducto" EntitySet="TProducto" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="TCabeceraVenta">
           <Key>
             <PropertyRef Name="NroDetalleVenta" />
@@ -215,16 +251,16 @@
           <Property Name="NroDetalleVenta" Type="Int32" Nullable="false" />
           <Property Name="CodCliente" Type="Int32" Nullable="false" />
           <Property Name="FechaVenta" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="TCliente" Relationship="Self.FK__TCabecera__CodCl__24927208" FromRole="TCabeceraVenta" ToRole="TCliente" />
-          <NavigationProperty Name="TDetalleVenta" Relationship="Self.FK__TCabecera__NroDe__25869641" FromRole="TCabeceraVenta" ToRole="TDetalleVenta" />
+          <NavigationProperty Name="TCliente" Relationship="BDWebShopModel.FK__TCabecera__CodCl__24927208" FromRole="TCabeceraVenta" ToRole="TCliente" />
+          <NavigationProperty Name="TDetalleVenta" Relationship="BDWebShopModel.FK__TCabecera__NroDe__25869641" FromRole="TCabeceraVenta" ToRole="TDetalleVenta" />
         </EntityType>
         <EntityType Name="TCategoria">
           <Key>
             <PropertyRef Name="CodCategoria" />
           </Key>
-          <Property Name="CodCategoria" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="TSubCategoria" Relationship="Self.fk_CodCategoria" FromRole="TCategoria" ToRole="TSubCategoria" />
+          <NavigationProperty Name="TSubCategoria" Relationship="BDWebShopModel.fk_CodCategoria" FromRole="TCategoria" ToRole="TSubCategoria" />
         </EntityType>
         <EntityType Name="TCliente">
           <Key>
@@ -236,17 +272,17 @@
           <Property Name="Genero" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="TipoDocumento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="NroDocumento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Provincia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Ciudad" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Distrito" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="Direccion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Contrasena" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="RazonSocial" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="TCabeceraVenta" Relationship="Self.FK__TCabecera__CodCl__24927208" FromRole="TCliente" ToRole="TCabeceraVenta" />
-          <NavigationProperty Name="TOrdenVenta" Relationship="Self.fk_CodCliente" FromRole="TCliente" ToRole="TOrdenVenta" />
+          <NavigationProperty Name="TCabeceraVenta" Relationship="BDWebShopModel.FK__TCabecera__CodCl__24927208" FromRole="TCliente" ToRole="TCabeceraVenta" />
+          <NavigationProperty Name="TOrdenVenta" Relationship="BDWebShopModel.fk_CodCliente" FromRole="TCliente" ToRole="TOrdenVenta" />
         </EntityType>
         <EntityType Name="TDetalleVenta">
           <Key>
@@ -254,12 +290,12 @@
           </Key>
           <Property Name="NroDetalleVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NroVenta" Type="Int32" />
-          <Property Name="CodProducto" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="CodProducto" Type="Int32" />
           <Property Name="Cantidad" Type="Int32" />
           <Property Name="PrecioUnitario" Type="Decimal" Precision="19" Scale="4" />
-          <NavigationProperty Name="TCabeceraVenta" Relationship="Self.FK__TCabecera__NroDe__25869641" FromRole="TDetalleVenta" ToRole="TCabeceraVenta" />
-          <NavigationProperty Name="TProducto" Relationship="Self.fk_CodProducto" FromRole="TDetalleVenta" ToRole="TProducto" />
-          <NavigationProperty Name="TOrdenVenta" Relationship="Self.fk_NroVenta" FromRole="TDetalleVenta" ToRole="TOrdenVenta" />
+          <NavigationProperty Name="TCabeceraVenta" Relationship="BDWebShopModel.FK__TCabecera__NroDe__25869641" FromRole="TDetalleVenta" ToRole="TCabeceraVenta" />
+          <NavigationProperty Name="TProducto" Relationship="BDWebShopModel.fk_CodProducto" FromRole="TDetalleVenta" ToRole="TProducto" />
+          <NavigationProperty Name="TOrdenVenta" Relationship="BDWebShopModel.fk_NroVenta" FromRole="TDetalleVenta" ToRole="TOrdenVenta" />
         </EntityType>
         <EntityType Name="TOrdenVenta">
           <Key>
@@ -270,36 +306,36 @@
           <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="FechaVenta" Type="DateTime" Precision="3" />
           <Property Name="FechaEntrega" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="TCliente" Relationship="Self.fk_CodCliente" FromRole="TOrdenVenta" ToRole="TCliente" />
-          <NavigationProperty Name="TDetalleVenta" Relationship="Self.fk_NroVenta" FromRole="TOrdenVenta" ToRole="TDetalleVenta" />
+          <NavigationProperty Name="TCliente" Relationship="BDWebShopModel.fk_CodCliente" FromRole="TOrdenVenta" ToRole="TCliente" />
+          <NavigationProperty Name="TDetalleVenta" Relationship="BDWebShopModel.fk_NroVenta" FromRole="TOrdenVenta" ToRole="TDetalleVenta" />
         </EntityType>
         <EntityType Name="TProducto">
           <Key>
             <PropertyRef Name="CodProducto" />
           </Key>
-          <Property Name="CodProducto" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
           <Property Name="Descripcion" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
           <Property Name="Especificacion" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="Stock" Type="Int32" />
           <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="CodSubCategoria" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="TDetalleVenta" Relationship="Self.fk_CodProducto" FromRole="TProducto" ToRole="TDetalleVenta" />
-          <NavigationProperty Name="TSubCategoria" Relationship="Self.fk_CodSubCategoria" FromRole="TProducto" ToRole="TSubCategoria" />
+          <Property Name="CodSubCategoria" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TDetalleVenta" Relationship="BDWebShopModel.fk_CodProducto" FromRole="TProducto" ToRole="TDetalleVenta" />
+          <NavigationProperty Name="TSubCategoria" Relationship="BDWebShopModel.fk_CodSubCategoria" FromRole="TProducto" ToRole="TSubCategoria" />
         </EntityType>
         <EntityType Name="TSubCategoria">
           <Key>
             <PropertyRef Name="CodSubCategoria" />
           </Key>
-          <Property Name="CodSubCategoria" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodSubCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="CodCategoria" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="TCategoria" Relationship="Self.fk_CodCategoria" FromRole="TSubCategoria" ToRole="TCategoria" />
-          <NavigationProperty Name="TProducto" Relationship="Self.fk_CodSubCategoria" FromRole="TSubCategoria" ToRole="TProducto" />
+          <Property Name="CodCategoria" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TCategoria" Relationship="BDWebShopModel.fk_CodCategoria" FromRole="TSubCategoria" ToRole="TCategoria" />
+          <NavigationProperty Name="TProducto" Relationship="BDWebShopModel.fk_CodSubCategoria" FromRole="TSubCategoria" ToRole="TProducto" />
         </EntityType>
         <Association Name="FK__TCabecera__CodCl__24927208">
-          <End Role="TCliente" Type="Self.TCliente" Multiplicity="1" />
-          <End Role="TCabeceraVenta" Type="Self.TCabeceraVenta" Multiplicity="*" />
+          <End Type="BDWebShopModel.TCliente" Role="TCliente" Multiplicity="1" />
+          <End Type="BDWebShopModel.TCabeceraVenta" Role="TCabeceraVenta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TCliente">
               <PropertyRef Name="CodCliente" />
@@ -310,8 +346,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__TCabecera__NroDe__25869641">
-          <End Role="TDetalleVenta" Type="Self.TDetalleVenta" Multiplicity="1" />
-          <End Role="TCabeceraVenta" Type="Self.TCabeceraVenta" Multiplicity="*" />
+          <End Type="BDWebShopModel.TDetalleVenta" Role="TDetalleVenta" Multiplicity="1" />
+          <End Type="BDWebShopModel.TCabeceraVenta" Role="TCabeceraVenta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TDetalleVenta">
               <PropertyRef Name="NroDetalleVenta" />
@@ -322,8 +358,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_CodCategoria">
-          <End Role="TCategoria" Type="Self.TCategoria" Multiplicity="1" />
-          <End Role="TSubCategoria" Type="Self.TSubCategoria" Multiplicity="*" />
+          <End Type="BDWebShopModel.TCategoria" Role="TCategoria" Multiplicity="1" />
+          <End Type="BDWebShopModel.TSubCategoria" Role="TSubCategoria" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TCategoria">
               <PropertyRef Name="CodCategoria" />
@@ -334,8 +370,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_CodCliente">
-          <End Role="TCliente" Type="Self.TCliente" Multiplicity="0..1" />
-          <End Role="TOrdenVenta" Type="Self.TOrdenVenta" Multiplicity="*" />
+          <End Type="BDWebShopModel.TCliente" Role="TCliente" Multiplicity="0..1" />
+          <End Type="BDWebShopModel.TOrdenVenta" Role="TOrdenVenta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TCliente">
               <PropertyRef Name="CodCliente" />
@@ -346,8 +382,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_CodProducto">
-          <End Role="TProducto" Type="Self.TProducto" Multiplicity="0..1" />
-          <End Role="TDetalleVenta" Type="Self.TDetalleVenta" Multiplicity="*" />
+          <End Type="BDWebShopModel.TProducto" Role="TProducto" Multiplicity="0..1" />
+          <End Type="BDWebShopModel.TDetalleVenta" Role="TDetalleVenta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TProducto">
               <PropertyRef Name="CodProducto" />
@@ -358,8 +394,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_NroVenta">
-          <End Role="TOrdenVenta" Type="Self.TOrdenVenta" Multiplicity="0..1" />
-          <End Role="TDetalleVenta" Type="Self.TDetalleVenta" Multiplicity="*" />
+          <End Type="BDWebShopModel.TOrdenVenta" Role="TOrdenVenta" Multiplicity="0..1" />
+          <End Type="BDWebShopModel.TDetalleVenta" Role="TDetalleVenta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TOrdenVenta">
               <PropertyRef Name="NroVenta" />
@@ -370,8 +406,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_CodSubCategoria">
-          <End Role="TSubCategoria" Type="Self.TSubCategoria" Multiplicity="1" />
-          <End Role="TProducto" Type="Self.TProducto" Multiplicity="*" />
+          <End Type="BDWebShopModel.TSubCategoria" Role="TSubCategoria" Multiplicity="1" />
+          <End Type="BDWebShopModel.TProducto" Role="TProducto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TSubCategoria">
               <PropertyRef Name="CodSubCategoria" />
@@ -381,43 +417,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BDWebShopEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="TCabeceraVenta" EntityType="Self.TCabeceraVenta" />
-          <EntitySet Name="TCategoria" EntityType="Self.TCategoria" />
-          <EntitySet Name="TCliente" EntityType="Self.TCliente" />
-          <EntitySet Name="TDetalleVenta" EntityType="Self.TDetalleVenta" />
-          <EntitySet Name="TOrdenVenta" EntityType="Self.TOrdenVenta" />
-          <EntitySet Name="TProducto" EntityType="Self.TProducto" />
-          <EntitySet Name="TSubCategoria" EntityType="Self.TSubCategoria" />
-          <AssociationSet Name="FK__TCabecera__CodCl__24927208" Association="Self.FK__TCabecera__CodCl__24927208">
-            <End Role="TCliente" EntitySet="TCliente" />
-            <End Role="TCabeceraVenta" EntitySet="TCabeceraVenta" />
-          </AssociationSet>
-          <AssociationSet Name="FK__TCabecera__NroDe__25869641" Association="Self.FK__TCabecera__NroDe__25869641">
-            <End Role="TDetalleVenta" EntitySet="TDetalleVenta" />
-            <End Role="TCabeceraVenta" EntitySet="TCabeceraVenta" />
-          </AssociationSet>
-          <AssociationSet Name="fk_CodCategoria" Association="Self.fk_CodCategoria">
-            <End Role="TCategoria" EntitySet="TCategoria" />
-            <End Role="TSubCategoria" EntitySet="TSubCategoria" />
-          </AssociationSet>
-          <AssociationSet Name="fk_CodCliente" Association="Self.fk_CodCliente">
-            <End Role="TCliente" EntitySet="TCliente" />
-            <End Role="TOrdenVenta" EntitySet="TOrdenVenta" />
-          </AssociationSet>
-          <AssociationSet Name="fk_CodProducto" Association="Self.fk_CodProducto">
-            <End Role="TProducto" EntitySet="TProducto" />
-            <End Role="TDetalleVenta" EntitySet="TDetalleVenta" />
-          </AssociationSet>
-          <AssociationSet Name="fk_NroVenta" Association="Self.fk_NroVenta">
-            <End Role="TOrdenVenta" EntitySet="TOrdenVenta" />
-            <End Role="TDetalleVenta" EntitySet="TDetalleVenta" />
-          </AssociationSet>
-          <AssociationSet Name="fk_CodSubCategoria" Association="Self.fk_CodSubCategoria">
-            <End Role="TSubCategoria" EntitySet="TSubCategoria" />
-            <End Role="TProducto" EntitySet="TProducto" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -427,82 +426,82 @@
           <EntitySetMapping Name="TCabeceraVenta">
             <EntityTypeMapping TypeName="BDWebShopModel.TCabeceraVenta">
               <MappingFragment StoreEntitySet="TCabeceraVenta">
-                <ScalarProperty Name="NroDetalleVenta" ColumnName="NroDetalleVenta" />
-                <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
                 <ScalarProperty Name="FechaVenta" ColumnName="FechaVenta" />
+                <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
+                <ScalarProperty Name="NroDetalleVenta" ColumnName="NroDetalleVenta" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TCategoria">
             <EntityTypeMapping TypeName="BDWebShopModel.TCategoria">
               <MappingFragment StoreEntitySet="TCategoria">
-                <ScalarProperty Name="CodCategoria" ColumnName="CodCategoria" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CodCategoria" ColumnName="CodCategoria" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TCliente">
             <EntityTypeMapping TypeName="BDWebShopModel.TCliente">
               <MappingFragment StoreEntitySet="TCliente">
-                <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
-                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
-                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
-                <ScalarProperty Name="Genero" ColumnName="Genero" />
-                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
-                <ScalarProperty Name="NroDocumento" ColumnName="NroDocumento" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
-                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
-                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
-                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="NroDocumento" ColumnName="NroDocumento" />
+                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TDetalleVenta">
             <EntityTypeMapping TypeName="BDWebShopModel.TDetalleVenta">
               <MappingFragment StoreEntitySet="TDetalleVenta">
-                <ScalarProperty Name="NroDetalleVenta" ColumnName="NroDetalleVenta" />
-                <ScalarProperty Name="NroVenta" ColumnName="NroVenta" />
-                <ScalarProperty Name="CodProducto" ColumnName="CodProducto" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
                 <ScalarProperty Name="PrecioUnitario" ColumnName="PrecioUnitario" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="CodProducto" ColumnName="CodProducto" />
+                <ScalarProperty Name="NroVenta" ColumnName="NroVenta" />
+                <ScalarProperty Name="NroDetalleVenta" ColumnName="NroDetalleVenta" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TOrdenVenta">
             <EntityTypeMapping TypeName="BDWebShopModel.TOrdenVenta">
               <MappingFragment StoreEntitySet="TOrdenVenta">
-                <ScalarProperty Name="NroVenta" ColumnName="NroVenta" />
-                <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="FechaVenta" ColumnName="FechaVenta" />
                 <ScalarProperty Name="FechaEntrega" ColumnName="FechaEntrega" />
+                <ScalarProperty Name="FechaVenta" ColumnName="FechaVenta" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
+                <ScalarProperty Name="NroVenta" ColumnName="NroVenta" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TProducto">
             <EntityTypeMapping TypeName="BDWebShopModel.TProducto">
               <MappingFragment StoreEntitySet="TProducto">
-                <ScalarProperty Name="CodProducto" ColumnName="CodProducto" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Especificacion" ColumnName="Especificacion" />
-                <ScalarProperty Name="Stock" ColumnName="Stock" />
-                <ScalarProperty Name="Precio" ColumnName="Precio" />
                 <ScalarProperty Name="CodSubCategoria" ColumnName="CodSubCategoria" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Especificacion" ColumnName="Especificacion" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CodProducto" ColumnName="CodProducto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TSubCategoria">
             <EntityTypeMapping TypeName="BDWebShopModel.TSubCategoria">
               <MappingFragment StoreEntitySet="TSubCategoria">
-                <ScalarProperty Name="CodSubCategoria" ColumnName="CodSubCategoria" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="CodCategoria" ColumnName="CodCategoria" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CodSubCategoria" ColumnName="CodSubCategoria" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

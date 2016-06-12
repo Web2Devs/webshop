@@ -41,7 +41,7 @@
   <xs:complexType name="TDetalleVenta">
     <xs:sequence>
       <xs:element minOccurs="0" name="Cantidad" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="CodProducto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodProducto" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="NroDetalleVenta" type="xs:int" />
       <xs:element minOccurs="0" name="NroVenta" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="PrecioUnitario" nillable="true" type="xs:decimal" />
@@ -71,8 +71,8 @@
   <xs:element name="ArrayOfTDetalleVenta" nillable="true" type="tns:ArrayOfTDetalleVenta" />
   <xs:complexType name="TProducto">
     <xs:sequence>
-      <xs:element minOccurs="0" name="CodProducto" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="CodSubCategoria" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodProducto" type="xs:int" />
+      <xs:element minOccurs="0" name="CodSubCategoria" type="xs:int" />
       <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Especificacion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
@@ -85,8 +85,8 @@
   <xs:element name="TProducto" nillable="true" type="tns:TProducto" />
   <xs:complexType name="TSubCategoria">
     <xs:sequence>
-      <xs:element minOccurs="0" name="CodCategoria" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="CodSubCategoria" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodCategoria" type="xs:int" />
+      <xs:element minOccurs="0" name="CodSubCategoria" type="xs:int" />
       <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TCategoria" nillable="true" type="tns:TCategoria" />
       <xs:element minOccurs="0" name="TProducto" nillable="true" type="tns:ArrayOfTProducto" />
@@ -95,7 +95,7 @@
   <xs:element name="TSubCategoria" nillable="true" type="tns:TSubCategoria" />
   <xs:complexType name="TCategoria">
     <xs:sequence>
-      <xs:element minOccurs="0" name="CodCategoria" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodCategoria" type="xs:int" />
       <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TSubCategoria" nillable="true" type="tns:ArrayOfTSubCategoria" />
     </xs:sequence>

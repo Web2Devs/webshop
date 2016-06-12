@@ -14,8 +14,7 @@ namespace AppWeb.Tests
             {
                 int cod = proxy.AgregarCategoria(new TCategoria()
                 {
-                    CodCategoria = "x1",
-                    Nombre = "Prueba"
+                    Nombre = "Prueba2"
                 });
 
                 Assert.AreEqual(cod, 1);

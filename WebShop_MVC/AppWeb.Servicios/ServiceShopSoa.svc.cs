@@ -19,7 +19,7 @@ namespace AppWeb.Servicios
             using (Categoria cate = new Categoria())
             {
                 cate.Create(categoria);
-                return int.Parse(categoria.CodCategoria); //para que no salga error
+                return categoria.CodCategoria;
             }
         }
 

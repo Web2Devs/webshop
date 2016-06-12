@@ -19,7 +19,7 @@ namespace AppWeb.Framework.DB.Model
             this.TSubCategoria = new HashSet<TSubCategoria>();
         }
     
-        public string CodCategoria { get; set; }
+        public int CodCategoria { get; set; }
         public string Nombre { get; set; }
     
         public virtual ICollection<TSubCategoria> TSubCategoria { get; set; }

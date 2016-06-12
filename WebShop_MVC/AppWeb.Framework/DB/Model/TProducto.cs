@@ -19,13 +19,13 @@ namespace AppWeb.Framework.DB.Model
             this.TDetalleVenta = new HashSet<TDetalleVenta>();
         }
     
-        public string CodProducto { get; set; }
+        public int CodProducto { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public string Especificacion { get; set; }
         public Nullable<int> Stock { get; set; }
         public Nullable<decimal> Precio { get; set; }
-        public string CodSubCategoria { get; set; }
+        public int CodSubCategoria { get; set; }
     
         public virtual ICollection<TDetalleVenta> TDetalleVenta { get; set; }
         public virtual TSubCategoria TSubCategoria { get; set; }

@@ -577,7 +577,7 @@ namespace AppWeb.Tests.ShopWS {
         private System.Nullable<int> CantidadField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CodProductoField;
+        private System.Nullable<int> CodProductoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int NroDetalleVentaField;
@@ -621,12 +621,12 @@ namespace AppWeb.Tests.ShopWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CodProducto {
+        public System.Nullable<int> CodProducto {
             get {
                 return this.CodProductoField;
             }
             set {
-                if ((object.ReferenceEquals(this.CodProductoField, value) != true)) {
+                if ((this.CodProductoField.Equals(value) != true)) {
                     this.CodProductoField = value;
                     this.RaisePropertyChanged("CodProducto");
                 }
@@ -731,10 +731,10 @@ namespace AppWeb.Tests.ShopWS {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CodProductoField;
+        private int CodProductoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CodSubCategoriaField;
+        private int CodSubCategoriaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DescripcionField;
@@ -768,12 +768,12 @@ namespace AppWeb.Tests.ShopWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CodProducto {
+        public int CodProducto {
             get {
                 return this.CodProductoField;
             }
             set {
-                if ((object.ReferenceEquals(this.CodProductoField, value) != true)) {
+                if ((this.CodProductoField.Equals(value) != true)) {
                     this.CodProductoField = value;
                     this.RaisePropertyChanged("CodProducto");
                 }
@@ -781,12 +781,12 @@ namespace AppWeb.Tests.ShopWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CodSubCategoria {
+        public int CodSubCategoria {
             get {
                 return this.CodSubCategoriaField;
             }
             set {
-                if ((object.ReferenceEquals(this.CodSubCategoriaField, value) != true)) {
+                if ((this.CodSubCategoriaField.Equals(value) != true)) {
                     this.CodSubCategoriaField = value;
                     this.RaisePropertyChanged("CodSubCategoria");
                 }
@@ -904,10 +904,10 @@ namespace AppWeb.Tests.ShopWS {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CodCategoriaField;
+        private int CodCategoriaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CodSubCategoriaField;
+        private int CodSubCategoriaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NombreField;
@@ -929,12 +929,12 @@ namespace AppWeb.Tests.ShopWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CodCategoria {
+        public int CodCategoria {
             get {
                 return this.CodCategoriaField;
             }
             set {
-                if ((object.ReferenceEquals(this.CodCategoriaField, value) != true)) {
+                if ((this.CodCategoriaField.Equals(value) != true)) {
                     this.CodCategoriaField = value;
                     this.RaisePropertyChanged("CodCategoria");
                 }
@@ -942,12 +942,12 @@ namespace AppWeb.Tests.ShopWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CodSubCategoria {
+        public int CodSubCategoria {
             get {
                 return this.CodSubCategoriaField;
             }
             set {
-                if ((object.ReferenceEquals(this.CodSubCategoriaField, value) != true)) {
+                if ((this.CodSubCategoriaField.Equals(value) != true)) {
                     this.CodSubCategoriaField = value;
                     this.RaisePropertyChanged("CodSubCategoria");
                 }
@@ -1013,7 +1013,7 @@ namespace AppWeb.Tests.ShopWS {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CodCategoriaField;
+        private int CodCategoriaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NombreField;
@@ -1032,12 +1032,12 @@ namespace AppWeb.Tests.ShopWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CodCategoria {
+        public int CodCategoria {
             get {
                 return this.CodCategoriaField;
             }
             set {
-                if ((object.ReferenceEquals(this.CodCategoriaField, value) != true)) {
+                if ((this.CodCategoriaField.Equals(value) != true)) {
                     this.CodCategoriaField = value;
                     this.RaisePropertyChanged("CodCategoria");
                 }

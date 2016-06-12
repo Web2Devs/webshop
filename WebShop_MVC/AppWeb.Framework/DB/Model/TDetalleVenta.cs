@@ -21,7 +21,7 @@ namespace AppWeb.Framework.DB.Model
     
         public int NroDetalleVenta { get; set; }
         public Nullable<int> NroVenta { get; set; }
-        public string CodProducto { get; set; }
+        public Nullable<int> CodProducto { get; set; }
         public Nullable<int> Cantidad { get; set; }
         public Nullable<decimal> PrecioUnitario { get; set; }
     
