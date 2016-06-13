@@ -1,0 +1,44 @@
+﻿[
+    
+    {
+        "Id": 1,
+        "Nombre": "Mouse Razor1",
+        "Imagen": "MAUSE-WIFI-BLUETOOTH.jpg",
+        "Description": "xxxsdasds",
+        "Precio": 120
+    },
+    {
+        "Id": 2,
+        "Nombre": "Mouse Razor2",
+        "Imagen": "MAUSE-WIFI-BLUETOOTH.jpg",
+        "Description": "xxxsdasds",
+        "Precio": 121
+    },
+    {
+        "Id": 3,
+        "Nombre": "Mouse Razor3",
+        "Imagen": "MAUSE-WIFI-BLUETOOTH.jpg",
+        "Description": "xxxsdasds",
+        "Precio": 122
+    },
+    {
+        "Id": 4,
+        "Nombre": "Mouse Razor4",
+        "Imagen": "MAUSE-WIFI-BLUETOOTH.jpg",
+        "Description": "xxxsdasds",
+        "Precio": 123
+    },
+    {
+        "Id": 5,
+        "Nombre": "Mouse Razor5",
+        "Imagen": "MAUSE-WIFI-BLUETOOTH.jpg",
+        "Description": "xxxsdasds",
+        "Precio": 124
+    },
+    {
+        "Id": 6,
+        "Nombre": "Mouse Razor6",
+        "Imagen": "MAUSE-WIFI-BLUETOOTH.jpg",
+        "Description": "xxxsdasds",
+        "Precio": 124
+    }]

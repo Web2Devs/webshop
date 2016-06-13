@@ -13,5 +13,10 @@ namespace AppWeb.Controllers
         {
             return View();
         }
+
+        public ActionResult Info()
+        {
+            return View();
+        }
     }
 }
