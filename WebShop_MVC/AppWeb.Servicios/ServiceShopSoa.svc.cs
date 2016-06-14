@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ServiceModel;
 using AppWeb.Framework.DB.Control;
 using AppWeb.Framework.DB.Model;
@@ -26,6 +27,14 @@ namespace AppWeb.Servicios
             using (Cliente cli = new Cliente())
             {
                 return cli.Create(cliente);
+            }
+        }
+
+        public TOrdenVenta AgregarNuevaVenta(TCliente cliente, List<TProducto> productos)
+        {
+            using (Venta vent = new Venta())
+            {
+                return vent.Agregar(cliente, productos);
             }
         }
 

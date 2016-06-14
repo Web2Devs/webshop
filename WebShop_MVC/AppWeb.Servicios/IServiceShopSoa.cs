@@ -1,4 +1,5 @@
-﻿using System.ServiceModel;
+﻿using System.Collections.Generic;
+using System.ServiceModel;
 using AppWeb.Framework.DB.Model;
 
 namespace AppWeb.Servicios
@@ -14,5 +15,7 @@ namespace AppWeb.Servicios
         TSubCategoria AgregarSubCategoria(TSubCategoria subCategoria);
         [OperationContract]
         TCategoria AgregarCategoria(TCategoria categoria);
+        [OperationContract]
+        TOrdenVenta AgregarNuevaVenta(TCliente cliente, List<TProducto> productos);
     }
 }
