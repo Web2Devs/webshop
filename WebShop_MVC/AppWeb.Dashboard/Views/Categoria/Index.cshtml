@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="pull-left page-title"> Categoria </h4>
+    </div>
+</div>
+
+<div class="panel">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="m-b-30">
+                    <button id="addToTable" class="btn btn-primary waves-effect waves-light">Add <i class="fa fa-plus"></i></button>
+                </div>
+            </div>
+        </div>
+        <div id="datatable-editable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="dataTables_length" id="datatable-editable_length">
+                        <label>
+                            Ver
+                            <select name="datatable-editable_length" aria-controls="datatable-editable" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table table-bordered table-striped" id="datatable-editable">
+                        <thead>
+                            <tr class="row">
+                                <th>Menu1</th>
+                                <th>Menu1</th>
+                                <th>Menu1</th>
+                                <th>Menu1</th>
+                                <th>Menu1</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="gradeX">
+                                <td></td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>5</td>
+                                <td class="actions">
+                                    <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                                    <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
+                                    <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                    <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

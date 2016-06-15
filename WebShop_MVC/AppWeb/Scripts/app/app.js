@@ -15,18 +15,16 @@ appmvc.controller('HomeController', function ($scope, $http) {
         });
 });
 
-function chunkArray(array, chunkSize) {
-    var result = [];
-    var currentChunk = [];
-    for (var i = 0; i < array.length; i++) {
-        currentChunk.push(array[i]);
-        if (currentChunk.length == chunkSize) {
-            result.push(currentChunk);
-            currentChunk = [];
-        }
-    }
-    if (currentChunk.length > 0) {
-        result.push(currentChunk);
-    }
-    return result;
-}
+
+appmvc.controller('CategoriaController', function ($scope) {
+
+});
+
+
+appmvc.controller('SubCategoriaController', function ($scope) {
+
+});
+
+appmvc.controller('ProductoController', function ($scope) {
+
+});

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ServiceModel;
-using AppWeb.Framework.DB.Model;
+using AppWeb.Framework.Data.DB.Model;
 
 namespace AppWeb.Servicios
 {
@@ -17,5 +17,8 @@ namespace AppWeb.Servicios
         TCategoria AgregarCategoria(TCategoria categoria);
         [OperationContract]
         TOrdenVenta AgregarNuevaVenta(TCliente cliente, List<TProducto> productos);
+
+        [OperationContract]
+        bool ValidarLoginCliente(string usuario, string password);
     }
 }

@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap-responsive.css" rel="stylesheet">
+    <link href="~/Content/icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/menu.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/components.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/datatables.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body class="fixed-left">
+
+    <div class="page">
+        <div class="content-wrapper">
+            <section id="content" class="container drop-shadow lifted">
+                <div id="content-body" class="row">
+                    <div id="content-left" class="span3">
+                        <div class="left side-menu">
+                            <div id="sidebar-menu">
+                                <ul>
+                                    <li>
+                                        <a href="#" class="waves-effect waves-light ">
+                                            <i class="md md-home"></i>
+                                            <span> Dashboard </span>
+                                        </a>
+                                    </li>
+                                    <li class="has_sub">
+                                        <a href="#" class="waves-effect waves-light">
+                                            <i class="md md-home"></i>
+                                            <span> Categorias </span>
+                                            <span class="pull-right"><i class="md md-add"></i></span>
+                                        </a>
+                                        <ul class="list-unstyled">
+                                            <li><a href="#">Listar</a></li>
+                                            <li><a href="#">Nuevo</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="waves-effect waves-light ">
+                                            <i class="md md-home"></i>
+                                            <span> Productos </span>
+                                            <span class="pull-right"><i class="md md-add"></i></span>
+                                        </a>
+                                        <ul class="list-unstyled">
+                                            <li><a href="#">Listar</a></li>
+                                            <li><a href="#">Nuevo</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="waves-effect waves-light">
+                                            <i class="md md-home"></i>
+                                            <span> Clientes </span>
+                                            <span class="pull-right"><i class="md md-add"></i></span>
+                                        </a>
+                                        <ul class="list-unstyled">
+                                            <li><a href="#">Listar</a></li>
+                                            <li><a href="#">Nuevo</a></li>
+                                            <li><a href="#">Buscar</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="waves-effect waves-light">
+                                            <i class="md md-home"></i>
+                                            <span> Menu1 </span>
+                                            <span class="pull-right"><i class="md md-add"></i></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="waves-effect waves-light">
+                                            <i class="md md-home"></i>
+                                            <span> Menu2 </span>
+                                            <span class="pull-right"><i class="md md-add"></i></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div id="content-center" class="span9">
+                        <div class="page home-page">
+                            <div class="page-body">
+                                @RenderBody()
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="footer-wrapper">
+            <section id="footer" class="container"></section>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/menu.js"></script>
+</body>
+</html>

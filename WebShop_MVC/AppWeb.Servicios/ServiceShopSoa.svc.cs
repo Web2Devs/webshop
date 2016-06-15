@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ServiceModel;
-using AppWeb.Framework.DB.Control;
-using AppWeb.Framework.DB.Model;
+using AppWeb.Framework.Data.DB.Control;
+using AppWeb.Framework.Data.DB.Model;
 
 namespace AppWeb.Servicios
 {
@@ -51,6 +51,14 @@ namespace AppWeb.Servicios
             using (SubCategoria subcate = new SubCategoria())
             {
                 return subcate.Create(subCategoria);
+            }
+        }
+
+        public bool ValidarLoginCliente(string usuario, string password)
+        {
+            using (Cliente cli = new Cliente())
+            {
+                return cli.Validar(usuario, password);
             }
         }
     }
