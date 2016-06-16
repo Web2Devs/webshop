@@ -9,13 +9,13 @@
     </div>
     <div class="block-body">
         <div class="data-list data-list-grid">
-            <img id="myloading" src="~/Content/Images/ajax-loader.gif" ng-show="loading" />
+            <img id="myloading" src="~/Content/Img/ajax-loader.gif" ng-show="loading" />
             <div class="data-list-row row-fluid" ng-repeat="productox in productos" ng-cloak>
                 <div class="span4 data-list-item equalized-column" data-equalized-deep="true" ng-repeat="producto in productox">
                     <div class="item-box">
                         <figure class="picture" data-equalized-part="picture" data-equalized-valign="true" style="min-height: 100px; line-height: 100px; vertical-align: middle;">
                             <a href="@Url.Action("Info", "Producto", null)/{{producto.Id}}" title="{{producto.Nombre}}">
-                                <img ng-if="producto.Imagen != null" alt="{{producto.Nombre}}" ng-src="~/Content/Images/{{producto.Imagen}}" title="{{producto.Nombre}}">
+                                <img ng-if="producto.Imagen != null" alt="{{producto.Nombre}}" ng-src="~/Content/Img/{{producto.Imagen}}" title="{{producto.Nombre}}">
                             </a>
                         </figure>
                         <div class="data">

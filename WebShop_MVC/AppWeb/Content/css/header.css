@@ -1,0 +1,35 @@
+﻿#header {
+  position: relative;
+}
+
+.store-closed #header {
+  padding-top: 0;
+}
+
+#logobar {
+  position: relative;
+  min-height: 200px;
+  background-image: url("../Img/logo1170x200.png");
+  background: no-repeat repeat-x;
+}
+
+#logobar .brand {
+  float: left;
+  display: block;
+  position: relative;
+}
+
+#logobar .brand.textual {
+  position: absolute;
+  top: 50%;
+  font-size: 26px;
+  line-height: 26px;
+  margin-top: -13px;
+  text-decoration: none;
+  font-family: 'Segoe UI Semibold', 'Segoe UI', Tahoma, 'Helvetica Neue', Helvetica, Arial, 'sans-serif';
+  font-weight: 600;
+}
+
+.ie8 #logobar img {
+  max-width: auto;
+}
