@@ -7,7 +7,7 @@ if OBJECT_ID('uspListarProductos') is not null
 	drop proc uspListarProductos
 go
 create proc uspListarProductos
-@CodProducto varchar(6)
+@CodProducto int
 as
 begin
 	select * from TProducto
@@ -15,33 +15,35 @@ begin
 end
 go
 
+exec uspListarProductos '1';
+
 --Procedimiento Almacenado para Agregar Productos
 if OBJECT_ID('uspAgregarProducto') is not null
 	drop proc uspAgregarProducto
 go
 create proc uspAgregarProducto
-@CodProducto varchar(6),@Nombre varchar(35),@Descripcion nvarchar(2000),@Especificacion varchar(40),@Stock int,@Precio money,@CodSubCategoria varchar(4)
+@Nombre varchar(35),@Descripcion nvarchar(2000),@Especificacion varchar(40),@Stock int,@Precio money,@CodSubCategoria varchar(4)
 as
 begin
-	if not exists (select CodProducto from TProducto where CodProducto = @CodProducto)
 		if not exists (select Nombre from TProducto where Nombre = @Nombre)
 			if exists (select CodSubCategoria from TProducto where CodSubCategoria = @CodSubCategoria)
 			begin
-				insert into TProducto values(@CodProducto,@Nombre,@Descripcion,@Especificacion,@Stock,@Precio,@CodSubCategoria)
+				insert into TProducto values(@Nombre,@Descripcion,@Especificacion,@Stock,@Precio,@CodSubCategoria)
 				select CodError = 0, Mensaje = 'Producto insertado correctamente'
 			end
-			else select CodError =1, Mensaje ='Error: No existe cÛdigo de Sub CategorÌa'
+			else select CodError =1, Mensaje ='Error: No existe c√≥digo de Sub Categor√≠a'
 		else select CodError =1, Mensaje ='Error: Nombre de Producto Duplicado'
-	else Select CodError =1, Mensaje ='Error: Codigo de Producto Duplicado'
 end
 go
+
+exec uspAgregarProducto 'Mouse Razer3', 'Razer', 'gfgfg', 50, 350, 1;
 
 --Procedimiento Almacenado para Eliminar Productos
 if OBJECT_ID('uspEliminarProducto') is not null
 	drop proc uspEliminarProducto
 go
 create proc uspEliminarProducto
-@CodProducto varchar(6)
+@CodProducto int
 as
 begin
 	if exists (select CodProducto from TProducto where CodProducto = @CodProducto)
@@ -52,9 +54,12 @@ begin
 			end 
 			
 		else Select CodError =1, Mensaje ='Error: Existe Producto en Detalle de Compra'
-	else Select CodError =1, Mensaje ='Error: CÛdigo de Producto no existe'
+	else Select CodError =1, Mensaje ='Error: C√≥digo de Producto no existe'
 end
 go
+
+exec uspEliminarProducto '3';
+exec uspListarProductos '3';
 
 --Procedimiento Almacenado para Modificar Productos
 if OBJECT_ID('uspModificarProducto') is not null
@@ -71,7 +76,7 @@ begin
 				update TProducto set  Nombre=@Nombre,Descripcion=@Descripcion,Especificacion=@Especificacion,Stock=@Stock,Precio=@Precio,CodSubCategoria=@CodSubCategoria where CodProducto=@CodProducto
 				select CodError = 0, Mensaje = 'Datos de producto modificado correctamente'
 			end
-			else select CodError =1, Mensaje ='Error: No existe cÛdigo de Sub CategorÌa'
+			else select CodError =1, Mensaje ='Error: No existe c√≥digo de Sub Categor√≠a'
 		else Select CodError =1, Mensaje ='Error: Nombre de producto duplicado'
 	else Select CodError =1, Mensaje ='Error: Codigo de producto no existe'
 end
@@ -136,7 +141,7 @@ begin
 				select CodError = 0, Mensaje = 'Cliente insertado correctamente'
 			end
 		else select CodError =1, Mensaje ='Error: Nombre de Email Duplicado'
-	else Select CodError =1, Mensaje ='Error: CÛdigo del cliente Duplicado'
+	else Select CodError =1, Mensaje ='Error: C√≥digo del cliente Duplicado'
 end
 go
 
@@ -156,9 +161,9 @@ begin
 				delete from TCliente where CodCliente = @CodCliente
 				select CodError = 0, Mensaje = 'Producto eliminado correctamente'
 			end 
-			else Select CodError =1, Mensaje ='Error: Existen Direcciones de envÌo de este cliente'
+			else Select CodError =1, Mensaje ='Error: Existen Direcciones de env√≠o de este cliente'
 		else Select CodError =1, Mensaje ='Error: Existen Compras de este cliente'
-	else Select CodError =1, Mensaje ='Error: CÛdigo de Cliente no existe'
+	else Select CodError =1, Mensaje ='Error: C√≥digo de Cliente no existe'
 end
 go
 --exec uspEliminarCliente '1'
@@ -212,7 +217,7 @@ begin
 				insert into TCompra values(@CodCompra,@CodCliente,@Total,@FechaCompra,@FechaEntrega)
 				select CodError = 0, Mensaje = 'Compra insertada correctamente'
 			end
-		else Select CodError =1, Mensaje ='Error: No existe el cÛdigo de cliente'
+		else Select CodError =1, Mensaje ='Error: No existe el c√≥digo de cliente'
 	else Select CodError =1, Mensaje ='Error: Codigo de Compra Duplicado'
 end
 go
@@ -233,7 +238,7 @@ begin
 				select CodError = 0, Mensaje = 'Compra eliminada correctamente'
 			end 
 				else select CodError =1, Mensaje ='Error: Existe Compra en Detalle de Compra'
-	else Select CodError =1, Mensaje ='Error: CÛdigo de Compra no existe'
+	else Select CodError =1, Mensaje ='Error: C√≥digo de Compra no existe'
 end
 go
 --exec uspEliminarCompra '001'
@@ -265,8 +270,8 @@ begin
 				insert into TDetalleCompras values(@CodCompra,@CodProducto,@Cantidad,@Precio)
 				select CodError = 0, Mensaje = 'Detalle de compra insertado correctamente'
 			end
-		else select CodError =1, Mensaje ='Error: No existe cÛdigo de Producto'
-	else Select CodError =1, Mensaje ='Error: No existe cÛdigo de Compra'
+		else select CodError =1, Mensaje ='Error: No existe c√≥digo de Producto'
+	else Select CodError =1, Mensaje ='Error: No existe c√≥digo de Compra'
 end
 go
 --exec uspAgregarDetalleCompras '002','C10002','3','36.00'
@@ -284,7 +289,7 @@ begin
 				delete from TDetalleCompras where CodCompra =@CodCompra and CodProducto=@CodProducto
 				select CodError = 0, Mensaje = 'Detalle de Compra eliminado correctamente'
 			end 
-	else Select CodError =1, Mensaje ='Error: CÛdigo de Compra y de producto no existen en Detalle de Compra'
+	else Select CodError =1, Mensaje ='Error: C√≥digo de Compra y de producto no existen en Detalle de Compra'
 end
 go
 --exec uspEliminarDetalleCompras '001','C10002'
@@ -309,7 +314,7 @@ end
 go
 --exec uspAutenticarCliente 'jean@hotmail.com','3625608'
 
---Procedimiento Almacenado para Listar Productos por categorÌas
+--Procedimiento Almacenado para Listar Productos por categor√≠as
 
 if OBJECT_ID('uspListarPorCategorias') is not null
 	drop proc uspListarPorCategorias
@@ -325,7 +330,7 @@ S.CodSubCategoria=P.CodSubCategoria
 where C.CodCategoria=@CodCategoria
 end
 go
---PA para Agregar DirecciÛn de EnvÌo por email
+--PA para Agregar Direcci√≥n de Env√≠o por email
 if OBJECT_ID('uspAgregarDireccionEnvio') is not null
 	drop proc uspAgregarDireccionEnvio
 go
@@ -344,16 +349,16 @@ set @CodCliente=(select CodCliente from TCliente where Email=@Email)
 			begin
 				insert into TDireccionEnvio values(@Nombre,@Provincia,@Ciudad,@Distrito,@Direccion,@Telefono,@NombreDestinatario,@ApellidoDestinatario,@CodCliente)
 
-				select CodError = 0, Mensaje = 'DirecciÛn de envÌo insertado correctamente'
+				select CodError = 0, Mensaje = 'Direcci√≥n de env√≠o insertado correctamente'
 			end
-			else select CodError =1, Mensaje ='Error: Ya existe una direcciÛn de envÌo con ese nombre'
+			else select CodError =1, Mensaje ='Error: Ya existe una direcci√≥n de env√≠o con ese nombre'
 		else select CodError =1, Mensaje ='Error: ya existe direccion envio'
 	else Select CodError =1, Mensaje ='Error: No existe cliente'
 end
 go
---uspAgregarDireccionEnvio '1','Mi casa2','Cusco','Cusco','Cusco','Larapa D-12-2','237856','JosÈ','GuillÈn','alba@hotmail.com'
+--uspAgregarDireccionEnvio '1','Mi casa2','Cusco','Cusco','Cusco','Larapa D-12-2','237856','Jos√©','Guill√©n','alba@hotmail.com'
 
----PA para listar Direcciones de envÌo por email:
+---PA para listar Direcciones de env√≠o por email:
 
 if OBJECT_ID('uspListarDireccionEnvio') is not null
 	drop proc uspListarDireccionEnvio
@@ -368,7 +373,7 @@ C.CodCliente=S.CodCliente where C.Email=@Email
 end
 go
 
----PA para listar Direcciones de envÌo por email:
+---PA para listar Direcciones de env√≠o por email:
 
 if OBJECT_ID('uspListarDireccionEnvioDatos') is not null
 	drop proc uspListarDireccionEnvioDatos
@@ -383,7 +388,7 @@ C.CodCliente=S.CodCliente where C.Email=@Email and S.Nombre=@Nombre
 end
 go
 
---exec uspListarDireccionEnvioDatos 'ruben@hotmail.com','Casa Mam·'
+--exec uspListarDireccionEnvioDatos 'ruben@hotmail.com','Casa Mam√°'
 
 if OBJECT_ID('uspListarDireccionEnvio','P') is not null
 	drop proc uspListarDireccionEnvio
@@ -449,14 +454,14 @@ begin
 		Select CodError=0, Mensaje = 'Pago correcto'
 		end
 		
-		else Select CodError=1, Mensaje = 'Nro de Tarjeta y/o ContraseÒa incorrecto'
+		else Select CodError=1, Mensaje = 'Nro de Tarjeta y/o Contrase√±a incorrecto'
 	else Select CodError=1, Mensaje = 'Nro de Tarjeta no existe'
 end
 go
 
---exec uspAutenticarTarjeta 'Tarjeta DÈbito Visa','4213550312345678','7110EDA4D09E062AA5E4A390B0A572AC0D2C0220'
+--exec uspAutenticarTarjeta 'Tarjeta D√©bito Visa','4213550312345678','7110EDA4D09E062AA5E4A390B0A572AC0D2C0220'
 
---Procedimiento almacenado para cambiar contraseÒa de cliente
+--Procedimiento almacenado para cambiar contrase√±a de cliente
 if OBJECT_ID('uspCambiarContrasenaCliente') is not null
 	drop proc uspCambiarContrasenaCliente
 go
@@ -470,9 +475,9 @@ begin
 
 			begin
 				update TCliente set Contrasena=@Contrasena  where Email=@Email
-				select CodError = 0, Mensaje = 'ContraseÒa  modificada'
+				select CodError = 0, Mensaje = 'Contrase√±a  modificada'
 			end
-		else Select CodError =1, Mensaje ='Error: ContraseÒa incorrecta'
+		else Select CodError =1, Mensaje ='Error: Contrase√±a incorrecta'
 
 	else Select CodError =1, Mensaje ='Error: Email no existe'
 end
