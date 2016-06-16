@@ -1,4 +1,4 @@
-﻿select * from TCategoria;
+select * from TCategoria;
 insert into TCategoria values('Mouse'); 
 
 select * from TSubCategoria;
@@ -15,6 +15,6 @@ select * from TDetalleVenta;
 select * from TCabeceraVenta;
 
 
-insert into TOrdenVenta values('1', 0, '2016-06-14', '2016-06-16');
+insert into TOrdenVenta values('1', 0, '2016-06-12', '2016-06-12');
 insert into TDetalleVenta values('2', '1', 1, 150);
-insert into TCabeceraVenta values('1', '1', '2016-06-14');
+insert into TCabeceraVenta values('2','1','2016-06-12');
