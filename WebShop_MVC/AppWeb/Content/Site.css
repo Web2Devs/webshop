@@ -16,6 +16,16 @@ body {
 body.popup {
     background: #fff
 }
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+
+
+
+
+
 #content {
     background-color: #fff;
     box-shadow: 0 0 15px rgba(0, 0, 0, .15), 0 10px 6px -10px rgba(0, 0, 0, .4);
@@ -547,15 +557,15 @@ p.continued {
 }
 #header {
     position: relative;
-    padding: 46px 0 0 0
 }
 .store-closed #header {
     padding-top: 0
 }
 #logobar {
     position: relative;
-    padding: 10px 0;
-    min-height: 50px
+    min-height: 200px;
+    background-image: url("../Content/Images/logo1170x200.png");
+    background: no-repeat repeat-x;
 }
 #logobar .brand {
     float: left;

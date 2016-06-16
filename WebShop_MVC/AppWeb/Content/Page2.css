@@ -642,7 +642,6 @@ p.continued {
 
 #header {
   position: relative;
-  padding: 46px 0 0 0;
 }
 
 .store-closed #header {
@@ -650,9 +649,10 @@ p.continued {
 }
 
 #logobar {
-  position: relative;
-  padding: 10px 0;
-  min-height: 50px;
+    position: relative;
+    min-height: 200px;
+    background-image: url("../Content/Images/logo1170x200.png");
+    background: no-repeat repeat-x;
 }
 
 #logobar .brand {
