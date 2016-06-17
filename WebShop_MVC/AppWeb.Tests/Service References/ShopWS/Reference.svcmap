@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b2cfba32-6860-4dfb-acc8-9e78b3730974" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="84cce82c-eec4-4337-bd0c-e5f3b5d46c64" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,11 +22,11 @@
     <MetadataSource Address="http://localhost:13332/ServiceShopSoa.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ServiceShopSoa.wsdl" MetadataType="Wsdl" ID="28d99d13-c1ae-4d48-8ded-1d2f5b31d0e2" SourceId="1" SourceUrl="http://localhost:13332/ServiceShopSoa.svc?wsdl" />
-    <MetadataFile FileName="ServiceShopSoa.xsd" MetadataType="Schema" ID="8504b3b5-e4ef-4d51-9cc3-762bbdf7f6b1" SourceId="1" SourceUrl="http://localhost:13332/ServiceShopSoa.svc?xsd=xsd2" />
-    <MetadataFile FileName="ServiceShopSoa1.xsd" MetadataType="Schema" ID="2f1c2e60-2279-4510-9a31-b79222bdc8c7" SourceId="1" SourceUrl="http://localhost:13332/ServiceShopSoa.svc?xsd=xsd1" />
-    <MetadataFile FileName="ServiceShopSoa.disco" MetadataType="Disco" ID="ea236b28-4beb-40ff-b3fa-0cd134fe005e" SourceId="1" SourceUrl="http://localhost:13332/ServiceShopSoa.svc?disco" />
-    <MetadataFile FileName="ServiceShopSoa2.xsd" MetadataType="Schema" ID="80233d5e-9eee-48f0-bcc8-1f68d7d963bc" SourceId="1" SourceUrl="http://localhost:13332/ServiceShopSoa.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServiceShopSoa.wsdl" MetadataType="Wsdl" ID="37314d51-62aa-436b-9913-32633601f6e5" SourceId="1" SourceUrl="http://localhost:13332/ServiceShopSoa.svc?wsdl" />
+    <MetadataFile FileName="ServiceShopSoa.xsd" MetadataType="Schema" ID="a112f61d-c887-4e27-b918-ac8c8b9008ff" SourceId="1" SourceUrl="http://localhost:13332/ServiceShopSoa.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServiceShopSoa1.xsd" MetadataType="Schema" ID="66c314b9-2ffd-45a0-bbc5-8ce86ecc9686" SourceId="1" SourceUrl="http://localhost:13332/ServiceShopSoa.svc?xsd=xsd1" />
+    <MetadataFile FileName="ServiceShopSoa.disco" MetadataType="Disco" ID="97934caf-91d2-4114-b8a5-281d37db0388" SourceId="1" SourceUrl="http://localhost:13332/ServiceShopSoa.svc?disco" />
+    <MetadataFile FileName="ServiceShopSoa2.xsd" MetadataType="Schema" ID="64909352-c310-4824-a89a-daf6f0252c69" SourceId="1" SourceUrl="http://localhost:13332/ServiceShopSoa.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
