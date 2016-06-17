@@ -4,7 +4,7 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:13332/ServiceShopSoa.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:13332/ServiceShopSoa.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:13332/ServiceShopSoa.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AppWeb.Framework.DB.Model" />
+      <xsd:import schemaLocation="http://localhost:13332/ServiceShopSoa.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IServiceShopSoa_AgregarCliente_InputMessage">
@@ -13,11 +13,29 @@
   <wsdl:message name="IServiceShopSoa_AgregarCliente_OutputMessage">
     <wsdl:part name="parameters" element="tns:AgregarClienteResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_ActualizarCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarCliente" />
+  </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_ActualizarCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarClienteResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceShopSoa_AgregarProducto_InputMessage">
     <wsdl:part name="parameters" element="tns:AgregarProducto" />
   </wsdl:message>
   <wsdl:message name="IServiceShopSoa_AgregarProducto_OutputMessage">
     <wsdl:part name="parameters" element="tns:AgregarProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_ActualizarProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarProducto" />
+  </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_ActualizarProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_BorrarProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:BorrarProducto" />
+  </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_BorrarProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BorrarProductoResponse" />
   </wsdl:message>
   <wsdl:message name="IServiceShopSoa_AgregarSubCategoria_InputMessage">
     <wsdl:part name="parameters" element="tns:AgregarSubCategoria" />
@@ -25,34 +43,115 @@
   <wsdl:message name="IServiceShopSoa_AgregarSubCategoria_OutputMessage">
     <wsdl:part name="parameters" element="tns:AgregarSubCategoriaResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_ActualizarSubCategoria_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarSubCategoria" />
+  </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_ActualizarSubCategoria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarSubCategoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_BorrarSubCategoria_InputMessage">
+    <wsdl:part name="parameters" element="tns:BorrarSubCategoria" />
+  </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_BorrarSubCategoria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BorrarSubCategoriaResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceShopSoa_AgregarCategoria_InputMessage">
     <wsdl:part name="parameters" element="tns:AgregarCategoria" />
   </wsdl:message>
   <wsdl:message name="IServiceShopSoa_AgregarCategoria_OutputMessage">
     <wsdl:part name="parameters" element="tns:AgregarCategoriaResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_ActualizarCategoria_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarCategoria" />
+  </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_ActualizarCategoria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarCategoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_BorrarCategoria_InputMessage">
+    <wsdl:part name="parameters" element="tns:BorrarCategoria" />
+  </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_BorrarCategoria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BorrarCategoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_AgregarNuevaVenta_InputMessage">
+    <wsdl:part name="parameters" element="tns:AgregarNuevaVenta" />
+  </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_AgregarNuevaVenta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AgregarNuevaVentaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_ValidarLoginCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarLoginCliente" />
+  </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_ValidarLoginCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarLoginClienteResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServiceShopSoa">
     <wsdl:operation name="AgregarCliente">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/AgregarCliente" message="tns:IServiceShopSoa_AgregarCliente_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceShopSoa/AgregarClienteResponse" message="tns:IServiceShopSoa_AgregarCliente_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ActualizarCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/ActualizarCliente" message="tns:IServiceShopSoa_ActualizarCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceShopSoa/ActualizarClienteResponse" message="tns:IServiceShopSoa_ActualizarCliente_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="AgregarProducto">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/AgregarProducto" message="tns:IServiceShopSoa_AgregarProducto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceShopSoa/AgregarProductoResponse" message="tns:IServiceShopSoa_AgregarProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/ActualizarProducto" message="tns:IServiceShopSoa_ActualizarProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceShopSoa/ActualizarProductoResponse" message="tns:IServiceShopSoa_ActualizarProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BorrarProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/BorrarProducto" message="tns:IServiceShopSoa_BorrarProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceShopSoa/BorrarProductoResponse" message="tns:IServiceShopSoa_BorrarProducto_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AgregarSubCategoria">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/AgregarSubCategoria" message="tns:IServiceShopSoa_AgregarSubCategoria_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceShopSoa/AgregarSubCategoriaResponse" message="tns:IServiceShopSoa_AgregarSubCategoria_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ActualizarSubCategoria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/ActualizarSubCategoria" message="tns:IServiceShopSoa_ActualizarSubCategoria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceShopSoa/ActualizarSubCategoriaResponse" message="tns:IServiceShopSoa_ActualizarSubCategoria_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BorrarSubCategoria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/BorrarSubCategoria" message="tns:IServiceShopSoa_BorrarSubCategoria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceShopSoa/BorrarSubCategoriaResponse" message="tns:IServiceShopSoa_BorrarSubCategoria_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="AgregarCategoria">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/AgregarCategoria" message="tns:IServiceShopSoa_AgregarCategoria_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceShopSoa/AgregarCategoriaResponse" message="tns:IServiceShopSoa_AgregarCategoria_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCategoria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/ActualizarCategoria" message="tns:IServiceShopSoa_ActualizarCategoria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceShopSoa/ActualizarCategoriaResponse" message="tns:IServiceShopSoa_ActualizarCategoria_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BorrarCategoria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/BorrarCategoria" message="tns:IServiceShopSoa_BorrarCategoria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceShopSoa/BorrarCategoriaResponse" message="tns:IServiceShopSoa_BorrarCategoria_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AgregarNuevaVenta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/AgregarNuevaVenta" message="tns:IServiceShopSoa_AgregarNuevaVenta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceShopSoa/AgregarNuevaVentaResponse" message="tns:IServiceShopSoa_AgregarNuevaVenta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidarLoginCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/ValidarLoginCliente" message="tns:IServiceShopSoa_ValidarLoginCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceShopSoa/ValidarLoginClienteResponse" message="tns:IServiceShopSoa_ValidarLoginCliente_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServiceShopSoa" type="tns:IServiceShopSoa">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="AgregarCliente">
       <soap:operation soapAction="http://tempuri.org/IServiceShopSoa/AgregarCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCliente">
+      <soap:operation soapAction="http://tempuri.org/IServiceShopSoa/ActualizarCliente" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -69,6 +168,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ActualizarProducto">
+      <soap:operation soapAction="http://tempuri.org/IServiceShopSoa/ActualizarProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BorrarProducto">
+      <soap:operation soapAction="http://tempuri.org/IServiceShopSoa/BorrarProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AgregarSubCategoria">
       <soap:operation soapAction="http://tempuri.org/IServiceShopSoa/AgregarSubCategoria" style="document" />
       <wsdl:input>
@@ -78,8 +195,62 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ActualizarSubCategoria">
+      <soap:operation soapAction="http://tempuri.org/IServiceShopSoa/ActualizarSubCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BorrarSubCategoria">
+      <soap:operation soapAction="http://tempuri.org/IServiceShopSoa/BorrarSubCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AgregarCategoria">
       <soap:operation soapAction="http://tempuri.org/IServiceShopSoa/AgregarCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCategoria">
+      <soap:operation soapAction="http://tempuri.org/IServiceShopSoa/ActualizarCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BorrarCategoria">
+      <soap:operation soapAction="http://tempuri.org/IServiceShopSoa/BorrarCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarNuevaVenta">
+      <soap:operation soapAction="http://tempuri.org/IServiceShopSoa/AgregarNuevaVenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarLoginCliente">
+      <soap:operation soapAction="http://tempuri.org/IServiceShopSoa/ValidarLoginCliente" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

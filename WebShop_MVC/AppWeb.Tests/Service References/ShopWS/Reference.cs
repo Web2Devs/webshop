@@ -15,7 +15,7 @@ namespace AppWeb.Tests.ShopWS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TCliente", Namespace="http://schemas.datacontract.org/2004/07/AppWeb.Framework.DB.Model")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TCliente", Namespace="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model")]
     [System.SerializableAttribute()]
     public partial class TCliente : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -316,7 +316,7 @@ namespace AppWeb.Tests.ShopWS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TCabeceraVenta", Namespace="http://schemas.datacontract.org/2004/07/AppWeb.Framework.DB.Model")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TCabeceraVenta", Namespace="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model")]
     [System.SerializableAttribute()]
     public partial class TCabeceraVenta : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -425,7 +425,7 @@ namespace AppWeb.Tests.ShopWS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TOrdenVenta", Namespace="http://schemas.datacontract.org/2004/07/AppWeb.Framework.DB.Model")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TOrdenVenta", Namespace="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model")]
     [System.SerializableAttribute()]
     public partial class TOrdenVenta : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -566,7 +566,7 @@ namespace AppWeb.Tests.ShopWS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TDetalleVenta", Namespace="http://schemas.datacontract.org/2004/07/AppWeb.Framework.DB.Model")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TDetalleVenta", Namespace="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model")]
     [System.SerializableAttribute()]
     public partial class TDetalleVenta : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -723,7 +723,7 @@ namespace AppWeb.Tests.ShopWS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TProducto", Namespace="http://schemas.datacontract.org/2004/07/AppWeb.Framework.DB.Model")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TProducto", Namespace="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model")]
     [System.SerializableAttribute()]
     public partial class TProducto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -896,7 +896,7 @@ namespace AppWeb.Tests.ShopWS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TSubCategoria", Namespace="http://schemas.datacontract.org/2004/07/AppWeb.Framework.DB.Model")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TSubCategoria", Namespace="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model")]
     [System.SerializableAttribute()]
     public partial class TSubCategoria : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -1005,7 +1005,7 @@ namespace AppWeb.Tests.ShopWS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TCategoria", Namespace="http://schemas.datacontract.org/2004/07/AppWeb.Framework.DB.Model")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TCategoria", Namespace="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model")]
     [System.SerializableAttribute()]
     public partial class TCategoria : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -1085,28 +1085,82 @@ namespace AppWeb.Tests.ShopWS {
     public interface IServiceShopSoa {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/AgregarCliente", ReplyAction="http://tempuri.org/IServiceShopSoa/AgregarClienteResponse")]
-        int AgregarCliente(AppWeb.Tests.ShopWS.TCliente cliente);
+        AppWeb.Tests.ShopWS.TCliente AgregarCliente(AppWeb.Tests.ShopWS.TCliente cliente);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/AgregarCliente", ReplyAction="http://tempuri.org/IServiceShopSoa/AgregarClienteResponse")]
-        System.Threading.Tasks.Task<int> AgregarClienteAsync(AppWeb.Tests.ShopWS.TCliente cliente);
+        System.Threading.Tasks.Task<AppWeb.Tests.ShopWS.TCliente> AgregarClienteAsync(AppWeb.Tests.ShopWS.TCliente cliente);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/ActualizarCliente", ReplyAction="http://tempuri.org/IServiceShopSoa/ActualizarClienteResponse")]
+        AppWeb.Tests.ShopWS.TCliente ActualizarCliente(AppWeb.Tests.ShopWS.TCliente cliente);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/ActualizarCliente", ReplyAction="http://tempuri.org/IServiceShopSoa/ActualizarClienteResponse")]
+        System.Threading.Tasks.Task<AppWeb.Tests.ShopWS.TCliente> ActualizarClienteAsync(AppWeb.Tests.ShopWS.TCliente cliente);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/AgregarProducto", ReplyAction="http://tempuri.org/IServiceShopSoa/AgregarProductoResponse")]
-        int AgregarProducto(AppWeb.Tests.ShopWS.TProducto producto);
+        AppWeb.Tests.ShopWS.TProducto AgregarProducto(AppWeb.Tests.ShopWS.TProducto producto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/AgregarProducto", ReplyAction="http://tempuri.org/IServiceShopSoa/AgregarProductoResponse")]
-        System.Threading.Tasks.Task<int> AgregarProductoAsync(AppWeb.Tests.ShopWS.TProducto producto);
+        System.Threading.Tasks.Task<AppWeb.Tests.ShopWS.TProducto> AgregarProductoAsync(AppWeb.Tests.ShopWS.TProducto producto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/ActualizarProducto", ReplyAction="http://tempuri.org/IServiceShopSoa/ActualizarProductoResponse")]
+        AppWeb.Tests.ShopWS.TProducto ActualizarProducto(AppWeb.Tests.ShopWS.TProducto producto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/ActualizarProducto", ReplyAction="http://tempuri.org/IServiceShopSoa/ActualizarProductoResponse")]
+        System.Threading.Tasks.Task<AppWeb.Tests.ShopWS.TProducto> ActualizarProductoAsync(AppWeb.Tests.ShopWS.TProducto producto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/BorrarProducto", ReplyAction="http://tempuri.org/IServiceShopSoa/BorrarProductoResponse")]
+        bool BorrarProducto(AppWeb.Tests.ShopWS.TProducto producto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/BorrarProducto", ReplyAction="http://tempuri.org/IServiceShopSoa/BorrarProductoResponse")]
+        System.Threading.Tasks.Task<bool> BorrarProductoAsync(AppWeb.Tests.ShopWS.TProducto producto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/AgregarSubCategoria", ReplyAction="http://tempuri.org/IServiceShopSoa/AgregarSubCategoriaResponse")]
-        int AgregarSubCategoria(AppWeb.Tests.ShopWS.TSubCategoria subCategoria);
+        AppWeb.Tests.ShopWS.TSubCategoria AgregarSubCategoria(AppWeb.Tests.ShopWS.TSubCategoria subCategoria);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/AgregarSubCategoria", ReplyAction="http://tempuri.org/IServiceShopSoa/AgregarSubCategoriaResponse")]
-        System.Threading.Tasks.Task<int> AgregarSubCategoriaAsync(AppWeb.Tests.ShopWS.TSubCategoria subCategoria);
+        System.Threading.Tasks.Task<AppWeb.Tests.ShopWS.TSubCategoria> AgregarSubCategoriaAsync(AppWeb.Tests.ShopWS.TSubCategoria subCategoria);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/ActualizarSubCategoria", ReplyAction="http://tempuri.org/IServiceShopSoa/ActualizarSubCategoriaResponse")]
+        AppWeb.Tests.ShopWS.TSubCategoria ActualizarSubCategoria(AppWeb.Tests.ShopWS.TSubCategoria subCategoria);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/ActualizarSubCategoria", ReplyAction="http://tempuri.org/IServiceShopSoa/ActualizarSubCategoriaResponse")]
+        System.Threading.Tasks.Task<AppWeb.Tests.ShopWS.TSubCategoria> ActualizarSubCategoriaAsync(AppWeb.Tests.ShopWS.TSubCategoria subCategoria);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/BorrarSubCategoria", ReplyAction="http://tempuri.org/IServiceShopSoa/BorrarSubCategoriaResponse")]
+        bool BorrarSubCategoria(AppWeb.Tests.ShopWS.TSubCategoria subCategoria);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/BorrarSubCategoria", ReplyAction="http://tempuri.org/IServiceShopSoa/BorrarSubCategoriaResponse")]
+        System.Threading.Tasks.Task<bool> BorrarSubCategoriaAsync(AppWeb.Tests.ShopWS.TSubCategoria subCategoria);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/AgregarCategoria", ReplyAction="http://tempuri.org/IServiceShopSoa/AgregarCategoriaResponse")]
-        int AgregarCategoria(AppWeb.Tests.ShopWS.TCategoria categoria);
+        AppWeb.Tests.ShopWS.TCategoria AgregarCategoria(AppWeb.Tests.ShopWS.TCategoria categoria);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/AgregarCategoria", ReplyAction="http://tempuri.org/IServiceShopSoa/AgregarCategoriaResponse")]
-        System.Threading.Tasks.Task<int> AgregarCategoriaAsync(AppWeb.Tests.ShopWS.TCategoria categoria);
+        System.Threading.Tasks.Task<AppWeb.Tests.ShopWS.TCategoria> AgregarCategoriaAsync(AppWeb.Tests.ShopWS.TCategoria categoria);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/ActualizarCategoria", ReplyAction="http://tempuri.org/IServiceShopSoa/ActualizarCategoriaResponse")]
+        AppWeb.Tests.ShopWS.TCategoria ActualizarCategoria(AppWeb.Tests.ShopWS.TCategoria categoria);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/ActualizarCategoria", ReplyAction="http://tempuri.org/IServiceShopSoa/ActualizarCategoriaResponse")]
+        System.Threading.Tasks.Task<AppWeb.Tests.ShopWS.TCategoria> ActualizarCategoriaAsync(AppWeb.Tests.ShopWS.TCategoria categoria);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/BorrarCategoria", ReplyAction="http://tempuri.org/IServiceShopSoa/BorrarCategoriaResponse")]
+        bool BorrarCategoria(AppWeb.Tests.ShopWS.TCategoria categoria);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/BorrarCategoria", ReplyAction="http://tempuri.org/IServiceShopSoa/BorrarCategoriaResponse")]
+        System.Threading.Tasks.Task<bool> BorrarCategoriaAsync(AppWeb.Tests.ShopWS.TCategoria categoria);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/AgregarNuevaVenta", ReplyAction="http://tempuri.org/IServiceShopSoa/AgregarNuevaVentaResponse")]
+        AppWeb.Tests.ShopWS.TOrdenVenta AgregarNuevaVenta(AppWeb.Tests.ShopWS.TCliente cliente, AppWeb.Tests.ShopWS.TProducto[] productos);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/AgregarNuevaVenta", ReplyAction="http://tempuri.org/IServiceShopSoa/AgregarNuevaVentaResponse")]
+        System.Threading.Tasks.Task<AppWeb.Tests.ShopWS.TOrdenVenta> AgregarNuevaVentaAsync(AppWeb.Tests.ShopWS.TCliente cliente, AppWeb.Tests.ShopWS.TProducto[] productos);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/ValidarLoginCliente", ReplyAction="http://tempuri.org/IServiceShopSoa/ValidarLoginClienteResponse")]
+        bool ValidarLoginCliente(string usuario, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/ValidarLoginCliente", ReplyAction="http://tempuri.org/IServiceShopSoa/ValidarLoginClienteResponse")]
+        System.Threading.Tasks.Task<bool> ValidarLoginClienteAsync(string usuario, string password);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1136,36 +1190,108 @@ namespace AppWeb.Tests.ShopWS {
                 base(binding, remoteAddress) {
         }
         
-        public int AgregarCliente(AppWeb.Tests.ShopWS.TCliente cliente) {
+        public AppWeb.Tests.ShopWS.TCliente AgregarCliente(AppWeb.Tests.ShopWS.TCliente cliente) {
             return base.Channel.AgregarCliente(cliente);
         }
         
-        public System.Threading.Tasks.Task<int> AgregarClienteAsync(AppWeb.Tests.ShopWS.TCliente cliente) {
+        public System.Threading.Tasks.Task<AppWeb.Tests.ShopWS.TCliente> AgregarClienteAsync(AppWeb.Tests.ShopWS.TCliente cliente) {
             return base.Channel.AgregarClienteAsync(cliente);
         }
         
-        public int AgregarProducto(AppWeb.Tests.ShopWS.TProducto producto) {
+        public AppWeb.Tests.ShopWS.TCliente ActualizarCliente(AppWeb.Tests.ShopWS.TCliente cliente) {
+            return base.Channel.ActualizarCliente(cliente);
+        }
+        
+        public System.Threading.Tasks.Task<AppWeb.Tests.ShopWS.TCliente> ActualizarClienteAsync(AppWeb.Tests.ShopWS.TCliente cliente) {
+            return base.Channel.ActualizarClienteAsync(cliente);
+        }
+        
+        public AppWeb.Tests.ShopWS.TProducto AgregarProducto(AppWeb.Tests.ShopWS.TProducto producto) {
             return base.Channel.AgregarProducto(producto);
         }
         
-        public System.Threading.Tasks.Task<int> AgregarProductoAsync(AppWeb.Tests.ShopWS.TProducto producto) {
+        public System.Threading.Tasks.Task<AppWeb.Tests.ShopWS.TProducto> AgregarProductoAsync(AppWeb.Tests.ShopWS.TProducto producto) {
             return base.Channel.AgregarProductoAsync(producto);
         }
         
-        public int AgregarSubCategoria(AppWeb.Tests.ShopWS.TSubCategoria subCategoria) {
+        public AppWeb.Tests.ShopWS.TProducto ActualizarProducto(AppWeb.Tests.ShopWS.TProducto producto) {
+            return base.Channel.ActualizarProducto(producto);
+        }
+        
+        public System.Threading.Tasks.Task<AppWeb.Tests.ShopWS.TProducto> ActualizarProductoAsync(AppWeb.Tests.ShopWS.TProducto producto) {
+            return base.Channel.ActualizarProductoAsync(producto);
+        }
+        
+        public bool BorrarProducto(AppWeb.Tests.ShopWS.TProducto producto) {
+            return base.Channel.BorrarProducto(producto);
+        }
+        
+        public System.Threading.Tasks.Task<bool> BorrarProductoAsync(AppWeb.Tests.ShopWS.TProducto producto) {
+            return base.Channel.BorrarProductoAsync(producto);
+        }
+        
+        public AppWeb.Tests.ShopWS.TSubCategoria AgregarSubCategoria(AppWeb.Tests.ShopWS.TSubCategoria subCategoria) {
             return base.Channel.AgregarSubCategoria(subCategoria);
         }
         
-        public System.Threading.Tasks.Task<int> AgregarSubCategoriaAsync(AppWeb.Tests.ShopWS.TSubCategoria subCategoria) {
+        public System.Threading.Tasks.Task<AppWeb.Tests.ShopWS.TSubCategoria> AgregarSubCategoriaAsync(AppWeb.Tests.ShopWS.TSubCategoria subCategoria) {
             return base.Channel.AgregarSubCategoriaAsync(subCategoria);
         }
         
-        public int AgregarCategoria(AppWeb.Tests.ShopWS.TCategoria categoria) {
+        public AppWeb.Tests.ShopWS.TSubCategoria ActualizarSubCategoria(AppWeb.Tests.ShopWS.TSubCategoria subCategoria) {
+            return base.Channel.ActualizarSubCategoria(subCategoria);
+        }
+        
+        public System.Threading.Tasks.Task<AppWeb.Tests.ShopWS.TSubCategoria> ActualizarSubCategoriaAsync(AppWeb.Tests.ShopWS.TSubCategoria subCategoria) {
+            return base.Channel.ActualizarSubCategoriaAsync(subCategoria);
+        }
+        
+        public bool BorrarSubCategoria(AppWeb.Tests.ShopWS.TSubCategoria subCategoria) {
+            return base.Channel.BorrarSubCategoria(subCategoria);
+        }
+        
+        public System.Threading.Tasks.Task<bool> BorrarSubCategoriaAsync(AppWeb.Tests.ShopWS.TSubCategoria subCategoria) {
+            return base.Channel.BorrarSubCategoriaAsync(subCategoria);
+        }
+        
+        public AppWeb.Tests.ShopWS.TCategoria AgregarCategoria(AppWeb.Tests.ShopWS.TCategoria categoria) {
             return base.Channel.AgregarCategoria(categoria);
         }
         
-        public System.Threading.Tasks.Task<int> AgregarCategoriaAsync(AppWeb.Tests.ShopWS.TCategoria categoria) {
+        public System.Threading.Tasks.Task<AppWeb.Tests.ShopWS.TCategoria> AgregarCategoriaAsync(AppWeb.Tests.ShopWS.TCategoria categoria) {
             return base.Channel.AgregarCategoriaAsync(categoria);
+        }
+        
+        public AppWeb.Tests.ShopWS.TCategoria ActualizarCategoria(AppWeb.Tests.ShopWS.TCategoria categoria) {
+            return base.Channel.ActualizarCategoria(categoria);
+        }
+        
+        public System.Threading.Tasks.Task<AppWeb.Tests.ShopWS.TCategoria> ActualizarCategoriaAsync(AppWeb.Tests.ShopWS.TCategoria categoria) {
+            return base.Channel.ActualizarCategoriaAsync(categoria);
+        }
+        
+        public bool BorrarCategoria(AppWeb.Tests.ShopWS.TCategoria categoria) {
+            return base.Channel.BorrarCategoria(categoria);
+        }
+        
+        public System.Threading.Tasks.Task<bool> BorrarCategoriaAsync(AppWeb.Tests.ShopWS.TCategoria categoria) {
+            return base.Channel.BorrarCategoriaAsync(categoria);
+        }
+        
+        public AppWeb.Tests.ShopWS.TOrdenVenta AgregarNuevaVenta(AppWeb.Tests.ShopWS.TCliente cliente, AppWeb.Tests.ShopWS.TProducto[] productos) {
+            return base.Channel.AgregarNuevaVenta(cliente, productos);
+        }
+        
+        public System.Threading.Tasks.Task<AppWeb.Tests.ShopWS.TOrdenVenta> AgregarNuevaVentaAsync(AppWeb.Tests.ShopWS.TCliente cliente, AppWeb.Tests.ShopWS.TProducto[] productos) {
+            return base.Channel.AgregarNuevaVentaAsync(cliente, productos);
+        }
+        
+        public bool ValidarLoginCliente(string usuario, string password) {
+            return base.Channel.ValidarLoginCliente(usuario, password);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ValidarLoginClienteAsync(string usuario, string password) {
+            return base.Channel.ValidarLoginClienteAsync(usuario, password);
         }
     }
 }

@@ -70,6 +70,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Service References\ShopWS\AppWeb.Tests.ShopWS.TCategoria.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ShopWS\AppWeb.Tests.ShopWS.TCliente.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ShopWS\AppWeb.Tests.ShopWS.TOrdenVenta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ShopWS\AppWeb.Tests.ShopWS.TProducto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ShopWS\AppWeb.Tests.ShopWS.TSubCategoria.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ShopWS\ServiceShopSoa.wsdl" />
     <None Include="Service References\ShopWS\ServiceShopSoa.xsd">
       <SubType>Designer</SubType>
