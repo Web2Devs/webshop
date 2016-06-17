@@ -61,7 +61,11 @@ namespace AppWeb.Framework.Data.DB.Control
             if (entidad == null) throw new ArgumentNullException("entidad");
             try
             {
-                context.TCliente.Remove(entidad);
+                var p = context.TCliente.SingleOrDefault(x => x.CodCliente == entidad.CodCliente);
+                if (p == null)
+                    return rt;
+
+                context.TCliente.Remove(p);
                 if (context.SaveChanges() > 0)
                     rt = true;
             }

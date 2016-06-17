@@ -37,7 +37,11 @@ namespace AppWeb.Framework.Data.DB.Control
             if (entidad == null) throw new ArgumentNullException("entidad");
             try
             {
-                context.TSubCategoria.Remove(entidad);
+                var p = context.TSubCategoria.SingleOrDefault(x => x.CodSubCategoria == entidad.CodSubCategoria);
+                if (p == null)
+                    return rt;
+
+                context.TSubCategoria.Remove(p);
                 if (context.SaveChanges() > 0)
                     rt = true;
             }
