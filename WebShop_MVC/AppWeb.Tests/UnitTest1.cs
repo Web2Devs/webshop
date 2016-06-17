@@ -15,20 +15,20 @@ namespace AppWeb.Tests
             {
                 TCliente cli = proxy.AgregarCliente(new TCliente()
                 {
-                    Nombres = "Nataly Dianne",
-	                Apellidos = "Lara Aspilcueta",
+                    Nombres = "Nataly",
+	                Apellidos = "Salazar Garcia",
 	                Genero  = "F",
 	                TipoDocumento = "DNI",
-	                NroDocumento = "34567898",
+	                NroDocumento = "74367561",
 	                Email  = "nataly@hotmail.com", 
 	                Provincia = "Lima",
 	                Ciudad = "Lima",
-	                Distrito  = "VMT",
-	                Direccion  = "Av. Jose Olaya 699",
+	                Distrito  = "Surco",
+	                Direccion  = "Av. Caminos del Inca 652",
 	                Usuario = "Nataly",
 	                Contrasena = "123456",
 	                RazonSocial  = null,
-                    Telefono = "2345678"
+                    Telefono = "6541257"
                 });
                 Assert.AreEqual(cli, null);
             }
@@ -40,20 +40,20 @@ namespace AppWeb.Tests
             {
                 TCliente cli = proxy.ActualizarCliente(new TCliente()
                 {
-                    Nombres = "Nataly Dianne",
-                    Apellidos = "Lara Aspilcueta",
+                    Nombres = "Nataly",
+                    Apellidos = "Salazar Garcia",
                     Genero = "F",
                     TipoDocumento = "DNI",
-                    NroDocumento = "34567898",
+                    NroDocumento = "74367561",
                     Email = "nataly_dianne@hotmail.com",
                     Provincia = "Lima",
                     Ciudad = "Lima",
-                    Distrito = "VMT",
-                    Direccion = "Av. Jose Olaya 699",
+                    Distrito = "Surco",
+                    Direccion = "Av. Caminos del Inca 652",
                     Usuario = "Nataly",
                     Contrasena = "123456",
                     RazonSocial = null,
-                    Telefono = "2345678"
+                    Telefono = "6541257"
                 });
                 Assert.AreEqual(cli, null);
             }
