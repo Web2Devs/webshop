@@ -33,6 +33,13 @@ namespace AppWeb.Servicios
                 return categoria;
             }
         }
+        public IEnumerable<TCategoria> ListaCategorias()
+        {
+            using (Categoria cate = new Categoria())
+            {
+                return cate.GetAll();
+            }
+        }
         public TSubCategoria AgregarSubCategoria(TSubCategoria subCategoria)
         {
             using (SubCategoria subcate = new SubCategoria())
@@ -55,6 +62,13 @@ namespace AppWeb.Servicios
                 return subcate.Delete(subCategoria);
             }
         }
+        public IEnumerable<TSubCategoria> ListaSubCategorias()
+        {
+            using (SubCategoria subcate = new SubCategoria())
+            {
+                return subcate.GetAll();
+            }
+        }
         #endregion
 
         #region Cliente
@@ -73,7 +87,13 @@ namespace AppWeb.Servicios
                 return cliente;
             }
         }
-
+        public IEnumerable<TCliente> ListaClientes()
+        {
+            using (Cliente cli = new Cliente())
+            {
+                return cli.GetAll();
+            }
+        }
         #endregion
 
         #region Producto
@@ -97,6 +117,13 @@ namespace AppWeb.Servicios
             using (Producto pro = new Producto())
             {
                 return pro.Delete(producto);
+            }
+        }
+        public IEnumerable<TProducto> ListaProductos()
+        {
+            using (Producto pro = new Producto())
+            {
+                return pro.GetAll();
             }
         }
         #endregion

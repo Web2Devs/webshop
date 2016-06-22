@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AppWeb.Dashboard.ShopWS.TCategoria>
+﻿@model IEnumerable<AppWeb.Dashboard.ShopWS.TSubCategoria>
 
 @{
     ViewBag.Title = "Index";
@@ -15,6 +15,9 @@
             @Html.DisplayNameFor(model => model.CodCategoria)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.CodSubCategoria)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Nombre)
         </th>
         <th></th>
@@ -24,6 +27,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.CodCategoria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodSubCategoria)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Nombre)
