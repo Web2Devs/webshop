@@ -13,8 +13,9 @@ namespace AppWeb.Servicios
         #region Categoria
         public TCategoria AgregarCategoria(TCategoria categoria)
         {
-            return unit.Categoria.Create(categoria);
+            TCategoria _categoria = unit.Categoria.Create(categoria);
             unit.SaveChanges();
+            return _categoria;
         }
         public void BorrarCategoria(TCategoria categoria)
         {
@@ -32,8 +33,9 @@ namespace AppWeb.Servicios
         }
         public TSubCategoria AgregarSubCategoria(TSubCategoria subCategoria)
         {
-            return unit.SubCategoria.Create(subCategoria);
+            TSubCategoria _subcategoria = unit.SubCategoria.Create(subCategoria);
             unit.SaveChanges();
+            return _subcategoria;
         }
         public void ActualizarSubCategoria(TSubCategoria subCategoria)
         {
@@ -54,11 +56,14 @@ namespace AppWeb.Servicios
         #region Cliente
         public TCliente AgregarCliente(TCliente cliente)
         {
-            return unit.Cliente.Create(cliente);
+            TCliente _cliente = unit.Cliente.Create(cliente);
+            unit.SaveChanges();
+            return _cliente;
         }
         public void ActualizarCliente(TCliente cliente)
         {
             unit.Cliente.Update(cliente);
+            unit.SaveChanges();
         }
         public IEnumerable<TCliente> ListaClientes()
         {
@@ -69,15 +74,19 @@ namespace AppWeb.Servicios
         #region Producto
         public TProducto AgregarProducto(TProducto producto)
         {
-            return unit.Producto.Create(producto);
+            TProducto _producto = unit.Producto.Create(producto);
+            unit.SaveChanges();
+            return _producto;
         }
         public void ActualizarProducto(TProducto producto)
         {
             unit.Producto.Update(producto);
+            unit.SaveChanges();
         }
         public void BorrarProducto(TProducto producto)
         {
             unit.Producto.Delete(producto);
+            unit.SaveChanges();
         }
         public IEnumerable<TProducto> ListaProductos()
         {
@@ -88,7 +97,9 @@ namespace AppWeb.Servicios
         #region Opracion
         public TOrdenVenta AgregarNuevaVenta(TCliente cliente, List<TProducto> productos)
         {
-            return unit.Venta.Agregar(cliente, productos);
+            TOrdenVenta _ordenventa = unit.Venta.Agregar(cliente, productos);
+            unit.SaveChanges();
+            return _ordenventa;
         }
         public bool ValidarLoginCliente(string usuario, string password)
         {
