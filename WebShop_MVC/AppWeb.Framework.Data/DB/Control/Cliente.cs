@@ -9,12 +9,12 @@ using AppWeb.Framework.Utils.Exceptions;
 
 namespace AppWeb.Framework.Data.DB.Control
 {
-    public class Cliente : IEntidadDB<TCliente>, IDisposable
+    public class Cliente : IEntidadDB<TCliente>
     {
-        public BDWebShopEntities context { get; set; }
-        public Cliente()
+        private BDWebShopEntities context { get; set; }
+        public Cliente(BDWebShopEntities _context)
         {
-            context = new BDWebShopEntities();
+            context = _context;
         }
 
         public TCliente Create(TCliente entidad)
@@ -23,7 +23,6 @@ namespace AppWeb.Framework.Data.DB.Control
             try
             {
                 context.TCliente.Add(entidad);
-                context.SaveChanges();
                 return entidad;
             }
             catch (Exception e)
@@ -55,30 +54,19 @@ namespace AppWeb.Framework.Data.DB.Control
             }
         }
 
-        public bool Delete(TCliente entidad)
+        public void Delete(TCliente entidad)
         {
-            bool rt = false;
             if (entidad == null) throw new ArgumentNullException("entidad");
             try
             {
-                var p = context.TCliente.SingleOrDefault(x => x.CodCliente == entidad.CodCliente);
-                if (p == null)
-                    return rt;
-
-                context.TCliente.Remove(p);
-                if (context.SaveChanges() > 0)
-                    rt = true;
+                var p = this.Find(entidad.CodCliente);
+                if (p != null)
+                    context.TCliente.Remove(p);
             }
             catch (Exception e)
             {
                 throw new Exception("Entidad tiene referancias : " + e.Message);
             }
-            return rt;
-        }
-
-        public void Dispose()
-        {
-            context.Dispose();
         }
 
         public IEnumerable<TCliente> GetAll()
@@ -90,7 +78,11 @@ namespace AppWeb.Framework.Data.DB.Control
         {
             if (entidad == null) throw new ArgumentNullException("entidad");
             context.Entry(entidad).State = System.Data.Entity.EntityState.Modified;
-            context.SaveChanges();
+        }
+
+        public TCliente Find(params object[] keyValues)
+        {
+            return context.TCliente.Find(keyValues);
         }
     }
 }

@@ -9,139 +9,90 @@ namespace AppWeb.Servicios
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
     public class ServiceShopSoa : IServiceShopSoa
     {
-
+        private UnitOfWork unit = new UnitOfWork();
         #region Categoria
         public TCategoria AgregarCategoria(TCategoria categoria)
         {
-            using (Categoria cate = new Categoria())
-            {
-                return cate.Create(categoria);
-            }
+            return unit.Categoria.Create(categoria);
+            unit.SaveChanges();
         }
-        public bool BorrarCategoria(TCategoria categoria)
+        public void BorrarCategoria(TCategoria categoria)
         {
-            using (Categoria cate = new Categoria())
-            {
-                return cate.Delete(categoria);
-            }
+            unit.Categoria.Delete(categoria);
+            unit.SaveChanges();
         }
-        public TCategoria ActualizarCategoria(TCategoria categoria)
+        public void ActualizarCategoria(TCategoria categoria)
         {
-            using (Categoria cate = new Categoria())
-            {
-                cate.Update(categoria);
-                return categoria;
-            }
+            unit.Categoria.Update(categoria);
+            unit.SaveChanges();
         }
         public IEnumerable<TCategoria> ListaCategorias()
         {
-            using (Categoria cate = new Categoria())
-            {
-                return cate.GetAll();
-            }
+            return unit.Categoria.GetAll();
         }
         public TSubCategoria AgregarSubCategoria(TSubCategoria subCategoria)
         {
-            using (SubCategoria subcate = new SubCategoria())
-            {
-                return subcate.Create(subCategoria);
-            }
+            return unit.SubCategoria.Create(subCategoria);
+            unit.SaveChanges();
         }
-        public TSubCategoria ActualizarSubCategoria(TSubCategoria subCategoria)
+        public void ActualizarSubCategoria(TSubCategoria subCategoria)
         {
-            using (SubCategoria subcate = new SubCategoria())
-            {
-                subcate.Update(subCategoria);
-                return subCategoria;
-            }
+            unit.SubCategoria.Update(subCategoria);
+            unit.SaveChanges();
         }
-        public bool BorrarSubCategoria(TSubCategoria subCategoria)
+        public void BorrarSubCategoria(TSubCategoria subCategoria)
         {
-            using (SubCategoria subcate = new SubCategoria())
-            {
-                return subcate.Delete(subCategoria);
-            }
+            unit.SubCategoria.Delete(subCategoria);
+            unit.SaveChanges();
         }
         public IEnumerable<TSubCategoria> ListaSubCategorias()
         {
-            using (SubCategoria subcate = new SubCategoria())
-            {
-                return subcate.GetAll();
-            }
+            return unit.SubCategoria.GetAll();
         }
         #endregion
 
         #region Cliente
         public TCliente AgregarCliente(TCliente cliente)
         {
-            using (Cliente cli = new Cliente())
-            {
-                return cli.Create(cliente);
-            }
+            return unit.Cliente.Create(cliente);
         }
-        public TCliente ActualizarCliente(TCliente cliente)
+        public void ActualizarCliente(TCliente cliente)
         {
-            using (Cliente cli = new Cliente())
-            {
-                cli.Update(cliente);
-                return cliente;
-            }
+            unit.Cliente.Update(cliente);
         }
         public IEnumerable<TCliente> ListaClientes()
         {
-            using (Cliente cli = new Cliente())
-            {
-                return cli.GetAll();
-            }
+            return unit.Cliente.GetAll();
         }
         #endregion
 
         #region Producto
         public TProducto AgregarProducto(TProducto producto)
         {
-            using (Producto pro = new Producto())
-            {
-                return pro.Create(producto);
-            }
+            return unit.Producto.Create(producto);
         }
-        public TProducto ActualizarProducto(TProducto producto)
+        public void ActualizarProducto(TProducto producto)
         {
-            using (Producto pro = new Producto())
-            {
-                pro.Update(producto);
-                return producto;
-            }
+            unit.Producto.Update(producto);
         }
-        public bool BorrarProducto(TProducto producto)
+        public void BorrarProducto(TProducto producto)
         {
-            using (Producto pro = new Producto())
-            {
-                return pro.Delete(producto);
-            }
+            unit.Producto.Delete(producto);
         }
         public IEnumerable<TProducto> ListaProductos()
         {
-            using (Producto pro = new Producto())
-            {
-                return pro.GetAll();
-            }
+            return unit.Producto.GetAll();
         }
         #endregion
 
         #region Opracion
         public TOrdenVenta AgregarNuevaVenta(TCliente cliente, List<TProducto> productos)
         {
-            using (Venta vent = new Venta())
-            {
-                return vent.Agregar(cliente, productos);
-            }
+            return unit.Venta.Agregar(cliente, productos);
         }
         public bool ValidarLoginCliente(string usuario, string password)
         {
-            using (Cliente cli = new Cliente())
-            {
-                return cli.Validar(usuario, password);
-            }
+            return unit.Cliente.Validar(usuario, password);
         }
         #endregion
     }

@@ -7,12 +7,12 @@ using AppWeb.Framework.Data.DB.Model;
 
 namespace AppWeb.Framework.Data.DB.Control
 {
-    public class Venta : IDisposable
+    public class Venta
     {
-        public BDWebShopEntities context { get; set; }
-        public Venta()
+        private BDWebShopEntities context { get; set; }
+        public Venta(BDWebShopEntities _context)
         {
-            context = new BDWebShopEntities();
+            context = _context;
         }
 
         public TOrdenVenta Agregar(TCliente cliente, List<TProducto> productos)
@@ -20,12 +20,6 @@ namespace AppWeb.Framework.Data.DB.Control
 
 
             return null;
-        }
-
-
-        public void Dispose()
-        {
-            context.Dispose();
         }
     }
 }

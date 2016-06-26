@@ -11,7 +11,7 @@ namespace AppWeb.Servicios
         [OperationContract]
         TCliente AgregarCliente(TCliente cliente);
         [OperationContract]
-        TCliente ActualizarCliente(TCliente cliente);
+        void ActualizarCliente(TCliente cliente);
         [OperationContract]
         IEnumerable<TCliente> ListaClientes();
         #endregion
@@ -20,9 +20,9 @@ namespace AppWeb.Servicios
         [OperationContract]
         TProducto AgregarProducto(TProducto producto);
         [OperationContract]
-        TProducto ActualizarProducto(TProducto producto);
+        void ActualizarProducto(TProducto producto);
         [OperationContract]
-        bool BorrarProducto(TProducto producto);
+        void BorrarProducto(TProducto producto);
         [OperationContract]
         IEnumerable<TProducto> ListaProductos();
         #endregion
@@ -31,18 +31,18 @@ namespace AppWeb.Servicios
         [OperationContract]
         TSubCategoria AgregarSubCategoria(TSubCategoria subCategoria);
         [OperationContract]
-        TSubCategoria ActualizarSubCategoria(TSubCategoria subCategoria);
+        void ActualizarSubCategoria(TSubCategoria subCategoria);
         [OperationContract]
-        bool BorrarSubCategoria(TSubCategoria subCategoria);
+        void BorrarSubCategoria(TSubCategoria subCategoria);
         [OperationContract]
         IEnumerable<TSubCategoria> ListaSubCategorias();
 
         [OperationContract]
         TCategoria AgregarCategoria(TCategoria categoria);
         [OperationContract]
-        TCategoria ActualizarCategoria(TCategoria categoria);
+        void ActualizarCategoria(TCategoria categoria);
         [OperationContract]
-        bool BorrarCategoria(TCategoria categoria);
+        void BorrarCategoria(TCategoria categoria);
         [OperationContract]
         IEnumerable<TCategoria> ListaCategorias();
         #endregion

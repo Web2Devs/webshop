@@ -8,12 +8,12 @@ using AppWeb.Framework.Data.DB.Model;
 
 namespace AppWeb.Framework.Data.DB.Control
 {
-    public class SubCategoria : IEntidadDB<TSubCategoria>, IDisposable
+    public class SubCategoria : IEntidadDB<TSubCategoria>
     {
-        public BDWebShopEntities context { get; set; }
-        public SubCategoria()
+        private BDWebShopEntities context { get; set; }
+        public SubCategoria(BDWebShopEntities _context)
         {
-            context = new BDWebShopEntities();
+            context = _context;
         }
 
         public TSubCategoria Create(TSubCategoria entidad)
@@ -22,7 +22,6 @@ namespace AppWeb.Framework.Data.DB.Control
             try
             {
                 context.TSubCategoria.Add(entidad);
-                context.SaveChanges();
                 return entidad;
             }
             catch (Exception e)
@@ -31,30 +30,19 @@ namespace AppWeb.Framework.Data.DB.Control
             }
         }
 
-        public bool Delete(TSubCategoria entidad)
+        public void Delete(TSubCategoria entidad)
         {
-            bool rt = false;
             if (entidad == null) throw new ArgumentNullException("entidad");
             try
             {
-                var p = context.TSubCategoria.SingleOrDefault(x => x.CodSubCategoria == entidad.CodSubCategoria);
-                if (p == null)
-                    return rt;
-
-                context.TSubCategoria.Remove(p);
-                if (context.SaveChanges() > 0)
-                    rt = true;
+                var p = this.Find(entidad.CodSubCategoria, entidad.CodCategoria);
+                if (p != null)
+                    context.TSubCategoria.Remove(p);
             }
             catch (Exception e)
             {
                 throw new Exception("Entidad tiene referancias : " + e.Message);
             }
-            return rt;
-        }
-
-        public void Dispose()
-        {
-            context.Dispose();
         }
 
         public IEnumerable<TSubCategoria> GetAll()
@@ -66,7 +54,11 @@ namespace AppWeb.Framework.Data.DB.Control
         {
             if (entidad == null) throw new ArgumentNullException("entidad");
             context.Entry(entidad).State = System.Data.Entity.EntityState.Modified;
-            context.SaveChanges();
+        }
+
+        public TSubCategoria Find(params object[] keyValues)
+        {
+            return context.TSubCategoria.Find(keyValues);
         }
     }
 }

@@ -8,12 +8,12 @@ using AppWeb.Framework.Data.DB.Model;
 
 namespace AppWeb.Framework.Data.DB.Control
 {
-    public class Categoria : IEntidadDB<TCategoria>, IDisposable
+    public class Categoria : IEntidadDB<TCategoria>
     {
-        public BDWebShopEntities context { get; set; }
-        public Categoria()
+        private BDWebShopEntities context { get; set; }
+        public Categoria(BDWebShopEntities _context)
         {
-            context = new BDWebShopEntities();
+            context = _context;
         }
 
         public TCategoria Create(TCategoria entidad)
@@ -22,7 +22,6 @@ namespace AppWeb.Framework.Data.DB.Control
             try
             {
                 context.TCategoria.Add(entidad);
-                context.SaveChanges();
                 return entidad;
             }
             catch (Exception e)
@@ -35,28 +34,21 @@ namespace AppWeb.Framework.Data.DB.Control
         {
             if (entidad == null) throw new ArgumentNullException("entidad");
             context.Entry(entidad).State = System.Data.Entity.EntityState.Modified;
-            context.SaveChanges();
         }
 
-        public bool Delete(TCategoria entidad)
+        public void Delete(TCategoria entidad)
         {
-            bool rt = false;
             if (entidad == null) throw new ArgumentNullException("entidad");
             try
             {
                 var p = context.TCategoria.SingleOrDefault(x => x.CodCategoria == entidad.CodCategoria);
-                if (p == null)
-                    return rt;
-
-                context.TCategoria.Remove(p);
-                if (context.SaveChanges() > 0)
-                    rt = true;
+                if (p != null)
+                    context.TCategoria.Remove(p);
             }
             catch (Exception e)
             {
                 throw new Exception("Entidad tiene referancias : " + e.Message);
             }
-            return rt;
         }
 
         public IEnumerable<TCategoria> GetAll()
@@ -64,9 +56,9 @@ namespace AppWeb.Framework.Data.DB.Control
             return context.TCategoria.ToList();
         }
 
-        public void Dispose()
+        public TCategoria Find(params object[] keyValues)
         {
-            context.Dispose();
+            return context.TCategoria.Find(keyValues);
         }
     }
 }

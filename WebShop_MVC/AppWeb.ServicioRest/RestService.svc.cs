@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using AppWeb.Framework.Data.DB.Control;
 using AppWeb.Framework.Data.DB.Model;
 
 namespace AppWeb.ServicioRest
@@ -12,6 +13,7 @@ namespace AppWeb.ServicioRest
     // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione RestService.svc o RestService.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class RestService : IRestService
     {
+        private UnitOfWork unit = new UnitOfWork();
         public IEnumerable<TCategoria> ListaCategorias()
         {
             throw new NotImplementedException();

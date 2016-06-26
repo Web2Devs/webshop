@@ -8,12 +8,12 @@ using AppWeb.Framework.Data.DB.Model;
 
 namespace AppWeb.Framework.Data.DB.Control
 {
-    public class Producto : IEntidadDB<TProducto>, IDisposable
+    public class Producto : IEntidadDB<TProducto>
     {
-        public BDWebShopEntities context { get; set; }
-        public Producto()
+        private BDWebShopEntities context { get; set; }
+        public Producto(BDWebShopEntities _context)
         {
-            context = new BDWebShopEntities();
+            context = _context;
         }
 
         public TProducto Create(TProducto entidad)
@@ -22,7 +22,6 @@ namespace AppWeb.Framework.Data.DB.Control
             try
             {
                 context.TProducto.Add(entidad);
-                context.SaveChanges();
                 return entidad;
             }
             catch (Exception e)
@@ -31,30 +30,19 @@ namespace AppWeb.Framework.Data.DB.Control
             }
         }
 
-        public bool Delete(TProducto entidad)
+        public void Delete(TProducto entidad)
         {
-            bool rt = false;
             if (entidad == null) throw new ArgumentNullException("entidad");
             try
             {
-                var p = context.TProducto.SingleOrDefault(x => x.CodProducto == entidad.CodProducto);
-                if (p == null)
-                    return rt;
-
-                context.TProducto.Remove(p);
-                if (context.SaveChanges() > 0)
-                    rt = true;
+                var p = this.Find(entidad.CodProducto);
+                if (p != null)
+                   context.TProducto.Remove(p);
             }
             catch (Exception e)
             {
                 throw new Exception("Entidad tiene referancias : " + e.Message);
             }
-            return rt;
-        }
-
-        public void Dispose()
-        {
-            context.Dispose();
         }
 
         public IEnumerable<TProducto> GetAll()
@@ -66,7 +54,11 @@ namespace AppWeb.Framework.Data.DB.Control
         {
             if (entidad == null) throw new ArgumentNullException("entidad");
             context.Entry(entidad).State = System.Data.Entity.EntityState.Modified;
-            context.SaveChanges();
+        }
+
+        public TProducto Find(params object[] keyValues)
+        {
+            return context.TProducto.Find(keyValues);
         }
     }
 }

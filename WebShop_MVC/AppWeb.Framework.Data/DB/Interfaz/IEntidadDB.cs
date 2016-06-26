@@ -10,7 +10,8 @@ namespace AppWeb.Framework.Data.DB.Interfaz
     {
         T Create(T entidad);
         void Update(T entidad);
-        bool Delete(T entidad);
+        void Delete(T entidad);
+        T Find(params object[] keyValues);
         IEnumerable<T> GetAll();
     }
 }
