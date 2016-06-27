@@ -59,7 +59,7 @@ namespace AppWeb.Servicios
         [OperationContract]
         TOrdenVenta AgregarNuevaVenta(TCliente cliente, List<TProducto> productos);
         [OperationContract]
-        bool ValidarLoginCliente(string usuario, string password);
+        TCliente ValidarLoginCliente(string usuario, string password);
         #endregion
 
     }

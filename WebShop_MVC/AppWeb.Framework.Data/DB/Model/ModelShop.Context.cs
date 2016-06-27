@@ -18,6 +18,7 @@ namespace AppWeb.Framework.Data.DB.Model
         public BDWebShopEntities()
             : base("name=BDWebShopEntities")
         {
+            Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

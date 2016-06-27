@@ -4,5 +4,57 @@
     Layout = "~/Views/Shared/_ProductoInfo.cshtml";
 }
 
-<h2>Lista</h2>
+<div class="category-grid home-page-category-grid" ng-controller="CategoriaController">
+    <div class="block-body">
+        <div class="data-list data-list-grid">
 
+            <div class="data-list-row row-fluid">
+                <div class="span4 data-list-item equalized-column" data-equalized-deep="true">
+                    <article class="item-box">
+                        <div class="category-item homepage-category-item">
+                            <h2 class="category-title" data-equalized-part="name" style="min-height: 18px;">
+                                @Html.ActionLink("Mouse", "Lista", new { Id = 1 })
+                            </h2>
+                            <div class="picture" data-equalized-part="picture" style="min-height: 125px;">
+                                <a href="@Url.Action("Lista", new { Id = 1 })" title="#">
+                                    <img alt="@Url.Action("Lista", new { Id = 1 })" src="~/Content/Img/MAUSE-WIFI-BLUETOOTH.jpg" title="#">
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="span4 data-list-item equalized-column" data-equalized-deep="true">
+                    <article class="item-box">
+                        <div class="category-item homepage-category-item">
+                            <h2 class="category-title" data-equalized-part="name" style="min-height: 18px;">
+                                <a href="#" title="#">Computadoras</a>
+                            </h2>
+                            <div class="picture" data-equalized-part="picture" style="min-height: 125px;">
+                                <a href="#" title="#">
+                                    <img alt="#" src="~/Content/Img/MAUSE-WIFI-BLUETOOTH.jpg" title="#">
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="span4 data-list-item equalized-column" data-equalized-deep="true">
+                    <article class="item-box">
+                        <div class="category-item homepage-category-item">
+                            <h2 class="category-title" data-equalized-part="name" style="min-height: 18px;">
+                                <a href="#" title="#">Computadoras</a>
+                            </h2>
+                            <div class="picture" data-equalized-part="picture" style="min-height: 125px;">
+                                <a href="#" title="#">
+                                    <img alt="#" src="~/Content/Img/MAUSE-WIFI-BLUETOOTH.jpg" title="#">
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

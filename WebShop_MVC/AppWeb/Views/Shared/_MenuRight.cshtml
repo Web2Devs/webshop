@@ -1,0 +1,27 @@
+﻿<div class="block block-bordered block-poll">
+    <div class="block-title">
+        Usuario
+    </div>
+    <div class="block-body listbox">
+        @if (Session["Usuario"] == null)
+        {
+        <div id="loginmenu" class="row">
+            @using (Html.BeginForm("Login", "Cliente", FormMethod.Post))
+            {
+                <label>Usuario: </label>
+                <input type="text" name="txtUsuario" id="usuario" ng-model="cred.usuario" required />
+                <label>Password: </label>
+                <input type="password" name="txtPassword" id="passwd" ng-model="cred.passwd" required />
+                <input type="submit" name="btnLogin" value="Login" class="btn" />
+            }
+        </div>
+        } 
+
+        @if (Session["Usuario"] != null)
+        {
+            @Session["Usuario"].ToString()
+        }
+            
+        
+    </div>
+</div>

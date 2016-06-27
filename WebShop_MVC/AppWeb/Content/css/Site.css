@@ -3465,3 +3465,15 @@ fieldset>legend>* {
   background-color: transparent;
   border: 0;
 }
+
+#loginmenu {
+
+}
+
+#loginmenu.row {
+    margin-left: 10px;
+}
+
+#loginmenu input {
+    width: 165px;
+}

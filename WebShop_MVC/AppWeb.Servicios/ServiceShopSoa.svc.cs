@@ -118,7 +118,7 @@ namespace AppWeb.Servicios
             unit.SaveChanges();
             return _ordenventa;
         }
-        public bool ValidarLoginCliente(string usuario, string password)
+        public TCliente ValidarLoginCliente(string usuario, string password)
         {
             return unit.Cliente.Validar(usuario, password);
         }

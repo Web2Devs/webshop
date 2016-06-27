@@ -1,21 +1,4 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.8.3.js"></script>
-    <link href="~/Content/css/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/css/fonts.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/css/footer.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/css/header.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/css/pnotify.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/css/shopbar.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/css/slider.css" rel="stylesheet" type="text/css" />
-</head>
-<body class="lyt-cols-3">
+﻿@Html.Partial("_Header")
     <div id="page">
         <section id="header">
             <div id="logobar" class="container">
@@ -40,22 +23,6 @@
 
             </section>
         </div>
-        <div id="footer-wrapper">
-            <section id="footer" class="container">
-                <div class="row">
-                    <div class="span4"></div>
-                    <div class="span4 ac">  </div>
-                    <div class="span4 ar"> Copyright © 2016 SoftBet WebShop. All rights reserved. </div>
-                </div>
-            </section>
-        </div>
+        @Html.Partial("_Footer")
     </div>
-
-
-
-    <script src="~/Scripts/jquery-2.2.3.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/angular.min.js"></script>
-    <script src="~/Scripts/angular-loader.min.js"></script>
-</body>
-</html>
+@Html.Partial("_EndHead")

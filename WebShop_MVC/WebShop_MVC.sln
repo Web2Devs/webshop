@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppWeb", "AppWeb\AppWeb.csproj", "{45A3D887-EB70-4E04-93E7-0B9F8C609373}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D9C5886C-2A17-469A-811B-855FE1430F7A} = {D9C5886C-2A17-469A-811B-855FE1430F7A}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppWeb.Tests", "AppWeb.Tests\AppWeb.Tests.csproj", "{D6FD235A-7CB2-48FA-9B52-41DE3C717518}"
 	ProjectSection(ProjectDependencies) = postProject

@@ -33,18 +33,20 @@ namespace AppWeb.Framework.Data.DB.Control
             }
         }
 
-        public bool Validar(string usuario, string password)
+        public TCliente Validar(string usuario, string password)
         {
             try
             {
                 var ud = _dbSet.Where(x => x.Usuario.Equals(usuario));
                 if (ud == null)
+                {
                     throw new InvalidClienteException("Usuario no existe");
+                }
 
                 var user = ud.FirstOrDefault<TCliente>();
                 if (user.Contrasena.Equals(password))
                 {
-                    return true;
+                    return user;
                 } else
                 {
                     throw new InvalidPassswordException("Password Incorrecto");
@@ -52,7 +54,7 @@ namespace AppWeb.Framework.Data.DB.Control
             }
             catch (Exception e)
             {
-                throw e;
+                return null;
             }
         }
 

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="89f2db7b-b060-4a59-8407-7f6cd7ff2379" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:13332/ServiceShopSoa.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServiceShopSoa.wsdl" MetadataType="Wsdl" ID="5dbcadd6-fc7e-4e58-b512-f31a20563d25" SourceId="1" SourceUrl="http://localhost:13332/ServiceShopSoa.svc?wsdl" />
+    <MetadataFile FileName="ServiceShopSoa.xsd" MetadataType="Schema" ID="72f50f38-4e27-4ec8-9236-daef4c8b2810" SourceId="1" SourceUrl="http://localhost:13332/ServiceShopSoa.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServiceShopSoa1.xsd" MetadataType="Schema" ID="f3f3ecfa-1a1e-4734-be1d-643580760cea" SourceId="1" SourceUrl="http://localhost:13332/ServiceShopSoa.svc?xsd=xsd1" />
+    <MetadataFile FileName="ServiceShopSoa.disco" MetadataType="Disco" ID="8ecf0489-fbb1-4b0b-b681-c12b8e05d49d" SourceId="1" SourceUrl="http://localhost:13332/ServiceShopSoa.svc?disco" />
+    <MetadataFile FileName="ServiceShopSoa2.xsd" MetadataType="Schema" ID="3ed0fe35-3489-4322-a5e1-aa7d689c2973" SourceId="1" SourceUrl="http://localhost:13332/ServiceShopSoa.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

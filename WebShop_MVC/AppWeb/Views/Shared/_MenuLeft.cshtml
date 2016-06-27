@@ -1,24 +1,12 @@
-﻿<div class="block block-bordered block-category-navigation">
+﻿<div class="block block-bordered block-category-navigation" ng-controller="MenuLeftController">
     <div class="block-title">
         Categorias
     </div>
     <div class="block-body listbox">
         <nav class="nav-category">
             <ul class="level-1">
-                <li class="parent">
-                    <a href="#">Impresoras</a>
-                </li>
-                <li class="parent">
-                    <a href="#">Placas Madres</a>
-                </li>
-                <li class="parent">
-                    <a href="#">Memorias</a>
-                </li>
-                <li class="parent">
-                    <a href="#">Teclados</a>
-                </li>
-                <li class="parent">
-                    <a href="#">Mouse</a>
+                <li class="parent" ng-repeat="item in menuleft" ng-cloak>
+                    <a href="{{item.Url}}">{{item.Nombre}}</a>
                 </li>
             </ul>
         </nav>

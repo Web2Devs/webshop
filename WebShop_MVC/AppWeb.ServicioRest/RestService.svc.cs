@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using AppWeb.Framework.Data.DB.Control;
 using AppWeb.Framework.Data.DB.Model;
+using AppWeb.ServicioRest.Model;
 
 namespace AppWeb.ServicioRest
 {
@@ -16,22 +17,22 @@ namespace AppWeb.ServicioRest
         private UnitOfWork unit = new UnitOfWork();
         public IEnumerable<TCategoria> ListaCategorias()
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public IEnumerable<TCliente> ListaClientes()
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public IEnumerable<TProducto> ListaProductos()
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public IEnumerable<TSubCategoria> ListaSubCategorias()
         {
-            throw new NotImplementedException();
+            return null;
         }
     }
 }
