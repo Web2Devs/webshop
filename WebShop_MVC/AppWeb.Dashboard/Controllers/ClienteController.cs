@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using AppWeb.Dashboard.ShopWS;
 namespace AppWeb.Dashboard.Controllers
 {
     public class ClienteController : Controller
@@ -11,7 +11,11 @@ namespace AppWeb.Dashboard.Controllers
         // GET: Cliente
         public ActionResult Index()
         {
-            return View();
+            ServiceShopSoaClient proxy = new ServiceShopSoaClient();
+            var listado = proxy.ListaProductos();               
+            return View(listado);
         }
+                       
+
     }
 }

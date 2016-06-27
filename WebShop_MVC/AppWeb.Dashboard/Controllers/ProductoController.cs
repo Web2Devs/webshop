@@ -9,11 +9,67 @@ namespace AppWeb.Dashboard.Controllers
 {
     public class ProductoController : Controller
     {
-        ServiceShopSoaClient proxy = new ServiceShopSoaClient();
+        
         // GET: Producto
         public ActionResult Index()
         {
+            var proxy = new ServiceShopSoaClient();
             return View(proxy.ListaProductos());
+        }
+        public ActionResult Crear()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Crear(TProducto nuevoProducto)
+        {
+
+            var proxy = new ServiceShopSoaClient();
+            proxy.AgregarProducto(nuevoProducto);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Actualizar(int? id)
+        {
+            var proxy = new ServiceShopSoaClient();
+            if (id.HasValue)
+            {
+                var prod = proxy.BuscarProducto(id.Value);
+                return View(prod);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+        [HttpPost]
+        public ActionResult Actualizar(TProducto modificarProducto)
+        {
+            var proxy = new ServiceShopSoaClient();
+            proxy.ActualizarProducto(modificarProducto);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Eliminar(int id)
+        {
+            var proxy = new ServiceShopSoaClient();
+            if (id != 0)
+            {
+                var prod = proxy.BuscarProducto(id);
+                return View(prod);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+
+        }
+        [HttpPost]
+        public ActionResult Eliminar(TProducto producto)
+        {
+            var proxy = new ServiceShopSoaClient();
+            proxy.BorrarProducto(producto);
+            return RedirectToAction("Index");
         }
     }
 }
