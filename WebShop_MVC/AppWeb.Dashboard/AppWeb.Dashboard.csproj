@@ -164,8 +164,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Views\Cliente\Crear.cshtml" />
-    <Content Include="Views\Cliente\Actualizar.cshtml" />
+    <Content Include="Views\Producto\Crear.cshtml" />
+    <Content Include="Views\Producto\Actualizar.cshtml" />
+    <Content Include="Views\Producto\Eliminar.cshtml" />
+    <Content Include="Views\Categoria\Crear.cshtml" />
+    <Content Include="Views\Categoria\Actualizar.cshtml" />
+    <Content Include="Views\Categoria\Eliminar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

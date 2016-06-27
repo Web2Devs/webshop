@@ -25,6 +25,12 @@
   <wsdl:message name="IServiceShopSoa_ListaClientes_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListaClientesResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_BuscarCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarCliente" />
+  </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_BuscarCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarClienteResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceShopSoa_AgregarProducto_InputMessage">
     <wsdl:part name="parameters" element="tns:AgregarProducto" />
   </wsdl:message>
@@ -48,6 +54,12 @@
   </wsdl:message>
   <wsdl:message name="IServiceShopSoa_ListaProductos_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListaProductosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_BuscarProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarProducto" />
+  </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_BuscarProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarProductoResponse" />
   </wsdl:message>
   <wsdl:message name="IServiceShopSoa_AgregarSubCategoria_InputMessage">
     <wsdl:part name="parameters" element="tns:AgregarSubCategoria" />
@@ -73,6 +85,12 @@
   <wsdl:message name="IServiceShopSoa_ListaSubCategorias_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListaSubCategoriasResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_BuscarSubCategoria_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarSubCategoria" />
+  </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_BuscarSubCategoria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarSubCategoriaResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceShopSoa_AgregarCategoria_InputMessage">
     <wsdl:part name="parameters" element="tns:AgregarCategoria" />
   </wsdl:message>
@@ -96,6 +114,12 @@
   </wsdl:message>
   <wsdl:message name="IServiceShopSoa_ListaCategorias_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListaCategoriasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_BuscarCategoria_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarCategoria" />
+  </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_BuscarCategoria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarCategoriaResponse" />
   </wsdl:message>
   <wsdl:message name="IServiceShopSoa_AgregarNuevaVenta_InputMessage">
     <wsdl:part name="parameters" element="tns:AgregarNuevaVenta" />
@@ -122,6 +146,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/ListaClientes" message="tns:IServiceShopSoa_ListaClientes_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceShopSoa/ListaClientesResponse" message="tns:IServiceShopSoa_ListaClientes_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="BuscarCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/BuscarCliente" message="tns:IServiceShopSoa_BuscarCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceShopSoa/BuscarClienteResponse" message="tns:IServiceShopSoa_BuscarCliente_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="AgregarProducto">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/AgregarProducto" message="tns:IServiceShopSoa_AgregarProducto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceShopSoa/AgregarProductoResponse" message="tns:IServiceShopSoa_AgregarProducto_OutputMessage" />
@@ -137,6 +165,10 @@
     <wsdl:operation name="ListaProductos">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/ListaProductos" message="tns:IServiceShopSoa_ListaProductos_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceShopSoa/ListaProductosResponse" message="tns:IServiceShopSoa_ListaProductos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/BuscarProducto" message="tns:IServiceShopSoa_BuscarProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceShopSoa/BuscarProductoResponse" message="tns:IServiceShopSoa_BuscarProducto_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AgregarSubCategoria">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/AgregarSubCategoria" message="tns:IServiceShopSoa_AgregarSubCategoria_InputMessage" />
@@ -154,6 +186,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/ListaSubCategorias" message="tns:IServiceShopSoa_ListaSubCategorias_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceShopSoa/ListaSubCategoriasResponse" message="tns:IServiceShopSoa_ListaSubCategorias_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="BuscarSubCategoria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/BuscarSubCategoria" message="tns:IServiceShopSoa_BuscarSubCategoria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceShopSoa/BuscarSubCategoriaResponse" message="tns:IServiceShopSoa_BuscarSubCategoria_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="AgregarCategoria">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/AgregarCategoria" message="tns:IServiceShopSoa_AgregarCategoria_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceShopSoa/AgregarCategoriaResponse" message="tns:IServiceShopSoa_AgregarCategoria_OutputMessage" />
@@ -169,6 +205,10 @@
     <wsdl:operation name="ListaCategorias">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/ListaCategorias" message="tns:IServiceShopSoa_ListaCategorias_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceShopSoa/ListaCategoriasResponse" message="tns:IServiceShopSoa_ListaCategorias_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarCategoria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/BuscarCategoria" message="tns:IServiceShopSoa_BuscarCategoria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceShopSoa/BuscarCategoriaResponse" message="tns:IServiceShopSoa_BuscarCategoria_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AgregarNuevaVenta">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/AgregarNuevaVenta" message="tns:IServiceShopSoa_AgregarNuevaVenta_InputMessage" />
@@ -201,6 +241,15 @@
     </wsdl:operation>
     <wsdl:operation name="ListaClientes">
       <soap:operation soapAction="http://tempuri.org/IServiceShopSoa/ListaClientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarCliente">
+      <soap:operation soapAction="http://tempuri.org/IServiceShopSoa/BuscarCliente" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -244,6 +293,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="BuscarProducto">
+      <soap:operation soapAction="http://tempuri.org/IServiceShopSoa/BuscarProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AgregarSubCategoria">
       <soap:operation soapAction="http://tempuri.org/IServiceShopSoa/AgregarSubCategoria" style="document" />
       <wsdl:input>
@@ -280,6 +338,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="BuscarSubCategoria">
+      <soap:operation soapAction="http://tempuri.org/IServiceShopSoa/BuscarSubCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AgregarCategoria">
       <soap:operation soapAction="http://tempuri.org/IServiceShopSoa/AgregarCategoria" style="document" />
       <wsdl:input>
@@ -309,6 +376,15 @@
     </wsdl:operation>
     <wsdl:operation name="ListaCategorias">
       <soap:operation soapAction="http://tempuri.org/IServiceShopSoa/ListaCategorias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarCategoria">
+      <soap:operation soapAction="http://tempuri.org/IServiceShopSoa/BuscarCategoria" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

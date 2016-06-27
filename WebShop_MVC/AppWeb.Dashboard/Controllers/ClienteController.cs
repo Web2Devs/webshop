@@ -15,42 +15,7 @@ namespace AppWeb.Dashboard.Controllers
             var listado = proxy.ListaProductos();               
             return View(listado);
         }
-        public ActionResult Crear()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Crear(TProducto nuevoProducto)
-        {
-
-            var proxy = new ServiceShopSoaClient();
-            proxy.AgregarProducto(nuevoProducto);
-            return RedirectToAction("Index");
-        }
-        
-        [HttpGet]
-        public ActionResult Actualizar(int? id)
-        {
-            var proxy = new ServiceShopSoaClient();
-            if (id.HasValue)
-            {
-                
-                var prod = proxy(id.Value);
-                return View(prod);
-            }
-            else
-            {
-                return RedirectToAction("Index");
-            }
-        }
-        [HttpPost]
-        public ActionResult Actualizar(TProducto modificarProducto)
-        {
-            var proxy = new ServiceShopSoaClient();
-            proxy.ActualizarProducto(modificarProducto);
-            return RedirectToAction("Index");
-        }
+                       
 
     }
 }
