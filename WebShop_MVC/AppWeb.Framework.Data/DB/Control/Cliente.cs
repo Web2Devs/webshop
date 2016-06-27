@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +13,11 @@ namespace AppWeb.Framework.Data.DB.Control
     public class Cliente : IEntidadDB<TCliente>
     {
         private BDWebShopEntities context { get; set; }
+        private IDbSet<TCliente> _dbSet;
         public Cliente(BDWebShopEntities _context)
         {
             context = _context;
+            _dbSet = context.Set<TCliente>();
         }
 
         public TCliente Create(TCliente entidad)
@@ -22,8 +25,7 @@ namespace AppWeb.Framework.Data.DB.Control
             if (entidad == null) throw new ArgumentNullException("entidad");
             try
             {
-                context.TCliente.Add(entidad);
-                return entidad;
+                return _dbSet.Add(entidad);
             }
             catch (Exception e)
             {
@@ -35,7 +37,7 @@ namespace AppWeb.Framework.Data.DB.Control
         {
             try
             {
-                var ud = context.TCliente.Where(x => x.Usuario.Equals(usuario));
+                var ud = _dbSet.Where(x => x.Usuario.Equals(usuario));
                 if (ud == null)
                     throw new InvalidClienteException("Usuario no existe");
 
@@ -61,7 +63,7 @@ namespace AppWeb.Framework.Data.DB.Control
             {
                 var p = this.Find(entidad.CodCliente);
                 if (p != null)
-                    context.TCliente.Remove(p);
+                    _dbSet.Remove(p);
             }
             catch (Exception e)
             {
@@ -71,18 +73,19 @@ namespace AppWeb.Framework.Data.DB.Control
 
         public IEnumerable<TCliente> GetAll()
         {
-            return context.TCliente.ToList();
+            return _dbSet.ToList();
         }
 
         public void Update(TCliente entidad)
         {
             if (entidad == null) throw new ArgumentNullException("entidad");
-            context.Entry(entidad).State = System.Data.Entity.EntityState.Modified;
+            _dbSet.Attach(entidad);
+            context.Entry(entidad).State = EntityState.Modified;
         }
 
         public TCliente Find(params object[] keyValues)
         {
-            return context.TCliente.Find(keyValues);
+            return _dbSet.Find(keyValues);
         }
     }
 }

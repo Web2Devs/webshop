@@ -48,10 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DB\Control\Categoria.cs" />
     <Compile Include="DB\Control\Cliente.cs" />
-    <Compile Include="DB\Control\Producto.cs" />
-    <Compile Include="DB\Control\SubCategoria.cs" />
+    <Compile Include="DB\Control\EntidadGenerica.cs" />
     <Compile Include="DB\Control\UnitOfWork.cs" />
     <Compile Include="DB\Control\Venta.cs" />
     <Compile Include="DB\Interfaz\IEntidadDB.cs" />

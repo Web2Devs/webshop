@@ -25,35 +25,35 @@ namespace AppWeb.Framework.Data.DB.Control
             }
         }
 
-        private Categoria _categoria;
-        public Categoria Categoria
+        private EntidadGenerica<TCategoria> _categoria;
+        public EntidadGenerica<TCategoria> Categoria
         {
             get
             {
                 if (_categoria == null)
-                    _categoria = new Categoria(this.context);
+                    _categoria = new EntidadGenerica<TCategoria>(this.context);
                 return _categoria;
             }
         }
 
-        private Producto _producto;
-        public Producto Producto
+        private EntidadGenerica<TProducto> _producto;
+        public EntidadGenerica<TProducto> Producto
         {
             get
             {
                 if (_producto == null)
-                    _producto = new Producto(this.context);
+                    _producto = new EntidadGenerica<TProducto>(this.context);
                 return _producto;
             }
         }
 
-        private SubCategoria _subcategoria;
-        public SubCategoria SubCategoria
+        private EntidadGenerica<TSubCategoria> _subcategoria;
+        public EntidadGenerica<TSubCategoria> SubCategoria
         {
             get
             {
                 if (_subcategoria == null)
-                    _subcategoria = new SubCategoria(this.context);
+                    _subcategoria = new EntidadGenerica<TSubCategoria>(this.context);
                 return _subcategoria;
             }
         }
