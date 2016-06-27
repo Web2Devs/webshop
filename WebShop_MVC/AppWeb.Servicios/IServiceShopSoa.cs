@@ -14,6 +14,8 @@ namespace AppWeb.Servicios
         void ActualizarCliente(TCliente cliente);
         [OperationContract]
         IEnumerable<TCliente> ListaClientes();
+        [OperationContract]
+        TCliente BuscarCliente(int id);
         #endregion
 
         #region Producto
@@ -25,6 +27,8 @@ namespace AppWeb.Servicios
         void BorrarProducto(TProducto producto);
         [OperationContract]
         IEnumerable<TProducto> ListaProductos();
+        [OperationContract]
+        TProducto BuscarProducto(int id);
         #endregion
 
         #region Categoria
@@ -36,6 +40,8 @@ namespace AppWeb.Servicios
         void BorrarSubCategoria(TSubCategoria subCategoria);
         [OperationContract]
         IEnumerable<TSubCategoria> ListaSubCategorias();
+        [OperationContract]
+        TSubCategoria BuscarSubCategoria(int id);
 
         [OperationContract]
         TCategoria AgregarCategoria(TCategoria categoria);
@@ -45,6 +51,8 @@ namespace AppWeb.Servicios
         void BorrarCategoria(TCategoria categoria);
         [OperationContract]
         IEnumerable<TCategoria> ListaCategorias();
+        [OperationContract]
+        TCategoria BuscarCategoria(int id);
         #endregion
 
         #region Operaciones

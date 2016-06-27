@@ -31,6 +31,11 @@ namespace AppWeb.Servicios
         {
             return unit.Categoria.GetAll();
         }
+        public TCategoria BuscarCategoria(int id)
+        {
+            return unit.Categoria.Find(id);
+        }
+
         public TSubCategoria AgregarSubCategoria(TSubCategoria subCategoria)
         {
             TSubCategoria _subcategoria = unit.SubCategoria.Create(subCategoria);
@@ -51,6 +56,10 @@ namespace AppWeb.Servicios
         {
             return unit.SubCategoria.GetAll();
         }
+        public TSubCategoria BuscarSubCategoria(int id)
+        {
+            return unit.SubCategoria.Find(id);
+        }
         #endregion
 
         #region Cliente
@@ -68,6 +77,10 @@ namespace AppWeb.Servicios
         public IEnumerable<TCliente> ListaClientes()
         {
             return unit.Cliente.GetAll();
+        }
+        public TCliente BuscarCliente(int id)
+        {
+            return unit.Cliente.Find(id);
         }
         #endregion
 
@@ -91,6 +104,10 @@ namespace AppWeb.Servicios
         public IEnumerable<TProducto> ListaProductos()
         {
             return unit.Producto.GetAll();
+        }
+        public TProducto BuscarProducto(int id)
+        {
+            return unit.Producto.Find(id);
         }
         #endregion
 
