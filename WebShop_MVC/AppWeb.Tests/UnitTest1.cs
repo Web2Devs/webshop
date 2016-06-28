@@ -126,7 +126,7 @@ namespace AppWeb.Tests
             {
                 TSubCategoria subCate = new TSubCategoria();
                 {
-                    subCate.CodSubCategoria = 3;
+                    subCate.CodSubCategoria = 1;
                     subCate.Nombre = "Laptops";
                     subCate.CodCategoria = 1;
                     proxy.ActualizarSubCategoria(subCate);
@@ -176,7 +176,7 @@ namespace AppWeb.Tests
             {
                 TProducto pro = new TProducto();
                 {
-                    pro.CodProducto = 1;
+                    pro.CodProducto = 3;
                     pro.Nombre = "Teclado";
                     pro.Descripcion = "Teclado para pc";
                     pro.Especificacion = "nose";

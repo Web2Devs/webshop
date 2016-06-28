@@ -1,6 +1,8 @@
 ﻿
 
-var appmvc = angular.module('appmvc', ['angular-loading-bar']);
+var appmvc = angular.module('appmvc', ['angular-loading-bar'], function ($locationProvider) {
+    $locationProvider.html5Mode(true);
+});
 
 appmvc.controller('HomeController', function ($scope, $http) {
     $scope.productos = [];
@@ -17,53 +19,27 @@ appmvc.controller('HomeController', function ($scope, $http) {
 
 });
 
-appmvc.controller('MenuLeftController', function ($scope, $http) {
+appmvc.controller('MenuLeftController', function ($scope, RestService) {
     $scope.menuleft = [];
-    $http.get('/Content/menuleft.json')
-        .success(function (data) {
+    RestService.categoriactl()
+        .then(function (data) {
             $scope.menuleft = data;
-        })
-        .error(function (data, status, headers, config) {
-            console.log("error");
-        }).finally(function () {
+        },
+        function () {
+
         });
 });
 
-appmvc.controller('LoginController', function ($scope, $http, RestService) {
-    $scope.accessToken = "";
-    $scope.refreshToken = "";
-
-    $scope.redirect = function () {
-        window.location.href = '/Cliente/Index';
-    };
-
-    $scope.login = function (cred) {
-        var userLogin = {
-            grant_type: 'password',
-            username: cred.usuario,
-            password: cred.passwd
-        };
-        var res_data = LoginService.login(userLogin);
-
-        res_data.then(function (resp) {
-            console.log(resp);
-        }, function (err) {
-            console.log(err);
-        });
-
-        console.log(cred);
-    };
-});
-
-appmvc.controller('CategoriaController', function ($scope) {
+appmvc.controller('CategoriaController', function ($scope, $location, RestService) {
     $scope.categorias = [];
-    $http.get('/Content/categorias.json')
-        .success(function (data) {
+    var pId = $location.path().split("/")[3] || "Unknown";
+    console.log(pId);
+    RestService.categoriactl()
+        .then(function (data) {
             $scope.categorias = data;
-        })
-        .error(function (data, status, headers, config) {
-            console.log("error");
-        }).finally(function () {
+        },
+        function () {
+
         });
 });
 

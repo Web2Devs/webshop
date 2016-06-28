@@ -28,7 +28,7 @@ namespace AppWeb
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                 "~/Scripts/app/app.js",
-                "~/Scripts/app/services/LoginService.js",
+                "~/Scripts/app/services/RestService.js",
                 "~/Scripts/app/utils.js"
                 ));
 

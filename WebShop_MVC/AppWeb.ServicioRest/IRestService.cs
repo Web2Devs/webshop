@@ -6,7 +6,6 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using AppWeb.Framework.Data.DB.Model;
-using AppWeb.ServicioRest.Model;
 
 namespace AppWeb.ServicioRest
 {

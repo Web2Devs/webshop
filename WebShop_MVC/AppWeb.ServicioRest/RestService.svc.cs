@@ -6,7 +6,6 @@ using System.ServiceModel;
 using System.Text;
 using AppWeb.Framework.Data.DB.Control;
 using AppWeb.Framework.Data.DB.Model;
-using AppWeb.ServicioRest.Model;
 
 namespace AppWeb.ServicioRest
 {
@@ -17,22 +16,26 @@ namespace AppWeb.ServicioRest
         private UnitOfWork unit = new UnitOfWork();
         public IEnumerable<TCategoria> ListaCategorias()
         {
-            return null;
+            var listaCategoria = unit.Categoria.GetAll();
+            return listaCategoria;
         }
 
         public IEnumerable<TCliente> ListaClientes()
         {
-            return null;
+            var listaCliente = unit.Cliente.GetAll();
+            return listaCliente;
         }
 
         public IEnumerable<TProducto> ListaProductos()
         {
-            return null;
+            var listaProductos = unit.Producto.GetAll();
+            return listaProductos;
         }
 
         public IEnumerable<TSubCategoria> ListaSubCategorias()
         {
-            return null;
+            var listaSubCate = unit.SubCategoria.GetAll();
+            return listaSubCate;
         }
     }
 }

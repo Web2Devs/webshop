@@ -14,7 +14,7 @@ namespace AppWeb.Controllers
             return View();
         }
 
-        public ActionResult Lista()
+        public ActionResult Lista(int id)
         {
             return View();
         }
