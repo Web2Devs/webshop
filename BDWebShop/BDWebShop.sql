@@ -1,6 +1,6 @@
 use master
 go
--- Creaci髇 de la Base de Datos
+-- Creaci贸n de la Base de Datos
 begin
 if  db_id('BDWebShop') is not null    
 	drop database BDWebShop
@@ -11,71 +11,71 @@ go
 use BDWebShop
 go
  
---Creaci髇 de Tablas :
+--Creaci贸n de Tablas :
 
---Creaci髇 de la tabla TCategoria:
+--Creaci贸n de la tabla TCategoria:
 if OBJECT_ID('TCategoria') is not null
 	drop table TCategoria
 go	
 create table TCategoria
 (
 	CodCategoria  int identity constraint pk_CodCategoria primary key(CodCategoria),
-	Nombre varchar(20)
+	Nombre varchar(60)
 )
 go
 
---Creaci髇 de la tabla TSubCategoria:
+--Creaci贸n de la tabla TSubCategoria:
 if OBJECT_ID('TSubCategoria') is not null
 	drop table TSubCategoria
 go	
 create table TSubCategoria
 (
 	CodSubCategoria  int identity not null constraint pk_CodSubCategoria primary key(CodSubCategoria),
-	Nombre varchar(25),
+	Nombre varchar(60),
 	CodCategoria int not null constraint fk_CodCategoria foreign key references TCategoria(CodCategoria)
 )
 go
 
---Creaci髇 de la tabla TProducto:
+--Creaci贸n de la tabla TProducto:
 if OBJECT_ID('TProducto') is not null
 	drop table TProducto
 go	
 create table TProducto
 (
 	CodProducto int identity not null constraint pk_CodProducto primary key (CodProducto),
-	Nombre  varchar(35),
+	Nombre  varchar(50),
 	Descripcion nvarchar(2000),
-	Especificacion varchar(40),
+	Especificacion varchar(60),
 	Stock int,
 	Precio money CONSTRAINT prod_precio DEFAULT (0),
 	CodSubCategoria  int not null constraint fk_CodSubCategoria foreign key references TSubCategoria(CodSubCategoria)
 )
 go
---Creaci髇 de la tabla TCliente:
+--Creaci贸n de la tabla TCliente:
 if OBJECT_ID('TCliente') is not null
 	drop table TCliente
 go	
 create table TCliente
 (
 	CodCliente int not null constraint pk_CodCliente primary key(CodCliente) IDENTITY (1, 1),
-	Nombres varchar(25),
-	Apellidos varchar(40),
+	Nombres varchar(50),
+	Apellidos varchar(50),
 	Genero  char(1),
 	TipoDocumento  varchar(20),
 	NroDocumento varchar(20),
-	Email  varchar(30)not null constraint uq_Email unique nonclustered, 
-	Provincia varchar(30),
-	Ciudad varchar(30),
-	Distrito  varchar(25),
-	Direccion  varchar(30),
+	Email  varchar(60)not null constraint uq_Email unique nonclustered, 
+	Provincia varchar(60),
+	Ciudad varchar(60),
+	Distrito  varchar(60),
+	Direccion  varchar(60),
 	Usuario  varchar(50)not null constraint uq_Usuario unique nonclustered,
 	Contrasena varchar(40),
-	RazonSocial varchar(30),
+	RazonSocial varchar(60),
 	Telefono varchar(10)
 )
 go
 
---Creaci髇 de la tabla TOrdenVenta:
+--Creaci贸n de la tabla TOrdenVenta:
 if OBJECT_ID('TOrdenVenta') is not null
 	drop table TOrdenVenta
 go	
@@ -89,7 +89,7 @@ create table TOrdenVenta
 )
 go
 
---Creaci髇 de la tabla TDetalleVenta:
+--Creaci贸n de la tabla TDetalleVenta:
 if OBJECT_ID('TDetalleVenta') is not null
 	drop table TDetalleVenta
 go	
@@ -103,7 +103,7 @@ create table TDetalleVenta
 )
 go
 
---Creaci髇 de la tabla TCabeceraVentas: 
+--Creaci贸n de la tabla TCabeceraVentas: 
 if OBJECT_ID('TCabeceraVenta') is not null
 	drop table TCabeceraVenta
 go	
