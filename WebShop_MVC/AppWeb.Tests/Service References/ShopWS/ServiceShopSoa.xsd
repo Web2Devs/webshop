@@ -119,4 +119,16 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfTOrdenVenta" nillable="true" type="tns:ArrayOfTOrdenVenta" />
+  <xs:complexType name="ArrayOfTCliente">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TCliente" nillable="true" type="tns:TCliente" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTCliente" nillable="true" type="tns:ArrayOfTCliente" />
+  <xs:complexType name="ArrayOfTCategoria">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TCategoria" nillable="true" type="tns:TCategoria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTCategoria" nillable="true" type="tns:ArrayOfTCategoria" />
 </xs:schema>

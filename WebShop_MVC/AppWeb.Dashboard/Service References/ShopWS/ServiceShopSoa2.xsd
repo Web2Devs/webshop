@@ -271,7 +271,7 @@
   <xs:element name="ValidarLoginClienteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="ValidarLoginClienteResult" type="xs:boolean" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="ValidarLoginClienteResult" nillable="true" type="q27:TCliente" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

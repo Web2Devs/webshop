@@ -20,6 +20,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,8 +46,8 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
@@ -150,6 +151,12 @@
     <Content Include="Views\Categoria\Index.cshtml" />
     <Content Include="Views\SubCategoria\Index.cshtml" />
     <Content Include="Views\Cliente\Index.cshtml" />
+	<Content Include="Views\Producto\Crear.cshtml" />
+    <Content Include="Views\Producto\Actualizar.cshtml" />
+    <Content Include="Views\Producto\Eliminar.cshtml" />
+    <Content Include="Views\Categoria\Crear.cshtml" />
+    <Content Include="Views\Categoria\Actualizar.cshtml" />
+    <Content Include="Views\Categoria\Eliminar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />

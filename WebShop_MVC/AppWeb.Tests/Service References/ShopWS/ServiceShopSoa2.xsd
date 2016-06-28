@@ -24,37 +24,59 @@
   </xs:element>
   <xs:element name="ActualizarClienteResponse">
     <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaClientes">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaClientesResponse">
+    <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="ActualizarClienteResult" nillable="true" type="q4:TCliente" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="ListaClientesResult" nillable="true" type="q4:ArrayOfTCliente" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarCliente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarClienteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="BuscarClienteResult" nillable="true" type="q5:TCliente" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AgregarProducto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="producto" nillable="true" type="q5:TProducto" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="producto" nillable="true" type="q6:TProducto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AgregarProductoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="AgregarProductoResult" nillable="true" type="q6:TProducto" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="AgregarProductoResult" nillable="true" type="q7:TProducto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ActualizarProducto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="producto" nillable="true" type="q7:TProducto" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="producto" nillable="true" type="q8:TProducto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ActualizarProductoResponse">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="ActualizarProductoResult" nillable="true" type="q8:TProducto" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="BorrarProducto">
@@ -66,107 +88,175 @@
   </xs:element>
   <xs:element name="BorrarProductoResponse">
     <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaProductos">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaProductosResponse">
+    <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="BorrarProductoResult" type="xs:boolean" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="ListaProductosResult" nillable="true" type="q10:ArrayOfTProducto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarProducto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarProductoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="BuscarProductoResult" nillable="true" type="q11:TProducto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AgregarSubCategoria">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="subCategoria" nillable="true" type="q10:TSubCategoria" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="subCategoria" nillable="true" type="q12:TSubCategoria" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AgregarSubCategoriaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="AgregarSubCategoriaResult" nillable="true" type="q11:TSubCategoria" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="AgregarSubCategoriaResult" nillable="true" type="q13:TSubCategoria" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ActualizarSubCategoria">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="subCategoria" nillable="true" type="q12:TSubCategoria" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="subCategoria" nillable="true" type="q14:TSubCategoria" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ActualizarSubCategoriaResponse">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="ActualizarSubCategoriaResult" nillable="true" type="q13:TSubCategoria" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="BorrarSubCategoria">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="subCategoria" nillable="true" type="q14:TSubCategoria" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="subCategoria" nillable="true" type="q15:TSubCategoria" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="BorrarSubCategoriaResponse">
     <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaSubCategorias">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaSubCategoriasResponse">
+    <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="BorrarSubCategoriaResult" type="xs:boolean" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="ListaSubCategoriasResult" nillable="true" type="q16:ArrayOfTSubCategoria" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarSubCategoria">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarSubCategoriaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="BuscarSubCategoriaResult" nillable="true" type="q17:TSubCategoria" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AgregarCategoria">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="categoria" nillable="true" type="q15:TCategoria" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="categoria" nillable="true" type="q18:TCategoria" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AgregarCategoriaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="AgregarCategoriaResult" nillable="true" type="q16:TCategoria" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="AgregarCategoriaResult" nillable="true" type="q19:TCategoria" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ActualizarCategoria">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="categoria" nillable="true" type="q17:TCategoria" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="categoria" nillable="true" type="q20:TCategoria" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ActualizarCategoriaResponse">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="ActualizarCategoriaResult" nillable="true" type="q18:TCategoria" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="BorrarCategoria">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="categoria" nillable="true" type="q19:TCategoria" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="categoria" nillable="true" type="q21:TCategoria" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="BorrarCategoriaResponse">
     <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaCategorias">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaCategoriasResponse">
+    <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="BorrarCategoriaResult" type="xs:boolean" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="ListaCategoriasResult" nillable="true" type="q22:ArrayOfTCategoria" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarCategoria">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarCategoriaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="BuscarCategoriaResult" nillable="true" type="q23:TCategoria" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AgregarNuevaVenta">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="cliente" nillable="true" type="q20:TCliente" />
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="productos" nillable="true" type="q21:ArrayOfTProducto" />
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="cliente" nillable="true" type="q24:TCliente" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="productos" nillable="true" type="q25:ArrayOfTProducto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AgregarNuevaVentaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="AgregarNuevaVentaResult" nillable="true" type="q22:TOrdenVenta" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="AgregarNuevaVentaResult" nillable="true" type="q26:TOrdenVenta" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -181,7 +271,7 @@
   <xs:element name="ValidarLoginClienteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="ValidarLoginClienteResult" type="xs:boolean" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="ValidarLoginClienteResult" nillable="true" type="q27:TCliente" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -39,25 +39,27 @@ namespace AppWeb.Tests
         {
             using (ServiceShopSoaClient proxy = new ServiceShopSoaClient())
             {
-                TCliente cli = proxy.ActualizarCliente(new TCliente()
+                TCliente c = new TCliente();
                 {
-                    CodCliente = 1,
-                    Nombres = "Nataly",
-                    Apellidos = "Salazar Garcia",
-                    Genero = "F",
-                    TipoDocumento = "DNI",
-                    NroDocumento = "74367561",
-                    Email = "nataly_dianne@hotmail.com",
-                    Provincia = "Lima",
-                    Ciudad = "Lima",
-                    Distrito = "Surco",
-                    Direccion = "Av. Caminos del Inca 652",
-                    Usuario = "Nataly",
-                    Contrasena = "123456",
-                    RazonSocial = null,
-                    Telefono = "6541257"
-                });
-                Assert.AreNotEqual(cli, null);
+                    c.CodCliente = 1;
+                    c.Nombres = "Nataly";
+                    c.Apellidos = "Salazar Garcia";
+                    c.Genero = "F";
+                    c.TipoDocumento = "DNI";
+                    c.NroDocumento = "74367561";
+                    c.Email = "nataly_dianne@hotmail.com";
+                    c.Provincia = "Lima";
+                    c.Ciudad = "Lima";
+                    c.Distrito = "Surco";
+                    c.Direccion = "Av. Caminos del Inca 652";
+                    c.Usuario = "Nataly";
+                    c.Contrasena = "123456";
+                    c.RazonSocial = null;
+                    c.Telefono = "6541257";
+                    proxy.ActualizarCliente(c);
+                    Assert.AreNotEqual(c, null);
+                }
+
             }
         }
 
@@ -79,12 +81,13 @@ namespace AppWeb.Tests
         {
             using (ServiceShopSoaClient proxy = new ServiceShopSoaClient())
             {
-                TCategoria cate = proxy.ActualizarCategoria(new TCategoria()
+                TCategoria cate = new TCategoria();
                 {
-                    CodCategoria = 1,
-                    Nombre = "Computos"
-                });
-                Assert.AreNotEqual(cate, null);
+                    cate.CodCategoria = 1;
+                    cate.Nombre = "Computos";
+                    proxy.ActualizarCategoria(cate);
+                    Assert.AreNotEqual(cate, null);
+                }
             }
         }
 
@@ -93,11 +96,12 @@ namespace AppWeb.Tests
         {
             using (ServiceShopSoaClient proxy = new ServiceShopSoaClient())
             {
-                bool cate = proxy.BorrarCategoria(new TCategoria()
+                TCategoria cate = new TCategoria();
                 {
-                    CodCategoria = 2
-                });
-                Assert.IsTrue(cate);
+                    cate.CodCategoria = 2;
+                    proxy.BorrarCategoria(cate);
+                    Assert.IsNotNull(cate);
+                }
             }
         }
 
@@ -114,32 +118,36 @@ namespace AppWeb.Tests
                 Assert.AreNotEqual(subCate, null);
             }
         }
-
+        /*error*/
         [TestMethod]
         public void ActualizarSubCategoria()
         {
             using (ServiceShopSoaClient proxy = new ServiceShopSoaClient())
             {
-                TSubCategoria subCate = proxy.ActualizarSubCategoria(new TSubCategoria()
+                TSubCategoria subCate = new TSubCategoria();
                 {
-                    CodSubCategoria = 3,
-                    Nombre = "Laptops",
-                    CodCategoria = 1
-                });
-                Assert.AreNotEqual(subCate, null);
+                    subCate.CodSubCategoria = 3;
+                    subCate.Nombre = "Laptops";
+                    subCate.CodCategoria = 1;
+                    proxy.ActualizarSubCategoria(subCate);
+                    Assert.AreNotEqual(subCate, null);
+                }
             }
         }
 
+        /*error*/
         [TestMethod]
         public void BorrarSubCategoria()
         {
             using (ServiceShopSoaClient proxy = new ServiceShopSoaClient())
             {
-                bool subCate = proxy.BorrarSubCategoria(new TSubCategoria()
+                TSubCategoria subCate = new TSubCategoria();
                 {
-                    CodSubCategoria = 3
-                });
-                Assert.IsTrue(subCate);
+                    subCate.CodSubCategoria = 3;
+                    proxy.BorrarSubCategoria(subCate);
+                    Assert.IsNotNull(subCate);
+                }
+
             }
         }
 
@@ -155,28 +163,30 @@ namespace AppWeb.Tests
                     Especificacion = "nose",
                     Stock = 50,
                     Precio = 45,
-                    CodSubCategoria = 3
+                    CodSubCategoria = 1
                 });
                 Assert.AreNotEqual(pro, null);
             }
         }
-
+        /*error*/
         [TestMethod]
         public void ActualizarProducto()
         {
             using (ServiceShopSoaClient proxy = new ServiceShopSoaClient())
             {
-                TProducto pro = proxy.ActualizarProducto(new TProducto()
+                TProducto pro = new TProducto();
                 {
-                    CodProducto = 2,
-                    Nombre = "Teclado",
-                    Descripcion = "Teclado para pc",
-                    Especificacion = "nose",
-                    Stock = 100,
-                    Precio = 45,
-                    CodSubCategoria = 3
-                });
-                Assert.AreNotEqual(pro, null);
+                    pro.CodProducto = 1;
+                    pro.Nombre = "Teclado";
+                    pro.Descripcion = "Teclado para pc";
+                    pro.Especificacion = "nose";
+                    pro.Stock = 50;
+                    pro.Precio = 45;
+                    pro.CodSubCategoria = 1;
+                    proxy.ActualizarProducto(pro);
+                    Assert.AreNotEqual(pro, null);
+                }
+
             }
         }
 
@@ -185,11 +195,12 @@ namespace AppWeb.Tests
         {
             using (ServiceShopSoaClient proxy = new ServiceShopSoaClient())
             {
-                bool pro = proxy.BorrarProducto(new TProducto()
+                TProducto pro = new TProducto();
                 {
-                    CodProducto = 2
-                });
-                Assert.IsTrue(pro);
+                    pro.CodProducto = 2;
+                    proxy.BorrarProducto(pro);
+                    Assert.IsNotNull(pro);
+                }
             }
         }
 
@@ -198,13 +209,17 @@ namespace AppWeb.Tests
         {
             using (ServiceShopSoaClient proxy = new ServiceShopSoaClient())
             {
-                TOrdenVenta venta = proxy.AgregarNuevaVenta(new TCliente(), TProducto
+                TOrdenVenta venta = new TOrdenVenta();
+                TProducto pro = new TProducto();
+                 
                 {
-                    CodCliente = 1,
-                    Total = 100,
-                    FechaVenta = null,
-                    FechaEntrega = null
-                });
+                    venta.CodCliente = 1;
+                    venta.Total = 100;
+                    venta.FechaVenta = null;
+                    venta.FechaEntrega = null;
+                    proxy.AgregarNuevaVenta(venta,pro);
+                    Assert.AreNotEqual(venta, null);
+                }
             }
         }*/
 
@@ -213,9 +228,8 @@ namespace AppWeb.Tests
         {
             using (ServiceShopSoaClient proxy = new ServiceShopSoaClient())
             {
-                TCliente cliente = new TCliente();
-                bool pro = proxy.ValidarLoginCliente( "Nataly", "123456");
-                Assert.IsTrue(pro);
+                TCliente cliente = proxy.ValidarLoginCliente("Nataly", "123456");
+                Assert.AreNotEqual(cliente, null);
             }
         }
     }
