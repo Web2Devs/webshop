@@ -17,26 +17,67 @@ go
 
 exec uspListarProductos '1';
 
+
+--Procedimiento Almacenado para Agregar Categorias
+if OBJECT_ID('uspAgregarCategoria') is not null
+	drop proc uspAgregarCategoria
+go
+create proc uspAgregarCategoria
+@Nombre varchar(60)
+as
+begin
+		if not exists (select Nombre from TCategoria where Nombre = @Nombre)			
+			begin
+				insert into TCategoria values(@Nombre)
+				select CodError = 0, Mensaje = 'Categoria insertada correctamente'
+			end
+		else select CodError =1, Mensaje ='Error: Nombre de la Categoria ya Existe'
+end
+go
+
+exec uspAgregarCategoria 'Teclado';
+
+--Procedimiento Almacenado para Agregar SubCategorias
+if OBJECT_ID('uspAgregarSubCategoria') is not null
+	drop proc uspAgregarSubCategoria
+go
+create proc uspAgregarSubCategoria
+@Nombre varchar(60),@CodCategoria int
+as
+begin
+		if not exists (select Nombre from TSubCategoria where Nombre = @Nombre)
+			if exists (select CodCategoria from TCategoria where CodCategoria = @CodCategoria)
+			begin
+				insert into TSubCategoria values(@Nombre,@CodCategoria)
+				select CodError = 0, Mensaje = 'SubCategoria insertada correctamente'
+			end
+			else select CodError =1, Mensaje ='Error: No existe código de Categoría'
+		else select CodError =1, Mensaje ='Error: Nombre de la SubCategoria ya Existe'
+end
+go
+
+exec uspAgregarSubCategoria 'Teclado Gamer2',1;
+
 --Procedimiento Almacenado para Agregar Productos
 if OBJECT_ID('uspAgregarProducto') is not null
 	drop proc uspAgregarProducto
 go
 create proc uspAgregarProducto
-@Nombre varchar(35),@Descripcion nvarchar(2000),@Especificacion varchar(40),@Stock int,@Precio money,@CodSubCategoria varchar(4)
+@Nombre varchar(50),@Descripcion nvarchar(2000),@Especificacion varchar(60),@Stock int,@Precio money,@CodSubCategoria int
 as
 begin
 		if not exists (select Nombre from TProducto where Nombre = @Nombre)
-			if exists (select CodSubCategoria from TProducto where CodSubCategoria = @CodSubCategoria)
+			if exists (select CodSubCategoria from TSubCategoria where CodSubCategoria = @CodSubCategoria)
 			begin
 				insert into TProducto values(@Nombre,@Descripcion,@Especificacion,@Stock,@Precio,@CodSubCategoria)
 				select CodError = 0, Mensaje = 'Producto insertado correctamente'
 			end
-			else select CodError =1, Mensaje ='Error: No existe código de Sub Categoría'
+			else select CodError =1, Mensaje ='Error: No existe código de SubCategoría'
 		else select CodError =1, Mensaje ='Error: Nombre de Producto Duplicado'
 end
 go
 
-exec uspAgregarProducto 'Mouse Razer3', 'Razer', 'gfgfg', 50, 350, 1;
+exec uspAgregarProducto 'Teclado s2', 'Razer', 'gfgfg', 50, 350, 2;
 
 --Procedimiento Almacenado para Eliminar Productos
 if OBJECT_ID('uspEliminarProducto') is not null
@@ -47,42 +88,42 @@ create proc uspEliminarProducto
 as
 begin
 	if exists (select CodProducto from TProducto where CodProducto = @CodProducto)
-		if not exists (select CodProducto from TDetalleCompras where CodProducto=@CodProducto)
+		if not exists (select CodProducto from TDetalleVenta where CodProducto=@CodProducto)
 			begin
 				delete from TProducto where CodProducto = @CodProducto
 				select CodError = 0, Mensaje = 'Producto eliminado correctamente'
 			end 
 			
-		else Select CodError =1, Mensaje ='Error: Existe Producto en Detalle de Compra'
+		else Select CodError =1, Mensaje ='Error: Existe Producto en Detalle de Venta'
 	else Select CodError =1, Mensaje ='Error: Código de Producto no existe'
 end
 go
 
-exec uspEliminarProducto '3';
-exec uspListarProductos '3';
+exec uspEliminarProducto '2';
 
 --Procedimiento Almacenado para Modificar Productos
 if OBJECT_ID('uspModificarProducto') is not null
 	drop proc uspModificarProducto
 go
 create proc uspModificarProducto
-@CodProducto varchar(6),@Nombre varchar(35),@Descripcion nvarchar(2000),@Especificacion varchar(40),@Stock int,@Precio money,@CodSubCategoria varchar(4)
+@CodProducto int,@Nombre varchar(50),@Descripcion nvarchar(2000),@Especificacion varchar(60),@Stock int,@Precio money,@CodSubCategoria int
 as
 begin
 	if exists (select CodProducto from TProducto where CodProducto = @CodProducto)
 		if not exists (select Nombre from TProducto where Nombre = @Nombre)
-			if exists (select CodSubCategoria from TProducto where CodSubCategoria = @CodSubCategoria)
+			if exists (select CodSubCategoria from TSubCategoria where CodSubCategoria = @CodSubCategoria)
 			begin
 				update TProducto set  Nombre=@Nombre,Descripcion=@Descripcion,Especificacion=@Especificacion,Stock=@Stock,Precio=@Precio,CodSubCategoria=@CodSubCategoria where CodProducto=@CodProducto
 				select CodError = 0, Mensaje = 'Datos de producto modificado correctamente'
 			end
-			else select CodError =1, Mensaje ='Error: No existe código de Sub Categoría'
+			else select CodError =1, Mensaje ='Error: No existe código de SubCategoría'
 		else Select CodError =1, Mensaje ='Error: Nombre de producto duplicado'
 	else Select CodError =1, Mensaje ='Error: Codigo de producto no existe'
 end
 go
 
-
+exec uspModificarProducto 1,'Teclado s2', 'Razer', 'gfgfg', 50, 350, 2;
+select*from TProducto;
 --Procedimiento Almacenado para Buscar Productos
 
 if OBJECT_ID('uspBuscarProducto') is not null
