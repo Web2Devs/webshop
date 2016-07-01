@@ -2,22 +2,18 @@ use BDWebShop
 go
 
 -- Procedimientos Almacenados
--- Procedimiento Almacenado para Listar Producto
-if OBJECT_ID('uspListarProductos') is not null
-	drop proc uspListarProductos
+--Procedimiento Almacenado para Listar Categorias
+if OBJECT_ID('uspListarCategorias') is not null
+	drop proc uspListarCategorias
 go
-create proc uspListarProductos
-@CodProducto int
+create proc uspListarCategorias
 as
 begin
-	select * from TProducto
-	where CodProducto = @CodProducto
+	select * from TCategoria
 end
 go
 
-exec uspListarProductos '1';
-
-
+--exec uspListarCategorias;
 --Procedimiento Almacenado para Agregar Categorias
 if OBJECT_ID('uspAgregarCategoria') is not null
 	drop proc uspAgregarCategoria
@@ -35,8 +31,62 @@ begin
 end
 go
 
-exec uspAgregarCategoria 'Teclado';
+--exec uspAgregarCategoria 'jkjkj';
+--select*from TCategoria;
+--Procedimiento Almacenado para Modificar Categorias
+if OBJECT_ID('uspModificarCategoria') is not null
+	drop proc uspModificarCategoria
+go
+create proc uspModificarCategoria
+@CodCategoria int,@Nombre varchar(60)
+as
+begin
+	if exists (select CodCategoria from TCategoria where CodCategoria = @CodCategoria)
+		if not exists (select Nombre from TCategoria where Nombre = @Nombre)
+			begin
+				update TCategoria set  Nombre=@Nombre where CodCategoria=@CodCategoria
+				select CodError = 0, Mensaje = 'Datos de producto modificado correctamente'
+			end
+		else Select CodError =1, Mensaje ='Error: Nombre de categoria duplicado'
+	else Select CodError =1, Mensaje ='Error: Codigo de categoria no existe'
+end
+go
 
+--exec uspModificarCategoria '2','Cases & Accesorios';
+--select*from TCategoria;
+--Procedimiento Almacenado para Eliminar Categorias
+if OBJECT_ID('uspEliminarCategoria') is not null
+	drop proc uspEliminarCategoria
+go
+create proc uspEliminarCategoria
+@CodCategoria int
+as
+begin
+	if exists (select CodCategoria from TCategoria where CodCategoria = @CodCategoria)
+		if not exists (select CodCategoria from TSubCategoria where CodCategoria=@CodCategoria)
+			begin
+				delete from TCategoria where CodCategoria = @CodCategoria
+				select CodError = 0, Mensaje = 'Categoria eliminada correctamente'
+			end 			
+		else Select CodError =1, Mensaje ='Error: La Categoria esta siendo Utilizada'
+	else Select CodError =1, Mensaje ='Error: Código de Categoria no existe'
+end
+go
+
+--select*from TCategoria;
+--exec uspEliminarCategoria '1003';
+--Procedimiento Almacenado para Listar SubCategorias
+if OBJECT_ID('uspListarSubCategorias') is not null
+	drop proc uspListarSubCategorias
+go
+create proc uspListarSubCategorias
+as
+begin
+	select * from TSubCategoria
+end
+go
+
+--exec uspListarSubCategorias;
 --Procedimiento Almacenado para Agregar SubCategorias
 if OBJECT_ID('uspAgregarSubCategoria') is not null
 	drop proc uspAgregarSubCategoria
@@ -55,9 +105,63 @@ begin
 		else select CodError =1, Mensaje ='Error: Nombre de la SubCategoria ya Existe'
 end
 go
+--exec uspAgregarSubCategoria 'Teclado Gamer2pro',1;
+--select*from TSubCategoria;
+--Procedimiento Almacenado para Modificar SubCategorias
+if OBJECT_ID('uspModificarSubCategoria') is not null
+	drop proc uspModificarSubCategoria
+go
+create proc uspModificarSubCategoria
+@CodSubCategoria int,@Nombre varchar(60),@CodCategoria int
+as
+begin
+	if exists (select CodSubCategoria from TSubCategoria where CodSubCategoria = @CodSubCategoria)
+		if not exists (select Nombre from TSubCategoria where Nombre = @Nombre)
+			begin
+				update TSubCategoria set  Nombre=@Nombre ,CodCategoria=@CodCategoria where CodSubCategoria=@CodSubCategoria
+				select CodError = 0, Mensaje = 'Datos de producto modificado correctamente'
+			end
+		else Select CodError =1, Mensaje ='Error: Nombre de SubCategoria duplicado'
+	else Select CodError =1, Mensaje ='Error: Codigo de SubCategoria no existe'
+end
+go
 
-exec uspAgregarSubCategoria 'Teclado Gamer2',1;
+--exec uspModificarSubCategoria '2','Case Certificado','2';
+--select*from TSubCategoria;
 
+--Procedimiento Almacenado para Eliminar SubCategorias
+if OBJECT_ID('uspEliminarSubCategoria') is not null
+	drop proc uspEliminarSubCategoria
+go
+create proc uspEliminarSubCategoria
+@CodSubCategoria int
+as
+begin
+	if exists (select CodSubCategoria from TSubCategoria where CodSubCategoria = @CodSubCategoria)
+		if not exists (select CodSubCategoria from TProducto where CodSubCategoria=@CodSubCategoria)
+			begin
+				delete from TSubCategoria where CodSubCategoria = @CodSubCategoria
+				select CodError = 0, Mensaje = 'SubCategoria eliminada correctamente'
+			end 			
+		else Select CodError =1, Mensaje ='Error: La SubCategoria esta siendo Utilizada'
+	else Select CodError =1, Mensaje ='Error: Código de SubCategoria no existe'
+end
+go
+
+--select*from TSubCategoria;
+--exec uspEliminarSubCategoria '1002';
+-- Procedimiento Almacenado para Listar Producto
+if OBJECT_ID('uspListarProductos') is not null
+	drop proc uspListarProductos
+go
+create proc uspListarProductos
+as
+begin
+	select * from TProducto
+end
+go
+
+--exec uspListarProductos;
 --Procedimiento Almacenado para Agregar Productos
 if OBJECT_ID('uspAgregarProducto') is not null
 	drop proc uspAgregarProducto
@@ -77,29 +181,7 @@ begin
 end
 go
 
-exec uspAgregarProducto 'Teclado s2', 'Razer', 'gfgfg', 50, 350, 2;
-
---Procedimiento Almacenado para Eliminar Productos
-if OBJECT_ID('uspEliminarProducto') is not null
-	drop proc uspEliminarProducto
-go
-create proc uspEliminarProducto
-@CodProducto int
-as
-begin
-	if exists (select CodProducto from TProducto where CodProducto = @CodProducto)
-		if not exists (select CodProducto from TDetalleVenta where CodProducto=@CodProducto)
-			begin
-				delete from TProducto where CodProducto = @CodProducto
-				select CodError = 0, Mensaje = 'Producto eliminado correctamente'
-			end 
-			
-		else Select CodError =1, Mensaje ='Error: Existe Producto en Detalle de Venta'
-	else Select CodError =1, Mensaje ='Error: Código de Producto no existe'
-end
-go
-
-exec uspEliminarProducto '2';
+--exec uspAgregarProducto 'Teclado s4', 'Razer', 'gfgfg', 50, 350, 2;
 
 --Procedimiento Almacenado para Modificar Productos
 if OBJECT_ID('uspModificarProducto') is not null
@@ -121,43 +203,84 @@ begin
 	else Select CodError =1, Mensaje ='Error: Codigo de producto no existe'
 end
 go
+--exec uspModificarProducto 1,'Teclado s2', 'Razer', 'gfgfg', 50, 350, 2;
+--select*from TProducto;
 
-exec uspModificarProducto 1,'Teclado s2', 'Razer', 'gfgfg', 50, 350, 2;
-select*from TProducto;
---Procedimiento Almacenado para Buscar Productos
-
-if OBJECT_ID('uspBuscarProducto') is not null
-	drop proc uspBuscarProducto
+--Procedimiento Almacenado para Eliminar Productos
+if OBJECT_ID('uspEliminarProducto') is not null
+	drop proc uspEliminarProducto
 go
-create proc uspBuscarProducto
+create proc uspEliminarProducto
+@CodProducto int
+as
+begin
+	if exists (select CodProducto from TProducto where CodProducto = @CodProducto)
+		if not exists (select CodProducto from TDetalleVenta where CodProducto=@CodProducto)
+			begin
+				delete from TProducto where CodProducto = @CodProducto
+				select CodError = 0, Mensaje = 'Producto eliminado correctamente'
+			end 			
+		else Select CodError =1, Mensaje ='Error: Existe Producto en Detalle de Venta'
+	else Select CodError =1, Mensaje ='Error: Código de Producto no existe'
+end
+go
+--select*from TProducto;
+--exec uspEliminarProducto '4';
+
+--Procedimiento Almacenado para Buscar Productos por Nombre
+
+if OBJECT_ID('uspBuscarProductoXnombre') is not null
+	drop proc uspBuscarProductoXnombre
+go
+create proc uspBuscarProductoXnombre
 @Nombre varchar(35)
 as
 begin
 		if  exists (select Nombre from TProducto where Nombre like @Nombre + '%')
 			begin
-				select CodProducto, Nombre, Precio from TProducto where Nombre like @Nombre + '%'
-				
+				select CodProducto, Nombre, Precio from TProducto where Nombre like @Nombre + '%'				
 			end
 		else Select CodError =1, Mensaje ='Error: Nombre de Producto no existe'
-
 end
 go
 
--- Procedimiento Almacenado para Listar Clientes
-if OBJECT_ID('uspListarCliente') is not null
-	drop proc uspListarCliente
+--exec uspBuscarProductoXnombre 't';
+
+--Procedimiento Almacenado para Buscar Productos por Codigo
+
+if OBJECT_ID('uspBuscarProductoXcodigo') is not null
+	drop proc uspBuscarProductoXcodigo
 go
-create proc uspListarCliente
+create proc uspBuscarProductoXcodigo
+@CodProducto int
+as
+begin
+		if  exists (select CodProducto from TProducto where CodProducto = @CodProducto)
+			begin
+				select CodProducto, Nombre, Precio from TProducto where CodProducto = @CodProducto				
+			end
+		else Select CodError =1, Mensaje ='Error: El codigo de Producto no existe'
+end
+go
+
+--exec uspBuscarProductoXcodigo '3';
+--select * from TProducto;
+
+-- Procedimiento Almacenado para Listar Clientes
+if OBJECT_ID('uspListarClientes') is not null
+	drop proc uspListarClientes
+go
+create proc uspListarClientes
 as
 begin
 	select * from TCliente
 end
 go
+--exec uspListarClientes;
 
 -- Procedimiento Almacenado para mostrar datos del cliente por email
 if OBJECT_ID('uspListarDatosCliente') is not null
-	drop proc uspListarDatosCliente
-	
+	drop proc uspListarDatosCliente	
 go
 create proc uspListarDatosCliente
 @Email varchar(50)
@@ -172,168 +295,214 @@ if OBJECT_ID('uspAgregarCliente') is not null
 	drop proc uspAgregarCliente
 go
 create proc uspAgregarCliente
-@CodCliente int,@Nombres varchar(25),@Apellidos varchar(40),@Sexo char(1),@TipoDocumento varchar(20),@NroDocumento varchar(20),@Email varchar(30),@Provincia varchar(30),@Ciudad varchar(30),@Distrito varchar(25),@Direccion varchar(30),@Usuario varchar(50),@Contrasena varchar(40),@RazonSocial varchar(30),@Telefono varchar(10)
+@Nombres varchar(50),@Apellidos varchar(50),@Genero char(1),@TipoDocumento varchar(20),@NroDocumento varchar(20),@Email varchar(60),@Provincia varchar(60),@Ciudad varchar(60),@Distrito varchar(60),@Direccion varchar(60),@Usuario varchar(50),@Contrasena varchar(40),@RazonSocial varchar(60),@Telefono varchar(10)
 as
 begin
-	if exists (select CodCliente from TCliente where CodCliente = @CodCliente)
-		if not exists (select Usuario from TCliente where Usuario = @Usuario)
+	if not exists (select Usuario from TCliente where Usuario = @Usuario)
+		if not exists (select Usuario from TCliente where Email = @Email)
 			begin
-				insert into TCliente values(@Nombres,@Apellidos,@Sexo,@TipoDocumento,@NroDocumento,@Email,@Provincia,@Ciudad,@Distrito,@Direccion,@Usuario,@Contrasena,@RazonSocial,@Telefono)
+				insert into TCliente values(@Nombres,@Apellidos,@Genero,@TipoDocumento,@NroDocumento,@Email,@Provincia,@Ciudad,@Distrito,@Direccion,@Usuario,@Contrasena,@RazonSocial,@Telefono)
 				select CodError = 0, Mensaje = 'Cliente insertado correctamente'
 			end
-		else select CodError =1, Mensaje ='Error: Nombre de Email Duplicado'
-	else Select CodError =1, Mensaje ='Error: Código del cliente Duplicado'
+		else select CodError =1, Mensaje ='Error: Email Duplicado'
+	else select CodError =1, Mensaje ='Error: Usuario Duplicado'
 end
 go
+--select*from TCliente;
+--exec uspAgregarCliente 'UserTex','ApellTex',1,'DNI','99669966','test_test@hotmail.com','Lima','Lima','Test test','Av. Lima','testUser','123456','sasas','6632265';
 
-select*from TCliente;
+-- Procedimiento para modificar cliente
+if OBJECT_ID('uspModificarCliente') is not null
+	drop proc uspModificarCliente
+go
+create proc uspModificarCliente
+@Email varchar(60),@Nombres varchar(50),@Apellidos varchar(50),@Genero char(1),@TipoDocumento varchar(20),@NroDocumento varchar(20),@Provincia varchar(60),@Ciudad varchar(60),@Distrito varchar(60),@Direccion varchar(60),@Usuario varchar(50),@Contrasena varchar(40),@RazonSocial varchar(60),@Telefono varchar(10)
+as
+begin
+	if exists (select Email from TCliente where Email = @Email)
+			begin
+				update TCliente set Nombres=@Nombres, Apellidos=@Apellidos,Genero=@Genero,TipoDocumento=@TipoDocumento,NroDocumento=@NroDocumento,Provincia=@Provincia,Ciudad=@Ciudad,Distrito=@Distrito,Direccion=@Direccion,Usuario=@Usuario,RazonSocial=@RazonSocial,Telefono=@Telefono where Email=@Email
+				select CodError = 0, Mensaje = 'Datos Modificados Correctamente'
+			end
+	else Select CodError =1, Mensaje ='Error:No existe el usuario'
+end
+go
+--select*from TCliente;
+--exec uspModificarCliente 'bet@softbet.com','UserTex','ApellTex',1,'DNI','99669966','Lima','Lima','Test test','Av. Lima','testUser','123456','sasas','6632265';
+
 --Procedimiento Almacenado para Eliminar Clientes
 if OBJECT_ID('uspEliminarCliente') is not null
 	drop proc uspEliminarCliente
 go
 create proc uspEliminarCliente
-@CodCliente varchar(6)
+@CodCliente int
 as
 begin
 	if exists (select CodCliente from TCliente where CodCliente = @CodCliente)
-		if not exists (select CodCliente from TCompra where CodCliente = @CodCliente)
-			if not exists (select CodCliente from TDireccionEnvio where CodCliente = @CodCliente)
+		if not exists (select CodCliente from TOrdenVenta where CodCliente = @CodCliente)
 			begin
 				delete from TCliente where CodCliente = @CodCliente
-				select CodError = 0, Mensaje = 'Producto eliminado correctamente'
+				select CodError = 0, Mensaje = 'Cliente eliminado correctamente'
 			end 
-			else Select CodError =1, Mensaje ='Error: Existen Direcciones de envío de este cliente'
 		else Select CodError =1, Mensaje ='Error: Existen Compras de este cliente'
 	else Select CodError =1, Mensaje ='Error: Código de Cliente no existe'
 end
 go
---exec uspEliminarCliente '1'
+--select*from TCliente;
+--exec uspEliminarCliente 2;
 
--- Procedimiento para modificar cliente
-if OBJECT_ID('uspModificarCliente') is not null
-	drop proc uspModificarCliente01
+-- Procedimiento Almacenado para Listar Ventas
+if OBJECT_ID('uspListarOrdenVenta') is not null
+	drop proc uspListarOrdenVenta
 go
-create proc uspModificarCliente01
-@CodCliente int,@Nombres varchar(25),@Apellidos varchar(40),@Sexo char(1),@TipoDocumento varchar(20),@NroDocumento varchar(20),@Email varchar(30),@Provincia varchar(30),@Ciudad varchar(30),@Distrito varchar(25),@Direccion varchar(30),@Usuario varchar(50),@RazonSocial varchar(30),@Telefono varchar(10)
+create proc uspListarOrdenVenta
 as
 begin
-	if exists (select Email from TCliente where Email = @Email)
-
-			begin
-				update TCliente set Nombres=@Nombres, Apellidos=@Apellidos,Sexo=@Sexo,TipoDocumento=@TipoDocumento,NroDocumento=@NroDocumento,Email=@Email,Provincia=@Provincia,Ciudad=@Ciudad,Distrito=@Distrito,Direccion=@Direccion,Usuario=@Usuario,RazonSocial=@RazonSocial,Telefono=@Telefono where Email=@Email
-				select CodError = 0, Mensaje = 'Datos Modificados Correctamente'
-			end
-
-	else Select CodError =1, Mensaje ='Error:No existe el usuario'
+	select * from TOrdenVenta
 end
 go
+--exec uspListarOrdenVenta;
 
---exec spCargarDatosCliente 'ruben@hotmail.com';
-
--- Procedimiento Almacenado para Listar Compras
-if OBJECT_ID('uspListarCompra') is not null
-	drop proc uspListarCompra
+--Procedimiento Almacenado para Agregar Orden
+if OBJECT_ID('uspAgregarOrden') is not null
+	drop proc uspAgregarOrden
 go
-create proc uspListarCompra
+create proc uspAgregarOrden
+@CodCliente int,@Total money,@FechaVenta datetime,@FechaEntrega datetime
 as
 begin
-	select * from TCompra
+	if exists (select CodCliente from TCliente where CodCliente = @CodCliente)
+		begin
+			insert into TOrdenVenta values(@CodCliente,@Total,@FechaVenta,@FechaEntrega)
+			select CodError = 0, Mensaje = 'Compra insertada correctamente'
+		end
+	else Select CodError =1, Mensaje ='Error: No existe el código de cliente'
 end
 go
+--exec uspAgregarOrden '1','35.00','2010-02-12','2010-02-12'
 
---exec uspListarCompra
-
-
---Procedimiento Almacenado para Agregar Compra
-if OBJECT_ID('uspAgregarCompra') is not null
-	drop proc uspAgregarCompra
+-- Procedimiento para modificar OrdenVenta
+if OBJECT_ID('uspModificarOrden') is not null
+	drop proc uspModificarOrden
 go
-create proc uspAgregarCompra
-@CodCompra varchar(10),@CodCliente int,@Total money,@FechaCompra datetime,@FechaEntrega datetime
+create proc uspModificarOrden
+@NroVenta int,@CodCliente int,@Total money,@FechaVenta datetime,@FechaEntrega datetime
 as
 begin
-	if not exists (select CodCompra from TCompra where CodCompra = @CodCompra)
-		if exists (select CodCliente from TCliente where CodCliente = @CodCliente)
-			begin
-				insert into TCompra values(@CodCompra,@CodCliente,@Total,@FechaCompra,@FechaEntrega)
-				select CodError = 0, Mensaje = 'Compra insertada correctamente'
-			end
-		else Select CodError =1, Mensaje ='Error: No existe el código de cliente'
-	else Select CodError =1, Mensaje ='Error: Codigo de Compra Duplicado'
+	if exists (select CodCliente from TCliente where CodCliente=@CodCliente)
+		if exists (select NroVenta from TOrdenVenta where NroVenta = @NroVenta)
+				begin
+					update TOrdenVenta set CodCliente=@CodCliente, Total=@Total,FechaVenta=@FechaVenta,FechaEntrega=@FechaEntrega where NroVenta=@NroVenta
+					select CodError = 0, Mensaje = 'Datos Modificados Correctamente'
+				end
+		else Select CodError =1, Mensaje ='Error:No existe el Nro de Orden'
+	else Select CodError =1, Mensaje ='Error:No existe el Cliente'
 end
 go
---exec uspAgregarCompra '005','2','35.00','2010-02-12','2010-02-12'
+--select * from TOrdenVenta;
+--exec uspModificarOrden '1','2','35.00','2010-02-12','2010-02-12'
 
 --Procedimiento Almacenado para Eliminar Compra
-if OBJECT_ID('uspEliminarCompra') is not null
-	drop proc uspEliminarCompra
+if OBJECT_ID('uspEliminarOrden') is not null
+	drop proc uspEliminarOrden
 go
-create proc uspEliminarCompra
-@CodCompra varchar(10)
+create proc uspEliminarOrden
+@NroVenta int
 as
 begin
-	if exists (select CodCompra from TCompra where CodCompra = @CodCompra)
-	   if not exists (select CodCompra from TDetalleCompras where CodCompra=@CodCompra)
-			begin
-				delete from TCompra where CodCompra = @CodCompra
-				select CodError = 0, Mensaje = 'Compra eliminada correctamente'
-			end 
-				else select CodError =1, Mensaje ='Error: Existe Compra en Detalle de Compra'
-	else Select CodError =1, Mensaje ='Error: Código de Compra no existe'
+	if exists (select NroVenta from TOrdenVenta where NroVenta=@NroVenta)
+	  if not exists (select NroVenta from TDetalleVenta where NroVenta=@NroVenta)
+		begin
+			delete from TOrdenVenta where NroVenta = @NroVenta
+			select CodError = 0, Mensaje = 'Compra eliminada correctamente'
+		end 
+		else select CodError =1, Mensaje ='Error: Existe Compra en Detalle de Compra'
+	else select CodError =1, Mensaje ='Error: El Nro de Orden no existe'
 end
 go
---exec uspEliminarCompra '001'
+--select * from TOrdenVenta;
+--exec uspEliminarOrden '2'
 
--- Procedimiento Almacenado para Listar Detalle de Compras
-if OBJECT_ID('uspListarDetalleCompras') is not null
-	drop proc uspListarDetalleCompras
+
+-- Procedimiento Almacenado para Listar Detalle de Ventas
+if OBJECT_ID('uspListarDetalleVentas') is not null
+	drop proc uspListarDetalleVentas
 go
-create proc uspListarDetalleCompras
+create proc uspListarDetalleVentas
 as
 begin
-	select * from TDetalleCompras
+	select * from TDetalleVenta
 end
 go
+--exec uspListarDetalleVentas;
 
---exec uspListarDetalleCompras 
-
---Procedimiento Almacenado para Agregar Detalle de compras
-if OBJECT_ID('uspAgregarDetalleCompras') is not null
-	drop proc uspAgregarDetalleCompras
+--Procedimiento Almacenado para Agregar Detalle de ventas
+if OBJECT_ID('uspAgregarDetalleVentas') is not null
+	drop proc uspAgregarDetalleVentas
 go
-create proc uspAgregarDetalleCompras
-@CodCompra varchar(10),@CodProducto varchar(6),@Cantidad integer,@Precio money
+create proc uspAgregarDetalleVentas
+@NroVenta int,@CodProducto int,@Cantidad integer
 as
 begin
-	if exists (select CodCompra from TCompra where CodCompra = @CodCompra)
+declare @Precio money
+	if exists (select NroVenta from TOrdenVenta where NroVenta = @NroVenta)
 		if exists(select CodProducto from TProducto where CodProducto = @CodProducto)
 			begin
-				insert into TDetalleCompras values(@CodCompra,@CodProducto,@Cantidad,@Precio)
+				set @Precio=(select Precio from TProducto where CodProducto=@CodProducto)
+				insert into TDetalleVenta values(@NroVenta,@CodProducto,@Cantidad,@Precio)
 				select CodError = 0, Mensaje = 'Detalle de compra insertado correctamente'
 			end
 		else select CodError =1, Mensaje ='Error: No existe código de Producto'
-	else Select CodError =1, Mensaje ='Error: No existe código de Compra'
+	else Select CodError =1, Mensaje ='Error: No existe código de Orden'
 end
 go
---exec uspAgregarDetalleCompras '002','C10002','3','36.00'
+--select*from TProducto;
+--select*from TDetalleVenta;
+--exec uspAgregarDetalleVentas '1','1','5';
 
---Procedimiento Almacenado para Eliminar Detalle de Compra
-if OBJECT_ID('uspEliminarDetalleCompras') is not null
-	drop proc uspEliminarDetalleCompras
+-- Procedimiento para modificar OrdenVenta
+if OBJECT_ID('uspModificarDetalleVenta') is not null
+	drop proc uspModificarDetalleVenta
 go
-create proc uspEliminarDetalleCompras
-@CodCompra varchar(10),@CodProducto varchar(6)
+create proc uspModificarDetalleVenta
+@NroDetalleVenta int,@NroVenta int,@CodProducto int,@Cantidad int
 as
 begin
-	if exists (select CodCompra from TDetalleCompras where CodProducto = @CodProducto)
-			begin
-				delete from TDetalleCompras where CodCompra =@CodCompra and CodProducto=@CodProducto
-				select CodError = 0, Mensaje = 'Detalle de Compra eliminado correctamente'
-			end 
-	else Select CodError =1, Mensaje ='Error: Código de Compra y de producto no existen en Detalle de Compra'
+declare @Precio money
+	if exists (select NroDetalleVenta from TDetalleVenta where NroDetalleVenta=@NroDetalleVenta)
+		if exists (select NroVenta from TOrdenVenta where NroVenta = @NroVenta)
+				begin
+					set @Precio=(select Precio from TProducto where CodProducto=@CodProducto)
+					update TDetalleVenta set NroVenta=@NroVenta, CodProducto=@CodProducto,Cantidad=@Cantidad,PrecioUnitario=@Precio where NroDetalleVenta=@NroDetalleVenta
+					select CodError = 0, Mensaje = 'Datos Modificados Correctamente'
+				end
+		else Select CodError =1, Mensaje ='Error:No existe el Nro de Orden'
+	else Select CodError =1, Mensaje ='Error:No existe el Nro de Detalle de Venta'
 end
 go
---exec uspEliminarDetalleCompras '001','C10002'
+--select * from TOrdenVenta;
+--exec uspModificarDetalleVenta '1','2','3','2'
+
+--Procedimiento Almacenado para Eliminar Detalle de ventas
+if OBJECT_ID('uspEliminarDetalleVentas') is not null
+	drop proc uspEliminarDetalleVentas
+go
+create proc uspEliminarDetalleVentas
+@NroDetalle int,@NroVenta int,@CodProducto int
+as
+begin
+	if exists (select NroDetalleVenta from TDetalleVenta where NroDetalleVenta=@NroDetalle)
+		if exists (select NroVenta from TDetalleVenta where CodProducto = @CodProducto)
+				begin
+					delete from TDetalleVenta where NroVenta =@NroVenta and CodProducto=@CodProducto
+					select CodError = 0, Mensaje = 'Detalle de Compra eliminado correctamente'
+				end 
+		else Select CodError =1, Mensaje ='Error: Código de Compra y de producto no existen en Detalle de Venta'
+	else Select CodError =1, Mensaje ='Error: Código de Detalle no existe'
+end
+go
+--select*from TDetalleVenta;
+--exec uspEliminarDetalleVentas '4','1','1';
 
 --Procedimiento Almacenado para Autenticar Cliente
 
@@ -353,7 +522,8 @@ begin
 	else select CodError = 1, Mensaje = 'Error: Usuario y/o Contrasena incorrectas'
 end
 go
---exec uspAutenticarCliente 'jean@hotmail.com','3625608'
+--select*from TCliente;
+--exec uspAutenticarCliente 'testUser','123456'
 
 --Procedimiento Almacenado para Listar Productos por categorías
 
