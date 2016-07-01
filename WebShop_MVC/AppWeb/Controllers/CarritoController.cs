@@ -13,5 +13,12 @@ namespace AppWeb.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult AgregarProducto(FormCollection col)
+        {
+
+            return View();
+        }
     }
 }

@@ -4,5 +4,48 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Lista</h2>
-
+<div class="product-grid home-page-product-grid block" ng-controller="SubCategoriaController">
+    <div class="block-title">
+        Productos
+    </div>
+    <div class="block-body">
+        <div class="data-list data-list-grid">
+            <img id="myloading" src="~/Content/Img/ajax-loader.gif" ng-show="loading" />
+            <div class="data-list-row row-fluid" ng-repeat="productox in productos" ng-cloak>
+                <div class="span4 data-list-item equalized-column" data-equalized-deep="true" ng-repeat="producto in productox">
+                    <div class="item-box">
+                        <figure class="picture" data-equalized-part="picture" data-equalized-valign="true" style="min-height: 100px; line-height: 100px; vertical-align: middle;">
+                            <a href="@Url.Action("Info", "Producto", null)/{{producto.CodProducto}}" title="{{producto.Nombre}}">
+                                <img alt="{{producto.Nombre}}" ng-src="~/Content/Img/producto/{{producto.CodProducto}}.png" title="{{producto.Nombre}}">
+                            </a>
+                        </figure>
+                        <div class="data">
+                            <h3 class="name" data-equalized-part="name" style="min-height: 40px;">
+                                <a href="@Url.Action("Info", "Producto", null)/{{producto.Id}}">
+                                    <span>{{producto.Nombre}}</span>
+                                </a>
+                            </h3>
+                            <p class="description" data-equalized-part="description" style="min-height: 36px;">
+                                {{producto.Especificacion}}
+                            </p>
+                            <div class="prices" data-equalized-part="prices" style="min-height: 18px;">
+                                <p class="product-price">
+                                    <span class="price text-success">S/.{{producto.Precio}}</span>
+                                </p>
+                            </div>
+                            <div class="buttons">
+                                <a data-href="#" href="#" class="btn btn-warning ajax-cart-link" title="Add to cart" rel="tooltip nofollow" data-type="cart" data-action="add">
+                                    <i class="fa fa-lg fa-cart-arrow-down"></i>
+                                </a>
+                                <a href="@Url.Action("Info", "Producto", null)/{{producto.Id}}" class="btn">
+                                    <i class="fa fa-info-circle"></i>
+                                    Detalles
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

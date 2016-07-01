@@ -3,6 +3,7 @@
 appmvc.service('RestService', function ($http) {
     this.data_categorias = null;
     this.sub_categorias = null;
+    this.data_productos = null;
 
     this.categoriactl = function (update) {
         if (update || !this.data_categorias)
@@ -20,9 +21,9 @@ appmvc.service('RestService', function ($http) {
         return this.data_categorias;
     };
     
-    this.subcategoriactl = function (id, update) {
+    this.subcategoriacatectl = function (id, update) {
         if (update || !this.sub_categorias)
-            this.sub_categorias = $http.get(SERVICE_PATH + '/SubCategoria/' + id)
+            this.sub_categorias = $http.get(SERVICE_PATH + '/SubCategoriaCate/' + id)
                 .then(function (response) {
                     console.log(response);
                     return response.data;
@@ -37,4 +38,32 @@ appmvc.service('RestService', function ($http) {
         return this.sub_categorias;
     };
 
+    this.productosubctl = function (id, update) {
+        if (update || !this.data_productos)
+            this.data_productos = $http.get(SERVICE_PATH + '/ProductosSubCate/' + id)
+                .then(function (response) {
+                    console.log(response);
+                    return response.data;
+                },
+                function (errResponse) {
+                    console.error('Error while fetching users');
+                    if (this.data_productos)
+                        return this.data_productos;
+                    else
+                        return [];
+                });
+        return this.data_productos;
+    };
+
+
+    this.productoinfoctl = function (id) {
+        return $http.get(SERVICE_PATH + '/Producto/' + id)
+               .then(function (response) {
+                   return response.data;
+               },
+               function (errResponse) {
+                   console.error('Error while fetching users');
+                   return {};
+               });
+    };
 });

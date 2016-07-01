@@ -22,11 +22,19 @@ namespace AppWeb.ServicioRest
         IEnumerable<TProducto> ListaProductos();
 
         [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "/Producto/{id}", ResponseFormat = WebMessageFormat.Json)]
+        TProducto BuscarProducto(string id);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "/ProductosSubCate/{id}", ResponseFormat = WebMessageFormat.Json)]
+        IEnumerable<TProducto> ListaProductosSubCate(string id);
+
+        [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "/SubCategoria", ResponseFormat = WebMessageFormat.Json)]
         IEnumerable<TSubCategoria> ListaSubCategorias();
 
         [OperationContract]
-        [WebInvoke(Method = "GET", UriTemplate = "/SubCategoria/{id}", ResponseFormat = WebMessageFormat.Json)]
+        [WebInvoke(Method = "GET", UriTemplate = "/SubCategoriaCate/{id}", ResponseFormat = WebMessageFormat.Json)]
         IEnumerable<TSubCategoria> ListaSubCategoriasId(string id);
 
         [OperationContract]

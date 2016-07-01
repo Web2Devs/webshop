@@ -14,6 +14,14 @@ namespace AppWeb.ServicioRest
     public class RestService : IRestService
     {
         private UnitOfWork unit = new UnitOfWork();
+
+        public TProducto BuscarProducto(string id)
+        {
+            int xid = int.Parse(id);
+            var product = unit.Producto.Find(xid);
+            return product;
+        }
+
         public IEnumerable<TCategoria> ListaCategorias()
         {
             var listaCategoria = unit.Categoria.GetAll();
@@ -32,6 +40,13 @@ namespace AppWeb.ServicioRest
             return listaProductos;
         }
 
+        public IEnumerable<TProducto> ListaProductosSubCate(string id)
+        {
+            int xid = int.Parse(id);
+            var listaProductoSub = ListaProductos().Where(x => x.CodSubCategoria == xid).ToList();
+            return listaProductoSub;
+        }
+
         public IEnumerable<TSubCategoria> ListaSubCategorias()
         {
             var listaSubCate = unit.SubCategoria.GetAll();
@@ -41,7 +56,7 @@ namespace AppWeb.ServicioRest
         public IEnumerable<TSubCategoria> ListaSubCategoriasId(string id)
         {
             var xid = int.Parse(id);
-            var listaSubCateB = ListaSubCategorias().Select(x => x).Where(x => x.CodCategoria == xid).ToList();
+            var listaSubCateB = ListaSubCategorias().Where(x => x.CodCategoria == xid).ToList();
             return listaSubCateB;
         }
     }

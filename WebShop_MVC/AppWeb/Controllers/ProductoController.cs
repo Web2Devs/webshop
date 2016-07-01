@@ -20,8 +20,10 @@ namespace AppWeb.Controllers
             return View();
         }
 
-        public ActionResult Info()
+        public ActionResult Info(int? id)
         {
+            if (!id.HasValue)
+                return RedirectToAction("Index", "Home");
             return View();
         }
     }

@@ -24,11 +24,14 @@ namespace AppWeb
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.min.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/Scripts/alertify.min.js"
+                      ));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                 "~/Scripts/app/app.js",
                 "~/Scripts/app/services/RestService.js",
+                "~/Scripts/app/services/ShopService.js",
                 "~/Scripts/app/utils.js"
                 ));
 
@@ -36,7 +39,8 @@ namespace AppWeb
                 "~/Scripts/angular.min.js",
                 "~/Scripts/angular-ui.min.js",
                 "~/Scripts/angular-loader.min.js",
-                "~/Scripts/loading-bar.min.js"
+                "~/Scripts/loading-bar.min.js",
+                "~/Scripts/ngStorage.js"
                 ));
 
             
@@ -44,6 +48,8 @@ namespace AppWeb
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.min.css",
                       "~/Content/bootstrap-responsive.min.css",
+                      "~/Content/alertify.min.css",
+                      "~/Content/themes/bootstrap.min.css",
                       "~/Content/loading-bar.min.css",
                       "~/Content/css/Site.css",
                       "~/Content/css/fonts.css",

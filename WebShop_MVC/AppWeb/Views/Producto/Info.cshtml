@@ -3,127 +3,124 @@
     ViewBag.Title = "Info";
     Layout = "~/Views/Shared/_ProductoInfo.cshtml";
 }
-<ul id="breadcrumb" class="breadcrumb">
-    <li>
-        <a href="#" title="Top" itemprop="url">
-            <i class="fa fa-home"></i>
-        </a>
-        <span class="divider">/</span>
-    </li>
-    <li>
-        <span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
-            <a href="#" title="Mouse" itemprop="url">
-                <span itemprop="title">Mouse</span>
+<div ng-controller="ProductoController" ng-cloak>
+    <ul id="breadcrumb" class="breadcrumb">
+        <li>
+            <a href="#" title="Top" itemprop="url">
+                <i class="fa fa-home"></i>
             </a>
-        </span>
-        <span class="divider">/</span>
-    </li>
-    <li>
-        <span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
-            <a href="#" title="Gamers" itemprop="url">
-                <span itemprop="title">Gamers</span>
-            </a>
-        </span>
-        <span class="divider">/</span>
-    </li>
-    <li>
-        Mouse Gaming Razer Naga Epic CHROMA
-    </li>
-</ul>
+            <span class="divider">/</span>
+        </li>
+        <li>
+            <span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                <a href="#" title="Mouse" itemprop="url">
+                    <span itemprop="title">Mouse</span>
+                </a>
+            </span>
+            <span class="divider">/</span>
+        </li>
+        <li>
+            <span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                <a href="#" title="Gamers" itemprop="url">
+                    <span itemprop="title">Gamers</span>
+                </a>
+            </span>
+            <span class="divider">/</span>
+        </li>
+        <li>
+            {{producto.Nombre}}
+        </li>
+    </ul>
 
-<div id="TotalPriceUpdateContainer" class="page-body update-container" data-referto="#ProductAttributes, #AddToCart, #ProductBundleOverview">
-    <form action="#" id="product-details-form" method="post">
-        <article itemscope="" itemtype="http://schema.org/Product">
-            <div class="row-fluid top-content">
-                <div class="product-image span6">
-                    <div class="pd-gallery-container-outer">
-                        <div class="pd-gallery-container">
-                            <div id="pd-gallery" class="picture pd-gallery">
-                                <div class="sg-image-wrapper">
-                                    <div class="sg-image" style="width: 270px; height: 300px; top: 0px; left: 84px;">
-                                        <a href="#" target="_blank">
-                                            <img src="~/Content/Img/93609-MK17111A.jpg" data-zoom-image="93609-MK17111A.jpg.jpg" style="max-height: 300px; max-width: 400px" />
-                                        </a>
+    <div id="TotalPriceUpdateContainer" class="page-body update-container" data-referto="#ProductAttributes, #AddToCart, #ProductBundleOverview">
+        <form name="FormShop" id="product-details-form" ng-submit="AddProducto()">
+            <input type="text" name="CodProducto" style="display: none;" ng-value="{{producto.CodProducto}}" value="{{producto.CodProducto}}" />
+            <article itemscope="" itemtype="http://schema.org/Product">
+                <div class="row-fluid top-content">
+                    <div class="product-image span6">
+                        <div class="pd-gallery-container-outer">
+                            <div class="pd-gallery-container">
+                                <div id="pd-gallery" class="picture pd-gallery">
+                                    <div class="sg-image-wrapper">
+                                        <div class="sg-image" style="width: 270px; height: 300px; top: 0px; left: 84px;">
+                                            <a href="#" target="_blank">
+                                                <img src="~/Content/Img/producto/{{producto.CodProducto}}.png" data-zoom-image="{{producto.CodProducto}}.png" style="max-height: 300px; max-width: 400px" />
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="product-data span6">
-                    <div class="page-title alpha">
-                        <h1 class="product-name" itemprop="name">Mouse Gaming Wireless RAZER NAGA EPIC CHROMA 12301</h1>
-                    </div>
-                    <div id="details-cnt">
-                        <div class="short-description line alpha">
-                            Codigo: RAZER NAGA EPIC CHROMA 12301
+                    <div class="product-data span6">
+                        <div class="page-title alpha">
+                            <h1 class="product-name" itemprop="name">{{producto.Nombre}}</h1>
                         </div>
-                        <div id="AddToCart">
-                            <div class="price-details price-block line well">
-                                <div class="clearfix">
-                                    <div class="pull-right without-discount-block">
-                                        <span class="product-price current text-success">
-                                            <span class="product-price-without-discount" itemprop="price">
-                                                S/.490 + IGV
+                        <div id="details-cnt">
+                            <div class="short-description line alpha">
+                                {{producto.Descripcion}}
+                            </div>
+                            <div id="AddToCart">
+                                <div class="price-details price-block line well">
+                                    <div class="clearfix">
+                                        <div class="pull-right without-discount-block">
+                                            <span class="product-price current text-success">
+                                                <span class="product-price-without-discount" itemprop="price">
+                                                    S/.{{producto.Precio}} + IGV
+                                                </span>
                                             </span>
-                                        </span>
+                                        </div>
+                                        <div class="pull-left"></div>
                                     </div>
-                                    <div class="pull-left"></div>
                                 </div>
-                            </div>
-                            <div class="add-to-cart line">
-                                <div class="form-inline clearfix" style="text-align: right;">
-                                    <label class="qty-label">Cantidad</label>
-                                    <input class="qty-input" type="text" style="width: 25px" value="1" />
-                                    <span style="margin-right: 5px;"></span>
-                                    <a class="btn btn-warning add-to-cart-button ajax-cart-link">
-                                        Agregar
-                                        <i class="fa fa-cart-plus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bottom-content">
-                <div id="product-detail-tabs" class="tabbable">
-                    <ul class="nav nav-tabs">
-                        <li class="active">
-                            <a href="#product-detail-tabs-1" data-toggle="tab" data-loaded="true">Detalles</a>
-                        </li>
-                        <li class="">
-                            <a href="#product-detail-tabs-2" data-toggle="tab" data-loaded="true">Caracteristicas</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane fade active in" id="product-detail-tabs-1">
-                            <div itemprop="description">
-
-
-                                <div class="content">
-                                    La tecnología inalámbrica para juegos del razer naga epic chroma te ofrece movimientos sin limitaciones,
-                                    sin poner en riesgo el control o la precisión del ratón. con un índice de respuesta de 1 ms,
-                                    con cable o inalámbrico, tu razer naga epic chroma tiene un rendimiento máximo en todo momento.
-                                    además, basta conectarlo al puerto usb cuando la batería está baja para que el razer naga epic chroma
-                                    se cargue en plena utilización, sin periodos de inactividad.
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="product-detail-tabs-2">
-                            <div class="product-review-list">
-                                <div class="content">
-                                    <h5>19 BOTONES PROGRAMABLES OPTIMIZADOS PARA MMO CON COMBINACIONES ILIMITADAS</h5>
-                                    <p>En cualquier juego MMO, a cuantos más hechizos tengas acceso instantáneamente, más grande será tu ventaja. El Razer Naga Epic Chroma ofrece un total de 19 botones, incluido la icónica retícula de 12 botones del Razer Naga, para maximizar las acciones a tu disposición. Ahora puedes hacer asignaciones y tener acceso a más capacidades, más macros y más controles. El Razer Naga Epic Chroma hace que pulsar a tiempo el botón correcto sea más fácil que nunca.</p>
+                                <div class="add-to-cart line">
+                                    <div class="form-inline clearfix" style="text-align: right;">
+                                        <label class="qty-label">Cantidad</label>
+                                        <input id="Cantidad" name="Cantidad" class="qty-input" type="text" style="width: 25px" value="1" />
+                                        <span style="margin-right: 5px;"></span>
+                                        <button ng-click="submit()" class="btn btn-warning add-to-cart-button ajax-cart-link">
+                                            Agregar
+                                            <i class=" fa fa-cart-plus">
+                                            </i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </article>
-    </form>
+
+                <div class="bottom-content">
+                    <div id="product-detail-tabs" class="tabbable">
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#product-detail-tabs-1" data-toggle="tab" data-loaded="true">Detalles</a>
+                            </li>
+                            <li class="">
+                                <a href="#product-detail-tabs-2" data-toggle="tab" data-loaded="true">Caracteristicas</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade active in" id="product-detail-tabs-1">
+                                <div itemprop="description">
+                                    <div class="content">
+                                        {{producto.Descripcion}}
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="product-detail-tabs-2">
+                                <div class="product-review-list">
+                                    <div class="content">
+                                        {{producto.Especificacion}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </form>
+    </div>
 </div>
