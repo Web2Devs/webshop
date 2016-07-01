@@ -18,13 +18,17 @@ namespace AppWeb.Dashboard.Controllers
         }
         public ActionResult Crear()
         {
+            var proxy = new ServiceShopSoaClient();
+            var listadoSubCategoria = proxy.ListaSubCategorias();
+            ViewBag.CodSubCategoria = new SelectList(listadoSubCategoria, "CodSubCategoria", "Nombre");
             return View();
         }
         [HttpPost]
-        public ActionResult Crear(TProducto nuevoProducto)
+        public ActionResult Crear(TProducto nuevoProducto,int CodSubProducto)
         {
-
             var proxy = new ServiceShopSoaClient();
+            var subcategoria = proxy.BuscarSubCategoria(CodSubProducto);
+            nuevoProducto.TSubCategoria = subcategoria;
             proxy.AgregarProducto(nuevoProducto);
             return RedirectToAction("Index");
         }
@@ -34,6 +38,8 @@ namespace AppWeb.Dashboard.Controllers
             var proxy = new ServiceShopSoaClient();
             if (id.HasValue)
             {
+                var listadoSubCategoria = proxy.ListaSubCategorias();
+                ViewBag.CodSubCategoria = new SelectList(listadoSubCategoria, "CodSubCategoria", "Nombre");
                 var prod = proxy.BuscarProducto(id.Value);
                 return View(prod);
             }
@@ -43,9 +49,11 @@ namespace AppWeb.Dashboard.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Actualizar(TProducto modificarProducto)
+        public ActionResult Actualizar(TProducto modificarProducto, int CodSubProducto)
         {
             var proxy = new ServiceShopSoaClient();
+            var subcategoria = proxy.BuscarSubCategoria(CodSubProducto);
+            modificarProducto.TSubCategoria = subcategoria;
             proxy.ActualizarProducto(modificarProducto);
             return RedirectToAction("Index");
         }
