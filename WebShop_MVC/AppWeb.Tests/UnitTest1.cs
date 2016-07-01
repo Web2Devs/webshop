@@ -118,7 +118,7 @@ namespace AppWeb.Tests
                 Assert.AreNotEqual(subCate, null);
             }
         }
-        /*error*/
+        
         [TestMethod]
         public void ActualizarSubCategoria()
         {
@@ -135,7 +135,7 @@ namespace AppWeb.Tests
             }
         }
 
-        /*error*/
+        
         [TestMethod]
         public void BorrarSubCategoria()
         {
@@ -168,7 +168,7 @@ namespace AppWeb.Tests
                 Assert.AreNotEqual(pro, null);
             }
         }
-        /*error*/
+        
         [TestMethod]
         public void ActualizarProducto()
         {
@@ -209,19 +209,17 @@ namespace AppWeb.Tests
         {
             using (ServiceShopSoaClient proxy = new ServiceShopSoaClient())
             {
-                TOrdenVenta venta = new TOrdenVenta();
-                TProducto pro = new TProducto();
-                 
+                TOrdenVenta venta = proxy.AgregarNuevaVenta(new TCliente(), proxy.ListaProductos()
                 {
-                    venta.CodCliente = 1;
-                    venta.Total = 100;
-                    venta.FechaVenta = null;
-                    venta.FechaEntrega = null;
-                    proxy.AgregarNuevaVenta(venta,pro);
-                    Assert.AreNotEqual(venta, null);
+                    CodCliente = 1,
+                    Total = 100,
+                    FechaVenta = null,
+                    FechaEntrega = null
+                });
+                Assert.AreNotEqual(venta, null);
                 }
             }
-        }*/
+        */
 
         [TestMethod]
         public void ValidarLoginCliente()

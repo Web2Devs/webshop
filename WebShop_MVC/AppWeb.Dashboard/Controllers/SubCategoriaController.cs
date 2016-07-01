@@ -19,12 +19,16 @@ namespace AppWeb.Dashboard.Controllers
 
         public ActionResult Create()
         {
+            var ListarCategorias = proxy.ListaCategorias();
+            ViewBag.CodCategoria = new SelectList((from s in ListarCategorias select new { CodCategoria = s.CodCategoria, Nombre = s.Nombre }), "CodCategoria", "Nombre");
             return View();
         }
 
         [HttpPost]
-        public ActionResult Create(TSubCategoria subCategoria)
+        public ActionResult Create(TSubCategoria subCategoria, int codCategoria)
         {
+            var cod = proxy.BuscarCategoria(codCategoria);
+            subCategoria.TCategoria = cod;
             proxy.AgregarSubCategoria(subCategoria);
             return RedirectToAction("Index");
         }
