@@ -1,8 +1,99 @@
-﻿
+﻿@model AppWeb.ShopWS.TCliente
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="page accout-page">
+    <h4 class="muted">Mi Cuenta</h4>
 
+    <div class="page-title">
+        <h2 class="ht1">Informacion del Cliente</h2>
+    </div>
+    <div class="page-body">
+        @using (Html.BeginForm("Index", "Cliente", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+            <fieldset class="form-fields">
+                <legend class="legend_titulo">Informacion Personal</legend>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.CodCliente)
+                <div class="control-group">
+                    <label class="control-label">Genero</label>
+                    <div class="controls form-inline">
+                        <label class="inline radio">
+                            @Html.RadioButtonFor(x => x.Genero, "M")
+                            Hombre
+                        </label>
+                        <label class="inline radio">
+                            @Html.RadioButtonFor(x => x.Genero, "F")
+                            Mujer
+                        </label>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label required">Nombres</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.Nombres, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label required">Apellidos</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.Apellidos, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label required">Tipo Documento</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.TipoDocumento, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label required">Nro Documento</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.NroDocumento, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label required">Direccion</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label required">Razon Social</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.RazonSocial, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label required">Telefono</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label required">Email</label>
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.Email, new { disabled = "disabled", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label required">Usuario</label>
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.Usuario, new { disabled = "disabled", @readonly = "readonly" })
+                    </div>
+                </div>
+            </fieldset>
+            <div class="control-group buttons">
+                <div class="controls">
+                    <button type="submit" name="save-info-button" class="btn btn-primary save-customer-info-button">
+                        <i class="fa fa-floppy-o"></i>
+                        Actualizar
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+</div>

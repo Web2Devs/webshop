@@ -14,8 +14,12 @@ namespace AppWeb.Controllers
             return View();
         }
 
-        public ActionResult Lista(int id)
+        public ActionResult Lista(int? id)
         {
+            if (id.HasValue)
+            {
+
+            }
             return View();
         }
     }

@@ -26,6 +26,10 @@ namespace AppWeb.ServicioRest
         IEnumerable<TSubCategoria> ListaSubCategorias();
 
         [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "/SubCategoria/{id}", ResponseFormat = WebMessageFormat.Json)]
+        IEnumerable<TSubCategoria> ListaSubCategoriasId(string id);
+
+        [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "/Categorias", ResponseFormat = WebMessageFormat.Json)]
         IEnumerable<TCategoria> ListaCategorias();
     }

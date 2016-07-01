@@ -1022,6 +1022,8 @@
     <None Include="Service References\ShopWS\ServiceShopSoa2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Cliente\Register.cshtml" />
+    <Content Include="Views\Producto\Lista.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

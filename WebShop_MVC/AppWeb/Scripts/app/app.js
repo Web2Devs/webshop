@@ -1,7 +1,7 @@
 ﻿
 
 var appmvc = angular.module('appmvc', ['angular-loading-bar'], function ($locationProvider) {
-    $locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode(true);
 });
 
 appmvc.controller('HomeController', function ($scope, $http) {
@@ -31,16 +31,17 @@ appmvc.controller('MenuLeftController', function ($scope, RestService) {
 });
 
 appmvc.controller('CategoriaController', function ($scope, $location, RestService) {
-    $scope.categorias = [];
-    var pId = $location.path().split("/")[3] || "Unknown";
-    console.log(pId);
-    RestService.categoriactl()
-        .then(function (data) {
-            $scope.categorias = data;
-        },
-        function () {
-
-        });
+    $scope.subcategorias = [];
+    var pathArray = window.location.pathname.split('/');
+    var meth = pathArray[2] || "Lista";
+    var pId = pathArray[3] || "Unknown";
+    
+    console.log(meth, pId);
+    if (meth.valueOf("Lista"))
+        RestService.subcategoriactl(pId)
+            .then(function (data) {
+                $scope.subcategorias = data;
+            });
 });
 
 

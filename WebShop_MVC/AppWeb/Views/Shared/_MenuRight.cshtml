@@ -19,9 +19,29 @@
 
         @if (Session["Usuario"] != null)
         {
-            @Session["Usuario"].ToString()
+            <nav class="nav-list">
+                <ul class="level-1">
+                    <li class="parent">
+                        @Html.ActionLink("Mi Cuenta", "Index", "Cliente")
+                    </li>
+                    <li class="parent">
+                        @Html.ActionLink("Historial Compras", "ShopInfo", "Cliente")
+                    </li>
+                    <li class="parent">
+                        @Html.ActionLink("Mi Cuenta", "Index", "Cliente")
+                    </li>
+                    <li class="parent">
+                        @Html.ActionLink("Mi Cuenta", "Index", "Cliente")
+                    </li>
+                    <li class="parent">
+                        @Html.ActionLink("Mi Cuenta", "Index", "Cliente")
+                    </li>
+                    <li class="parent">
+                        @Html.ActionLink("Salir", "Logout", "Cliente")
+                    </li>
+                </ul>
+            </nav>
         }
-            
-        
+
     </div>
 </div>

@@ -37,5 +37,12 @@ namespace AppWeb.ServicioRest
             var listaSubCate = unit.SubCategoria.GetAll();
             return listaSubCate;
         }
+
+        public IEnumerable<TSubCategoria> ListaSubCategoriasId(string id)
+        {
+            var xid = int.Parse(id);
+            var listaSubCateB = ListaSubCategorias().Select(x => x).Where(x => x.CodCategoria == xid).ToList();
+            return listaSubCateB;
+        }
     }
 }

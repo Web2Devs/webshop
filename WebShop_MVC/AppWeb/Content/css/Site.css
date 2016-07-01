@@ -3477,3 +3477,39 @@ fieldset>legend>* {
 #loginmenu input {
     width: 165px;
 }
+
+#accout-page {
+
+}
+
+.ht1 {
+    font-family: 'Segoe UI Light','Segoe UI',Arial,Helvetica,'sans-serif' !important; 
+    font-weight: 100;
+    color: #3a87ad !important;
+}
+
+.legend_titulo {
+    padding-bottom: 8px;
+    font-family: 'Segoe UI Light','Segoe UI',Arial,Helvetica,'sans-serif';
+    font-weight: 100;
+    font-size: 20px;
+    line-height: 28px;
+    border-bottom: 1px solid #ddd;
+}
+
+.form-horizontal {
+
+}
+
+.control-group {
+    margin-bottom: 20px;
+}
+.control-label {
+    float: left;
+    width: 160px;
+    padding-top: 5px;
+    text-align: right;
+}
+.form-horizontal .controls {
+    margin-left: 180px;
+}
