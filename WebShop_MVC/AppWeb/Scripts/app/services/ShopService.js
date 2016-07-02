@@ -25,6 +25,8 @@ appmvc.service('ShopService', function ($http, $filter, $localStorage) {
     this.LoadShop = function () {
         if ($localStorage.Shop != null)
             shop_list = $localStorage.Shop;
+        else
+            $localStorage.Shop = [];
     };
 
     this.SaveShop = function () {
@@ -32,6 +34,7 @@ appmvc.service('ShopService', function ($http, $filter, $localStorage) {
     };
 
     this.getShopList = function () {
-        return shop_list;
+
+        return $localStorage.Shop;
     };
 });

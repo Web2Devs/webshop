@@ -21,7 +21,7 @@
                         </figure>
                         <div class="data">
                             <h3 class="name" data-equalized-part="name" style="min-height: 40px;">
-                                <a href="@Url.Action("Info", "Producto", null)/{{producto.Id}}">
+                                <a href="@Url.Action("Info", "Producto", null)/{{producto.CodProducto}}">
                                     <span>{{producto.Nombre}}</span>
                                 </a>
                             </h3>
@@ -37,7 +37,7 @@
                                 <a data-href="#" href="#" class="btn btn-warning ajax-cart-link" title="Add to cart" rel="tooltip nofollow" data-type="cart" data-action="add">
                                     <i class="fa fa-lg fa-cart-arrow-down"></i>
                                 </a>
-                                <a href="@Url.Action("Info", "Producto", null)/{{producto.Id}}" class="btn">
+                                <a href="@Url.Action("Info", "Producto", null)/{{producto.CodProducto}}" class="btn">
                                     <i class="fa fa-info-circle"></i>
                                     Detalles
                                 </a>
