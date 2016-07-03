@@ -1039,6 +1039,7 @@
     </None>
     <Content Include="Views\Cliente\Register.cshtml" />
     <Content Include="Views\Producto\Lista.cshtml" />
+    <Content Include="Views\Carrito\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1050,7 +1051,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\Img\producto\" />
     <Folder Include="Scripts\app\controllers\" />
-    <Folder Include="Views\Carrito\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />

@@ -34,7 +34,6 @@ appmvc.service('ShopService', function ($http, $filter, $localStorage) {
     };
 
     this.getShopList = function () {
-
         return $localStorage.Shop;
     };
 });

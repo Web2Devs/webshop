@@ -84,3 +84,8 @@ appmvc.controller('ProductoController', function ($scope, RestService, ShopServi
         });
     };
 });
+
+appmvc.controller('CarritoController', function ($scope, RestService, ShopService) {
+    ShopService.LoadShop();
+    $scope.shop_list = ShopService.getShopList();
+});

@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-controller="CarritoController">
+    <div ng-repeat="item in shop_list">
+        {{item.id}} - {{item.Cantidad}}
+    </div>
+</div>
