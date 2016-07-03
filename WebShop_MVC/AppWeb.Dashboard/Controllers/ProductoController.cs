@@ -24,10 +24,10 @@ namespace AppWeb.Dashboard.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Crear(TProducto nuevoProducto,int CodSubProducto)
+        public ActionResult Crear(TProducto nuevoProducto,int CodSubCategoria)
         {
             var proxy = new ServiceShopSoaClient();
-            var subcategoria = proxy.BuscarSubCategoria(CodSubProducto);
+            var subcategoria = proxy.BuscarSubCategoria(CodSubCategoria);
             nuevoProducto.TSubCategoria = subcategoria;
             proxy.AgregarProducto(nuevoProducto);
             return RedirectToAction("Index");
