@@ -1,4 +1,4 @@
-use master
+﻿use master
 go
 -- Creación de la Base de Datos
 begin
@@ -43,9 +43,9 @@ go
 create table TProducto
 (
 	CodProducto int identity not null constraint pk_CodProducto primary key (CodProducto),
-	Nombre  varchar(50),
+	Nombre  nvarchar(200),
 	Descripcion nvarchar(2000),
-	Especificacion varchar(60),
+	Especificacion nvarchar(2000),
 	Stock int,
 	Precio money CONSTRAINT prod_precio DEFAULT (0),
 	CodSubCategoria  int not null constraint fk_CodSubCategoria foreign key references TSubCategoria(CodSubCategoria)
