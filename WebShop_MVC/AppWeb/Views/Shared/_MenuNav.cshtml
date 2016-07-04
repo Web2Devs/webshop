@@ -3,11 +3,20 @@
         <div class="container">
             <ul class="nav nav-smart shrinkable">
                 <li>
-                    @Html.ActionLink("Home", "Index", "Home")
+                    <a href="/Home">
+                        <i class="fa fa-home"></i> Home
+                    </a>
                 </li>
                 <li class="divider-vertical"></li>
                 <li class="dropdown">
-                    @Html.ActionLink("Categoria", "Index", "Categoria")
+                    <a href="/Carrito">
+                        <i class="fa fa-cart-plus"></i> Carrito
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="/Cliente/Register">
+                        <i class="fa fa-registered"></i> Registro
+                    </a>
                 </li>
             </ul>
         </div>

@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "MetodoPago";
+    Layout = "~/Views/Shared/_ShopList.cshtml";
+}
+
+<div ng-controller="CarritoController">
+    <div class="page shopping-cart-page">
+        <div class="page-title">
+            <h1>Metodo de Pago</h1>
+        </div>
+        <div class="page-body checkout-data">
+            <form>
+                <div class="opt-list payment-methods">
+                    <div class="opt-list-item payment-method-item">
+                        <div class="opt-data">
+                            <div class="opt-control option-name">
+                                <label for="paymentmethod_1" class="radio">
+                                    <span class="opt-name">Tarjeta de Credito </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="opt-info payment-method-info">
+                            <div class="form-horizontal">
+                                <div class="control-group">
+                                    <label class="control-label required" for="CreditCardTypes">Selecciona Tarjeta</label>
+                                    <div class="controls">
+                                        <select class="dropdownlists" id="CreditCardType" name="CreditCardType" style="width: 180px;">
+                                            <option value="Visa">Visa</option>
+                                            <option value="MasterCard">Master Card</option>
+                                            <option value="Discover">Discover</option>
+                                            <option value="Amex">Amex</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label required" for="CardholderName">Nombre</label>
+                                    <div class="controls">
+                                        <input autocomplete="off" id="CardholderName" name="CardholderName" type="text" value="">
+                                        <span class="field-validation-valid" data-valmsg-for="CardholderName" data-valmsg-replace="true"></span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label required" for="CardNumber">Numero Tarjeta</label>
+                                    <div class="controls">
+                                        <input autocomplete="off" id="CardNumber" maxlength="22" name="CardNumber" type="text" value="">
+                                        <span class="field-validation-valid" data-valmsg-for="CardNumber" data-valmsg-replace="true"></span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label required" for="ExpireMonth">Vence</label>
+                                    <div class="controls">
+                                        <select class="dropdownlists" id="ExpireMonth" name="ExpireMonth" style="width: 83px;">
+                                            <option value="1">01</option>
+                                            <option value="2">02</option>
+                                            <option value="3">03</option>
+                                            <option value="4">04</option>
+                                            <option value="5">05</option>
+                                            <option value="6">06</option>
+                                            <option value="7">07</option>
+                                            <option value="8">08</option>
+                                            <option value="9">09</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                        </select>
+                                        /
+                                        <select class="dropdownlists" id="ExpireYear" name="ExpireYear" style="width: 83px;">
+                                            <option value="2016">2016</option>
+                                            <option value="2017">2017</option>
+                                            <option value="2018">2018</option>
+                                            <option value="2019">2019</option>
+                                            <option value="2020">2020</option>
+                                            <option value="2021">2021</option>
+                                            <option value="2022">2022</option>
+                                            <option value="2023">2023</option>
+                                            <option value="2024">2024</option>
+                                            <option value="2025">2025</option>
+                                            <option value="2026">2026</option>
+                                            <option value="2027">2027</option>
+                                            <option value="2028">2028</option>
+                                            <option value="2029">2029</option>
+                                            <option value="2030">2030</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label required" for="CardCode">Codigo Seguridad</label>
+                                    <div class="controls">
+                                        <input autocomplete="off" id="CardCode" maxlength="4" name="CardCode" style="width: 60px;" type="text" value="" />
+                                        <span class="field-validation-valid" data-valmsg-for="CardCode" data-valmsg-replace="true"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="select-button clearfix">
+                            <button type="button" class="btn btn-warning pull-right payment-method-next-step-button" ng-click="ConfirmarMetodo()">
+                                Siguiente <i class="fa fa-caret-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

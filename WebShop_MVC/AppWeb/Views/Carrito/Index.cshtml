@@ -1,11 +1,103 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_ShopList.cshtml";
 }
 
 <div ng-controller="CarritoController">
-    <div ng-repeat="item in shop_list">
-        {{item.id}} - {{item.Cantidad}}
+    <div class="page shopping-cart-page">
+        <div class="page-title">
+            <h1>Shop List</h1>
+        </div>
+        <div class="page-body">
+            <div class="order-summary-content">
+                <form novalidate>
+                    <table class="cart table table-order-products">
+                        <thead>
+                            <tr class="cart-header-row">
+                                <th></th>
+                                <th class="picture"></th>
+                                <th>Producto</th>
+                                <th class="unit-price">Precio</th>
+                                <th>Cantidad</th>
+                                <th class="omega">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody class="product-body product-body-simple">
+                            <tr class="cart-item-row" ng-repeat="item in shop_list" ng-cloak>
+                                <td class="remove">
+                                    <button type="button" class="btn pull-left" name="eliminarItem" ng-click="EliminarItem($index)">
+                                        <i class="fa fa-remove"></i>
+                                    </button>
+                                </td>
+                                <td class="productpicture nobr"><img class="img-polaroid" ng-src="~/Content/Img/producto/{{item.Producto.CodProducto}}.jpg" style="max-width:80px;max-height:80px"></td>
+                                <td class="product">
+                                    <a href="/Producto/Info/{{item.Producto.CodProducto}}" title="Details">{{item.Producto.Nombre}}</a>
+                                    <div class="short-desc">{{item.Producto.Descripcion}}</div>
+                                </td>
+                                <td class="unit-price nobr"><span class="product-unit-price">S/.{{item.Producto.Precio}}</span></td>
+                                <td class="nobr"><input name="itemquantity{{item.id}}" ng-model="item.Cantidad" ng-change="ValidarValue(item)" type="number" min="0" max="99" step="1" class="qty-input"><span class="measure-unit"></span></td>
+                                <td class="nobr omega"><span class="product-subtotal">S/.{{ProductoTotal = item.Producto.Precio * item.Cantidad}} </span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="common-buttons clearfix">
+                        <button type="submit" name="updatecart" value="updatecart" class="btn pull-right update-cart-button hide">
+                            <i class="fa fa-refresh"></i>Actualizar
+                        </button>
+                        <button type="submit" name="continuarShop" value="updatecart" ng-click="goHome()" class="btn pull-left">
+                            <i class="fa fa-cart-plus"></i> Continuar Comprando
+                        </button>
+                    </div>
+                    <div class="cart-footer row-fluid">
+                        <div class="span8 order-totals-left">
+
+                        </div>
+                        <div class="span4">
+                            <div class="total-info">
+                                <table class="cart-total table">
+                                    <tbody>
+                                        <tr class="lined">
+                                            <td class="cart-total-left">
+                                                <span class="nobr">
+                                                    <strong>Subtotal:</strong>
+                                                </span>
+                                            </td>
+                                            <td class="cart-total-right">
+                                                <span class="product-price order-total">S/. {{PrecioTotal}}</span>
+                                            </td>
+                                        </tr>
+                                        <tr class="lined">
+                                            <td class="cart-total-left">
+                                                <span class="nobr">Descuento</span>
+                                            </td>
+                                            <td class="cart-total-right">
+                                                <span class="product-price">S/.0</span>
+                                            </td>
+                                        </tr>
+                                        <tr class="omega lined">
+                                            <td class="cart-total-left">
+                                                <span class="nobr">
+                                                    <strong>Total:</strong>
+                                                </span>
+                                            </td>
+                                            <td class="cart-total-right">
+                                                <span class="product-price order-total">S/.{{PrecioTotal}}</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="checkout-buttons">
+                                    <button type="submit" class="btn btn-primary btn-large pull-right checkout-button" id="checkout" name="checkout" ng-click="submitForm()">
+                                        Comprar
+                                        <i class="fa fa-arrow-right" style="font-size: 18px"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>

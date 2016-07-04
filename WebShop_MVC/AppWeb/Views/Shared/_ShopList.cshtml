@@ -1,0 +1,22 @@
+﻿@Html.Partial("_Header")
+<div id="page">
+    <section id="header">
+        <div id="logobar" class="container">
+        </div>
+        <div class="container">
+            @Html.Partial("_MenuNav")
+        </div>
+    </section>
+    <div id="content-wrapper">
+        <section id="content" class="container drop-shadow lifted">
+
+            <div id="content-body" class="row">
+                <div id="content-center" class="span12 alpha omega">
+                    @RenderBody()
+                </div>
+            </div>
+        </section>
+    </div>
+    @Html.Partial("_Footer")
+</div>
+@Html.Partial("_EndHead")

@@ -3513,3 +3513,25 @@ fieldset>legend>* {
 .form-horizontal .controls {
     margin-left: 180px;
 }
+
+.page-title h1,
+.page-title h2,
+.page-title h3,
+.page-title h4,
+.page-title h5,
+.page-title h6{
+    font-family:'Segoe UI Light','Segoe UI',Arial,Helvetica,'sans-serif';
+    font-weight:100;
+    color:#3a87ad;
+}
+.page-title small{
+    color:inherit;
+    font-weight:inherit;
+}
+.modal-header.page-title{
+    margin-bottom:0;
+}
+
+.navbar {
+    margin-bottom: 0px !important;
+}

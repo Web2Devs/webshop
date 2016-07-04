@@ -44,7 +44,7 @@
                                     <div class="sg-image-wrapper">
                                         <div class="sg-image" style="width: 270px; height: 300px; top: 0px; left: 84px;">
                                             <a href="#" target="_blank">
-                                                <img src="~/Content/Img/producto/{{producto.CodProducto}}.png" data-zoom-image="{{producto.CodProducto}}.png" style="max-height: 300px; max-width: 400px" />
+                                                <img src="~/Content/Img/producto/{{producto.CodProducto}}.jpg" data-zoom-image="{{producto.CodProducto}}.jpg" style="max-height: 300px; max-width: 400px" />
                                             </a>
                                         </div>
                                     </div>
@@ -77,7 +77,7 @@
                                 <div class="add-to-cart line">
                                     <div class="form-inline clearfix" style="text-align: right;">
                                         <label class="qty-label">Cantidad</label>
-                                        <input id="Cantidad" name="Cantidad" class="qty-input" type="text" style="width: 25px" value="1" />
+                                        <input id="Cantidad" name="Cantidad" ng-model="Cantidad" class="qty-input" type="text" style="width: 25px" value="1" />
                                         <span style="margin-right: 5px;"></span>
                                         <button ng-click="submit()" class="btn btn-warning add-to-cart-button ajax-cart-link">
                                             Agregar

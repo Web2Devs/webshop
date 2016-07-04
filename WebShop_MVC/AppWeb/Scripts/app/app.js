@@ -7,7 +7,7 @@ var appmvc = angular.module('appmvc', ['angular-loading-bar', 'ngStorage'], func
 appmvc.controller('HomeController', function ($scope, $http) {
     $scope.productos = [];
     $scope.loading = true;
-    $http.get('/Content/promo.json')
+    /*$http.get('/Content/promo.json')
         .success(function (data) {
             $scope.productos = chunkArray(data, 3);
         })
@@ -15,8 +15,13 @@ appmvc.controller('HomeController', function ($scope, $http) {
             console.log("error");
         }).finally(function () {
             $scope.loading = false;
-        });
+        });*/
+});
 
+appmvc.controller('MenuRightController', function ($scope, RestService) {
+    $scope.goCarrito = function () {
+        window.location.pathname = "/Carrito";
+    };
 });
 
 appmvc.controller('MenuLeftController', function ($scope, RestService) {
@@ -24,6 +29,7 @@ appmvc.controller('MenuLeftController', function ($scope, RestService) {
     RestService.categoriactl()
         .then(function (data) {
             $scope.menuleft = data;
+            //console.log(data);
         },
         function () {
 
@@ -57,35 +63,81 @@ appmvc.controller('SubCategoriaController', function ($scope, RestService) {
             });
 });
 
+appmvc.controller('ProductoCateController', function ($scope, RestService, ShopService) {
+    $scope.productos = [];
+    var pathArray = window.location.pathname.split('/');
+    var meth = pathArray[2] || "Lista";
+    var pId = pathArray[3] || "Unknown";
+    if (meth.valueOf("Lista") && pId != "Unknown")
+        RestService.productocatectl(pId)
+            .then(function (data) {
+                $scope.productos = chunkArray(data, 3);
+            });
+});
+
 appmvc.controller('ProductoController', function ($scope, RestService, ShopService) {
     $scope.producto = {};
-    
+    $scope.Cantidad = 1;
     var pathArray = window.location.pathname.split('/');
     var meth = pathArray[2] || "Info";
     var pId = pathArray[3] || "Unknown";
+
     if (meth.valueOf("Info") && pId != "Unknown")
         RestService.productoinfoctl(pId)
             .then(function (data) {
                 $scope.producto = data;
             });
 
-    
-
     $scope.AddProducto = function () {
         var pro = {
-            id: $scope.producto.CodProducto,
-            Cantidad: 1
+            id: parseInt($scope.producto.CodProducto, 10),
+            Cantidad: parseInt($scope.Cantidad, 10),
+            Producto: $scope.producto
         };
-        console.log(pro);
 
-        alertify.alert("Producto Agregado.", function () {
-            alertify.message('OK');
-            ShopService.addProducto(pro);
-        });
+        alertify.success('Producto Agregado: ' + $scope.producto.Nombre),
+        ShopService.addProducto(pro);
     };
 });
 
 appmvc.controller('CarritoController', function ($scope, RestService, ShopService) {
     ShopService.LoadShop();
     $scope.shop_list = ShopService.getShopList();
+    
+    $scope.PrecioTotal = ShopService.calcularPrecioTotal();
+    $scope.CalcularTotal = function () {
+        $scope.PrecioTotal = ShopService.calcularPrecioTotal();
+    };
+
+    $scope.ValidarValue = function (item) {
+        if (item.Cantidad == null || item.Cantidad == 0)
+            item.Cantidad = 1;
+        $scope.CalcularTotal();
+    };
+
+    $scope.EliminarItem = function ($index) {
+        $scope.shop_list.splice($index, 1);
+        alertify.success('Se elimino el producto');
+        $scope.CalcularTotal();
+        /*alertify.confirm("Se eliminara el producto.",
+            function () {
+                console.log($index);
+                $scope.apply();
+            },
+            function () {
+                alertify.error('Cancel');
+            });*/
+    };
+
+    $scope.goHome = function () {
+        window.location.pathname = "/home";
+    };
+
+    $scope.submitForm = function () {
+        ShopService.SendCompra();
+    };
+
+    $scope.ConfirmarMetodo = function () {
+        window.location.pathname = "/Carrito/Confirm";
+    };
 });

@@ -998,6 +998,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\RespShopCompra.cs" />
+    <Compile Include="Models\ShopData.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\ShopWS\Reference.cs">
@@ -1040,6 +1042,11 @@
     <Content Include="Views\Cliente\Register.cshtml" />
     <Content Include="Views\Producto\Lista.cshtml" />
     <Content Include="Views\Carrito\Index.cshtml" />
+    <Content Include="Views\Shared\_ShopList.cshtml" />
+    <Content Include="Views\Cliente\ShopInfo.cshtml" />
+    <Content Include="Views\Carrito\Compra.cshtml" />
+    <Content Include="Views\Carrito\MetodoPago.cshtml" />
+    <Content Include="Views\Carrito\Confirm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

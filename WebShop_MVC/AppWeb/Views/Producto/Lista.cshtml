@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="product-grid home-page-product-grid block" ng-controller="SubCategoriaController">
+<div class="product-grid home-page-product-grid block" ng-controller="ProductoCateController">
     <div class="block-title">
         Productos
     </div>
@@ -16,7 +16,7 @@
                     <div class="item-box">
                         <figure class="picture" data-equalized-part="picture" data-equalized-valign="true" style="min-height: 100px; line-height: 100px; vertical-align: middle;">
                             <a href="@Url.Action("Info", "Producto", null)/{{producto.CodProducto}}" title="{{producto.Nombre}}">
-                                <img alt="{{producto.Nombre}}" ng-src="~/Content/Img/producto/{{producto.CodProducto}}.png" title="{{producto.Nombre}}">
+                                <img alt="{{producto.Nombre}}" ng-src="~/Content/Img/producto/{{producto.CodProducto}}.jpg" title="{{producto.Nombre}}">
                             </a>
                         </figure>
                         <div class="data">

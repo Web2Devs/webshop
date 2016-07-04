@@ -49,6 +49,7 @@ namespace AppWeb
                       "~/Content/bootstrap.min.css",
                       "~/Content/bootstrap-responsive.min.css",
                       "~/Content/alertify.min.css",
+                      "~/Content/themes/default.min.css",
                       "~/Content/themes/bootstrap.min.css",
                       "~/Content/loading-bar.min.css",
                       "~/Content/css/Site.css",

@@ -40,6 +40,14 @@ namespace AppWeb.ServicioRest
             return listaProductos;
         }
 
+        public IEnumerable<TProducto> ListaProductosCate(string id)
+        {
+            int xid = int.Parse(id);
+            var subcategoria = unit.SubCategoria.Queryable().Where(x => x.CodCategoria == xid).Select(x => x.CodSubCategoria).First();
+            var listProductosCate = unit.Producto.Queryable().Select(x => x).Where(x => x.CodSubCategoria == subcategoria).ToList();
+            return listProductosCate;
+        }
+
         public IEnumerable<TProducto> ListaProductosSubCate(string id)
         {
             int xid = int.Parse(id);

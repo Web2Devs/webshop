@@ -4,6 +4,7 @@ appmvc.service('RestService', function ($http) {
     this.data_categorias = null;
     this.sub_categorias = null;
     this.data_productos = null;
+    this.data_productos_cate = null;
 
     this.categoriactl = function (update) {
         if (update || !this.data_categorias)
@@ -53,6 +54,23 @@ appmvc.service('RestService', function ($http) {
                         return [];
                 });
         return this.data_productos;
+    };
+
+    this.productocatectl = function (id, update) {
+        if (update || !this.data_productos_cate)
+            this.data_productos_cate = $http.get(SERVICE_PATH + '/ProductosCate/' + id)
+                .then(function (response) {
+                    console.log(response);
+                    return response.data;
+                },
+                function (errResponse) {
+                    console.error('Error while fetching users');
+                    if (this.data_productos_cate)
+                        return this.data_productos_cate;
+                    else
+                        return [];
+                });
+        return this.data_productos_cate;
     };
 
 

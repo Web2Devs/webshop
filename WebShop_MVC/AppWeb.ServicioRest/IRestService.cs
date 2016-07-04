@@ -30,6 +30,10 @@ namespace AppWeb.ServicioRest
         IEnumerable<TProducto> ListaProductosSubCate(string id);
 
         [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "/ProductosCate/{id}", ResponseFormat = WebMessageFormat.Json)]
+        IEnumerable<TProducto> ListaProductosCate(string id);
+
+        [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "/SubCategoria", ResponseFormat = WebMessageFormat.Json)]
         IEnumerable<TSubCategoria> ListaSubCategorias();
 

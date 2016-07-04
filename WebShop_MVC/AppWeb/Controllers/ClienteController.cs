@@ -22,6 +22,11 @@ namespace AppWeb.Controllers
             return View(_cli);
         }
 
+        public ActionResult ShopInfo()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Index(TCliente _form_cli)
         {
@@ -56,7 +61,11 @@ namespace AppWeb.Controllers
                 FormsAuthentication.SetAuthCookie(_cli.Usuario, false);
                 Session["CodCliente"] = _cli.CodCliente;
                 Session["Usuario"] = _cli.Usuario;
-                return RedirectToAction("Index");
+                if (Session["CompraSend"] != null || (bool)Session["CompraSend"] == true)
+                {
+                    return RedirectToAction("MetodoPago", "Carrito");
+                } else
+                    return RedirectToAction("Index");
             }
             return View();
         }
@@ -79,7 +88,12 @@ namespace AppWeb.Controllers
                     FormsAuthentication.SetAuthCookie(_cliente.Usuario, false);
                     Session["CodCliente"] = _cliente.CodCliente;
                     Session["Usuario"] = _cliente.Usuario;
-                    return RedirectToAction("Index");
+                    if (Session["CompraSend"] != null || (bool)Session["CompraSend"] == true)
+                    {
+                        return RedirectToAction("MetodoPago", "Carrito");
+                    }
+                    else
+                        return RedirectToAction("Index");
                 }
                 else
                 {
