@@ -10,7 +10,9 @@
             <h1>Metodo de Pago</h1>
         </div>
         <div class="page-body checkout-data">
-            <form>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
                 <div class="opt-list payment-methods">
                     <div class="opt-list-item payment-method-item">
                         <div class="opt-data">
@@ -25,8 +27,8 @@
                                 <div class="control-group">
                                     <label class="control-label required" for="CreditCardTypes">Selecciona Tarjeta</label>
                                     <div class="controls">
-                                        <select class="dropdownlists" id="CreditCardType" name="CreditCardType" style="width: 180px;">
-                                            <option value="Visa">Visa</option>
+                                        <select class="dropdownlists" id="CreditCardType" name="CreditCardType" style="width: 180px;" required>
+                                            <option value="Visa" selected>Visa</option>
                                             <option value="MasterCard">Master Card</option>
                                             <option value="Discover">Discover</option>
                                             <option value="Amex">Amex</option>
@@ -36,14 +38,14 @@
                                 <div class="control-group">
                                     <label class="control-label required" for="CardholderName">Nombre</label>
                                     <div class="controls">
-                                        <input autocomplete="off" id="CardholderName" name="CardholderName" type="text" value="">
+                                        <input autocomplete="off" id="CardholderName" name="CardholderName" type="text" value="" required>
                                         <span class="field-validation-valid" data-valmsg-for="CardholderName" data-valmsg-replace="true"></span>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label required" for="CardNumber">Numero Tarjeta</label>
                                     <div class="controls">
-                                        <input autocomplete="off" id="CardNumber" maxlength="22" name="CardNumber" type="text" value="">
+                                        <input autocomplete="off" id="CardNumber" maxlength="22" name="CardNumber" ng-change="CheckValidCard(CardNumber)" ng-model="CardNumber" type="text" value="" required>
                                         <span class="field-validation-valid" data-valmsg-for="CardNumber" data-valmsg-replace="true"></span>
                                     </div>
                                 </div>
@@ -87,20 +89,20 @@
                                 <div class="control-group">
                                     <label class="control-label required" for="CardCode">Codigo Seguridad</label>
                                     <div class="controls">
-                                        <input autocomplete="off" id="CardCode" maxlength="4" name="CardCode" style="width: 60px;" type="text" value="" />
+                                        <input autocomplete="off" id="CardCode" maxlength="4" name="CardCode" style="width: 60px;" type="text" value="" required />
                                         <span class="field-validation-valid" data-valmsg-for="CardCode" data-valmsg-replace="true"></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="select-button clearfix">
-                            <button type="button" class="btn btn-warning pull-right payment-method-next-step-button" ng-click="ConfirmarMetodo()">
+                            <button type="submit" class="btn btn-warning pull-right payment-method-next-step-button">
                                 Siguiente <i class="fa fa-caret-right"></i>
                             </button>
                         </div>
                     </div>
                 </div>
-            </form>
+            }
         </div>
     </div>
 </div>

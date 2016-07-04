@@ -140,4 +140,12 @@ appmvc.controller('CarritoController', function ($scope, RestService, ShopServic
     $scope.ConfirmarMetodo = function () {
         window.location.pathname = "/Carrito/Confirm";
     };
+
+    $scope.CheckValidCard = function (cardItem) {
+        console.log(cardItem);
+    };
+
+    $scope.CompraCompleta = function () {
+        ShopService.clearShop();
+    };
 });

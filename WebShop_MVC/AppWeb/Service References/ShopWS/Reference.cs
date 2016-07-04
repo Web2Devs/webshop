@@ -59,10 +59,10 @@ namespace AppWeb.ShopWS {
         private string RazonSocialField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private AppWeb.ShopWS.TCabeceraVenta[] TCabeceraVentaField;
+        private System.Collections.Generic.List<AppWeb.ShopWS.TCabeceraVenta> TCabeceraVentaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private AppWeb.ShopWS.TOrdenVenta[] TOrdenVentaField;
+        private System.Collections.Generic.List<AppWeb.ShopWS.TOrdenVenta> TOrdenVentaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TelefonoField;
@@ -240,7 +240,7 @@ namespace AppWeb.ShopWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public AppWeb.ShopWS.TCabeceraVenta[] TCabeceraVenta {
+        public System.Collections.Generic.List<AppWeb.ShopWS.TCabeceraVenta> TCabeceraVenta {
             get {
                 return this.TCabeceraVentaField;
             }
@@ -253,7 +253,7 @@ namespace AppWeb.ShopWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public AppWeb.ShopWS.TOrdenVenta[] TOrdenVenta {
+        public System.Collections.Generic.List<AppWeb.ShopWS.TOrdenVenta> TOrdenVenta {
             get {
                 return this.TOrdenVentaField;
             }
@@ -448,7 +448,7 @@ namespace AppWeb.ShopWS {
         private AppWeb.ShopWS.TCliente TClienteField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private AppWeb.ShopWS.TDetalleVenta[] TDetalleVentaField;
+        private System.Collections.Generic.List<AppWeb.ShopWS.TDetalleVenta> TDetalleVentaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<decimal> TotalField;
@@ -529,7 +529,7 @@ namespace AppWeb.ShopWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public AppWeb.ShopWS.TDetalleVenta[] TDetalleVenta {
+        public System.Collections.Generic.List<AppWeb.ShopWS.TDetalleVenta> TDetalleVenta {
             get {
                 return this.TDetalleVentaField;
             }
@@ -589,7 +589,7 @@ namespace AppWeb.ShopWS {
         private System.Nullable<decimal> PrecioUnitarioField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private AppWeb.ShopWS.TCabeceraVenta[] TCabeceraVentaField;
+        private System.Collections.Generic.List<AppWeb.ShopWS.TCabeceraVenta> TCabeceraVentaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private AppWeb.ShopWS.TOrdenVenta TOrdenVentaField;
@@ -673,7 +673,7 @@ namespace AppWeb.ShopWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public AppWeb.ShopWS.TCabeceraVenta[] TCabeceraVenta {
+        public System.Collections.Generic.List<AppWeb.ShopWS.TCabeceraVenta> TCabeceraVenta {
             get {
                 return this.TCabeceraVentaField;
             }
@@ -752,7 +752,7 @@ namespace AppWeb.ShopWS {
         private System.Nullable<int> StockField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private AppWeb.ShopWS.TDetalleVenta[] TDetalleVentaField;
+        private System.Collections.Generic.List<AppWeb.ShopWS.TDetalleVenta> TDetalleVentaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private AppWeb.ShopWS.TSubCategoria TSubCategoriaField;
@@ -859,7 +859,7 @@ namespace AppWeb.ShopWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public AppWeb.ShopWS.TDetalleVenta[] TDetalleVenta {
+        public System.Collections.Generic.List<AppWeb.ShopWS.TDetalleVenta> TDetalleVenta {
             get {
                 return this.TDetalleVentaField;
             }
@@ -916,7 +916,7 @@ namespace AppWeb.ShopWS {
         private AppWeb.ShopWS.TCategoria TCategoriaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private AppWeb.ShopWS.TProducto[] TProductoField;
+        private System.Collections.Generic.List<AppWeb.ShopWS.TProducto> TProductoField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -981,7 +981,7 @@ namespace AppWeb.ShopWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public AppWeb.ShopWS.TProducto[] TProducto {
+        public System.Collections.Generic.List<AppWeb.ShopWS.TProducto> TProducto {
             get {
                 return this.TProductoField;
             }
@@ -1019,7 +1019,7 @@ namespace AppWeb.ShopWS {
         private string NombreField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private AppWeb.ShopWS.TSubCategoria[] TSubCategoriaField;
+        private System.Collections.Generic.List<AppWeb.ShopWS.TSubCategoria> TSubCategoriaField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1058,7 +1058,7 @@ namespace AppWeb.ShopWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public AppWeb.ShopWS.TSubCategoria[] TSubCategoria {
+        public System.Collections.Generic.List<AppWeb.ShopWS.TSubCategoria> TSubCategoria {
             get {
                 return this.TSubCategoriaField;
             }
@@ -1066,6 +1066,208 @@ namespace AppWeb.ShopWS {
                 if ((object.ReferenceEquals(this.TSubCategoriaField, value) != true)) {
                     this.TSubCategoriaField = value;
                     this.RaisePropertyChanged("TSubCategoria");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ShopData", Namespace="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model")]
+    [System.SerializableAttribute()]
+    public partial class ShopData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CantidadField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private AppWeb.ShopWS.TProducto ProductoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Cantidad {
+            get {
+                return this.CantidadField;
+            }
+            set {
+                if ((this.CantidadField.Equals(value) != true)) {
+                    this.CantidadField = value;
+                    this.RaisePropertyChanged("Cantidad");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public AppWeb.ShopWS.TProducto Producto {
+            get {
+                return this.ProductoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductoField, value) != true)) {
+                    this.ProductoField = value;
+                    this.RaisePropertyChanged("Producto");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                if ((this.idField.Equals(value) != true)) {
+                    this.idField = value;
+                    this.RaisePropertyChanged("id");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CreditCardData", Namespace="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model")]
+    [System.SerializableAttribute()]
+    public partial class CreditCardData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CardCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CardNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CardholderNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CreditCardTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ExpireMonthField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ExpireYearField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CardCode {
+            get {
+                return this.CardCodeField;
+            }
+            set {
+                if ((this.CardCodeField.Equals(value) != true)) {
+                    this.CardCodeField = value;
+                    this.RaisePropertyChanged("CardCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CardNumber {
+            get {
+                return this.CardNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CardNumberField, value) != true)) {
+                    this.CardNumberField = value;
+                    this.RaisePropertyChanged("CardNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CardholderName {
+            get {
+                return this.CardholderNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CardholderNameField, value) != true)) {
+                    this.CardholderNameField = value;
+                    this.RaisePropertyChanged("CardholderName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CreditCardType {
+            get {
+                return this.CreditCardTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CreditCardTypeField, value) != true)) {
+                    this.CreditCardTypeField = value;
+                    this.RaisePropertyChanged("CreditCardType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ExpireMonth {
+            get {
+                return this.ExpireMonthField;
+            }
+            set {
+                if ((this.ExpireMonthField.Equals(value) != true)) {
+                    this.ExpireMonthField = value;
+                    this.RaisePropertyChanged("ExpireMonth");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ExpireYear {
+            get {
+                return this.ExpireYearField;
+            }
+            set {
+                if ((this.ExpireYearField.Equals(value) != true)) {
+                    this.ExpireYearField = value;
+                    this.RaisePropertyChanged("ExpireYear");
                 }
             }
         }
@@ -1097,10 +1299,10 @@ namespace AppWeb.ShopWS {
         System.Threading.Tasks.Task ActualizarClienteAsync(AppWeb.ShopWS.TCliente cliente);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/ListaClientes", ReplyAction="http://tempuri.org/IServiceShopSoa/ListaClientesResponse")]
-        AppWeb.ShopWS.TCliente[] ListaClientes();
+        System.Collections.Generic.List<AppWeb.ShopWS.TCliente> ListaClientes();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/ListaClientes", ReplyAction="http://tempuri.org/IServiceShopSoa/ListaClientesResponse")]
-        System.Threading.Tasks.Task<AppWeb.ShopWS.TCliente[]> ListaClientesAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<AppWeb.ShopWS.TCliente>> ListaClientesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/BuscarCliente", ReplyAction="http://tempuri.org/IServiceShopSoa/BuscarClienteResponse")]
         AppWeb.ShopWS.TCliente BuscarCliente(int id);
@@ -1127,10 +1329,10 @@ namespace AppWeb.ShopWS {
         System.Threading.Tasks.Task BorrarProductoAsync(AppWeb.ShopWS.TProducto producto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/ListaProductos", ReplyAction="http://tempuri.org/IServiceShopSoa/ListaProductosResponse")]
-        AppWeb.ShopWS.TProducto[] ListaProductos();
+        System.Collections.Generic.List<AppWeb.ShopWS.TProducto> ListaProductos();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/ListaProductos", ReplyAction="http://tempuri.org/IServiceShopSoa/ListaProductosResponse")]
-        System.Threading.Tasks.Task<AppWeb.ShopWS.TProducto[]> ListaProductosAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<AppWeb.ShopWS.TProducto>> ListaProductosAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/BuscarProducto", ReplyAction="http://tempuri.org/IServiceShopSoa/BuscarProductoResponse")]
         AppWeb.ShopWS.TProducto BuscarProducto(int id);
@@ -1157,10 +1359,10 @@ namespace AppWeb.ShopWS {
         System.Threading.Tasks.Task BorrarSubCategoriaAsync(AppWeb.ShopWS.TSubCategoria subCategoria);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/ListaSubCategorias", ReplyAction="http://tempuri.org/IServiceShopSoa/ListaSubCategoriasResponse")]
-        AppWeb.ShopWS.TSubCategoria[] ListaSubCategorias();
+        System.Collections.Generic.List<AppWeb.ShopWS.TSubCategoria> ListaSubCategorias();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/ListaSubCategorias", ReplyAction="http://tempuri.org/IServiceShopSoa/ListaSubCategoriasResponse")]
-        System.Threading.Tasks.Task<AppWeb.ShopWS.TSubCategoria[]> ListaSubCategoriasAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<AppWeb.ShopWS.TSubCategoria>> ListaSubCategoriasAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/BuscarSubCategoria", ReplyAction="http://tempuri.org/IServiceShopSoa/BuscarSubCategoriaResponse")]
         AppWeb.ShopWS.TSubCategoria BuscarSubCategoria(int id);
@@ -1187,10 +1389,10 @@ namespace AppWeb.ShopWS {
         System.Threading.Tasks.Task BorrarCategoriaAsync(AppWeb.ShopWS.TCategoria categoria);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/ListaCategorias", ReplyAction="http://tempuri.org/IServiceShopSoa/ListaCategoriasResponse")]
-        AppWeb.ShopWS.TCategoria[] ListaCategorias();
+        System.Collections.Generic.List<AppWeb.ShopWS.TCategoria> ListaCategorias();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/ListaCategorias", ReplyAction="http://tempuri.org/IServiceShopSoa/ListaCategoriasResponse")]
-        System.Threading.Tasks.Task<AppWeb.ShopWS.TCategoria[]> ListaCategoriasAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<AppWeb.ShopWS.TCategoria>> ListaCategoriasAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/BuscarCategoria", ReplyAction="http://tempuri.org/IServiceShopSoa/BuscarCategoriaResponse")]
         AppWeb.ShopWS.TCategoria BuscarCategoria(int id);
@@ -1199,10 +1401,16 @@ namespace AppWeb.ShopWS {
         System.Threading.Tasks.Task<AppWeb.ShopWS.TCategoria> BuscarCategoriaAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/AgregarNuevaVenta", ReplyAction="http://tempuri.org/IServiceShopSoa/AgregarNuevaVentaResponse")]
-        AppWeb.ShopWS.TOrdenVenta AgregarNuevaVenta(AppWeb.ShopWS.TCliente cliente, AppWeb.ShopWS.TProducto[] productos);
+        int AgregarNuevaVenta(AppWeb.ShopWS.TCliente cliente, System.Collections.Generic.List<AppWeb.ShopWS.ShopData> productos, AppWeb.ShopWS.CreditCardData card);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/AgregarNuevaVenta", ReplyAction="http://tempuri.org/IServiceShopSoa/AgregarNuevaVentaResponse")]
-        System.Threading.Tasks.Task<AppWeb.ShopWS.TOrdenVenta> AgregarNuevaVentaAsync(AppWeb.ShopWS.TCliente cliente, AppWeb.ShopWS.TProducto[] productos);
+        System.Threading.Tasks.Task<int> AgregarNuevaVentaAsync(AppWeb.ShopWS.TCliente cliente, System.Collections.Generic.List<AppWeb.ShopWS.ShopData> productos, AppWeb.ShopWS.CreditCardData card);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/BuscarOrdenVenta", ReplyAction="http://tempuri.org/IServiceShopSoa/BuscarOrdenVentaResponse")]
+        AppWeb.ShopWS.TOrdenVenta BuscarOrdenVenta(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/BuscarOrdenVenta", ReplyAction="http://tempuri.org/IServiceShopSoa/BuscarOrdenVentaResponse")]
+        System.Threading.Tasks.Task<AppWeb.ShopWS.TOrdenVenta> BuscarOrdenVentaAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceShopSoa/ValidarLoginCliente", ReplyAction="http://tempuri.org/IServiceShopSoa/ValidarLoginClienteResponse")]
         AppWeb.ShopWS.TCliente ValidarLoginCliente(string usuario, string password);
@@ -1254,11 +1462,11 @@ namespace AppWeb.ShopWS {
             return base.Channel.ActualizarClienteAsync(cliente);
         }
         
-        public AppWeb.ShopWS.TCliente[] ListaClientes() {
+        public System.Collections.Generic.List<AppWeb.ShopWS.TCliente> ListaClientes() {
             return base.Channel.ListaClientes();
         }
         
-        public System.Threading.Tasks.Task<AppWeb.ShopWS.TCliente[]> ListaClientesAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<AppWeb.ShopWS.TCliente>> ListaClientesAsync() {
             return base.Channel.ListaClientesAsync();
         }
         
@@ -1294,11 +1502,11 @@ namespace AppWeb.ShopWS {
             return base.Channel.BorrarProductoAsync(producto);
         }
         
-        public AppWeb.ShopWS.TProducto[] ListaProductos() {
+        public System.Collections.Generic.List<AppWeb.ShopWS.TProducto> ListaProductos() {
             return base.Channel.ListaProductos();
         }
         
-        public System.Threading.Tasks.Task<AppWeb.ShopWS.TProducto[]> ListaProductosAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<AppWeb.ShopWS.TProducto>> ListaProductosAsync() {
             return base.Channel.ListaProductosAsync();
         }
         
@@ -1334,11 +1542,11 @@ namespace AppWeb.ShopWS {
             return base.Channel.BorrarSubCategoriaAsync(subCategoria);
         }
         
-        public AppWeb.ShopWS.TSubCategoria[] ListaSubCategorias() {
+        public System.Collections.Generic.List<AppWeb.ShopWS.TSubCategoria> ListaSubCategorias() {
             return base.Channel.ListaSubCategorias();
         }
         
-        public System.Threading.Tasks.Task<AppWeb.ShopWS.TSubCategoria[]> ListaSubCategoriasAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<AppWeb.ShopWS.TSubCategoria>> ListaSubCategoriasAsync() {
             return base.Channel.ListaSubCategoriasAsync();
         }
         
@@ -1374,11 +1582,11 @@ namespace AppWeb.ShopWS {
             return base.Channel.BorrarCategoriaAsync(categoria);
         }
         
-        public AppWeb.ShopWS.TCategoria[] ListaCategorias() {
+        public System.Collections.Generic.List<AppWeb.ShopWS.TCategoria> ListaCategorias() {
             return base.Channel.ListaCategorias();
         }
         
-        public System.Threading.Tasks.Task<AppWeb.ShopWS.TCategoria[]> ListaCategoriasAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<AppWeb.ShopWS.TCategoria>> ListaCategoriasAsync() {
             return base.Channel.ListaCategoriasAsync();
         }
         
@@ -1390,12 +1598,20 @@ namespace AppWeb.ShopWS {
             return base.Channel.BuscarCategoriaAsync(id);
         }
         
-        public AppWeb.ShopWS.TOrdenVenta AgregarNuevaVenta(AppWeb.ShopWS.TCliente cliente, AppWeb.ShopWS.TProducto[] productos) {
-            return base.Channel.AgregarNuevaVenta(cliente, productos);
+        public int AgregarNuevaVenta(AppWeb.ShopWS.TCliente cliente, System.Collections.Generic.List<AppWeb.ShopWS.ShopData> productos, AppWeb.ShopWS.CreditCardData card) {
+            return base.Channel.AgregarNuevaVenta(cliente, productos, card);
         }
         
-        public System.Threading.Tasks.Task<AppWeb.ShopWS.TOrdenVenta> AgregarNuevaVentaAsync(AppWeb.ShopWS.TCliente cliente, AppWeb.ShopWS.TProducto[] productos) {
-            return base.Channel.AgregarNuevaVentaAsync(cliente, productos);
+        public System.Threading.Tasks.Task<int> AgregarNuevaVentaAsync(AppWeb.ShopWS.TCliente cliente, System.Collections.Generic.List<AppWeb.ShopWS.ShopData> productos, AppWeb.ShopWS.CreditCardData card) {
+            return base.Channel.AgregarNuevaVentaAsync(cliente, productos, card);
+        }
+        
+        public AppWeb.ShopWS.TOrdenVenta BuscarOrdenVenta(int id) {
+            return base.Channel.BuscarOrdenVenta(id);
+        }
+        
+        public System.Threading.Tasks.Task<AppWeb.ShopWS.TOrdenVenta> BuscarOrdenVentaAsync(int id) {
+            return base.Channel.BuscarOrdenVentaAsync(id);
         }
         
         public AppWeb.ShopWS.TCliente ValidarLoginCliente(string usuario, string password) {

@@ -1,8 +1,64 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Confirm";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_ShopList.cshtml";
 }
+<div ng-controller="CarritoController">
+    <div class="page checkout-confirm-page">
+        <div class="page-title">
+            <h1>Confirm</h1>
+        </div>
+        <div class="page-body checkout-data">
+            <div class="order-summary-body">
+                <div class="order-summary-content">
+                    <div class="order-review-data-box">
+                        <div class="row-fluid">
+                            <div class="billinginfo span6">
+                                <div class="block block-bordered">
+                                    <div class="block-title">
+                                        <span>Informacion del Cliente</span>
+                                    </div>
+                                    <div class="block-body">
+                                        <div class="name">
+                                            Carlos
+                                        </div>
+                                        <div class="email">
+                                            Email: .....
+                                        </div>
+                                        <div class="phone">
+                                            123456
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="shippinginfo span6">
+                                <div class="block block-bordered">
+                                    <div class="block-title">
+                                        <span>Direccion de Envio</span>
+                                    </div>
+                                    <div class="block-body">
+                                        <div class="name">
+                                            ............
+                                        </div>
+                                        <div class="address1">
+                                            Direccion
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                @using (Html.BeginForm())
+            {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Confirmar" class="btn btn-primary pull-right" />
+                }
+            </div>
+        </div>
+    </div>
+</div>
 
-<h2>Confirm</h2>
+        
 

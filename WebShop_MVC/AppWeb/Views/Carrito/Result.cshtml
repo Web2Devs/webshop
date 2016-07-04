@@ -1,0 +1,56 @@
+﻿@model AppWeb.ShopWS.TOrdenVenta
+
+@{
+    ViewBag.Title = "Result";
+    Layout = "~/Views/Shared/_ShopList.cshtml";
+}
+
+<div class="page checkout-completed-page">
+    <div class="page-title">
+        <h1 class="text-success">Tu orden ha sido recibida</h1>
+        <h3 class="thank-you">Gracias por su compra!</h3>
+    </div>
+    <div class="page-body checkout-data">
+        <div class="order-completed">
+            <div class="body">
+                Su número de orden: @Html.DisplayFor(modelItem => Model.NroVenta)
+            </div>
+            <p class="select-button">
+                <a href="#/Cliente/ShopInfo/" class="btn btn-warning" rel="nofollow">
+                    <i class="fa fa-fw fa-list-alt"></i>
+                    Detalles de la orden
+                </a>
+                <a href="/Home" class="btn order-completed-continue-button">
+                    <i class="fa fa-fw fa-home"></i>
+                    Seguir comprando
+                </a>
+            </p>
+        </div>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NroVenta)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaVenta)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Total)
+                </th>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.NroVenta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.FechaVenta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Total)
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>

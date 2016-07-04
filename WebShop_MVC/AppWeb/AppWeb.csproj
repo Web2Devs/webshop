@@ -968,13 +968,13 @@
     <Content Include="Service References\ShopWS\AppWeb.ShopWS.TCliente.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\ShopWS\AppWeb.ShopWS.TOrdenVenta.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Service References\ShopWS\AppWeb.ShopWS.TProducto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\ShopWS\AppWeb.ShopWS.TSubCategoria.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ShopWS\AppWeb.ShopWS.TOrdenVenta.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\ShopWS\ServiceShopSoa.disco" />
@@ -999,7 +999,6 @@
     </Compile>
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\RespShopCompra.cs" />
-    <Compile Include="Models\ShopData.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\ShopWS\Reference.cs">
@@ -1047,6 +1046,8 @@
     <Content Include="Views\Carrito\Compra.cshtml" />
     <Content Include="Views\Carrito\MetodoPago.cshtml" />
     <Content Include="Views\Carrito\Confirm.cshtml" />
+    <Content Include="Views\Carrito\Resultx.cshtml" />
+    <Content Include="Views\Carrito\Result.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

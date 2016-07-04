@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using AppWeb.ShopWS;
+using AppWeb.Framework.Data.DB.Model;
 
-namespace AppWeb.Models
+namespace AppWeb.Framework.Data.DB.Model
 {
     public class ShopData
     {

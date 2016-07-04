@@ -10,6 +10,10 @@ namespace AppWeb.Servicios
     public class ServiceShopSoa : IServiceShopSoa
     {
         private UnitOfWork unit = new UnitOfWork();
+        public ServiceShopSoa()
+        {
+
+        }
         #region Categoria
         public TCategoria AgregarCategoria(TCategoria categoria)
         {
@@ -112,11 +116,14 @@ namespace AppWeb.Servicios
         #endregion
 
         #region Opracion
-        public TOrdenVenta AgregarNuevaVenta(TCliente cliente, List<TProducto> productos)
+        public int AgregarNuevaVenta(TCliente cliente, List<ShopData> productos, CreditCardData card)
         {
-            TOrdenVenta _ordenventa = unit.Venta.Agregar(cliente, productos);
-            unit.SaveChanges();
-            return _ordenventa;
+            return unit.Venta.Agregar(cliente, productos, card);
+        }
+        public TOrdenVenta BuscarOrdenVenta(int id)
+        {
+            TOrdenVenta ordenVenta = unit.Venta.Find(id);
+            return ordenVenta;
         }
         public TCliente ValidarLoginCliente(string usuario, string password)
         {

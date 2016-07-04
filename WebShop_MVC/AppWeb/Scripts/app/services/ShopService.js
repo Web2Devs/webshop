@@ -29,6 +29,11 @@ appmvc.service('ShopService', function ($http, $filter, $localStorage) {
             $localStorage.Shop = [];
     };
 
+    this.clearShop = function () {
+        $localStorage.Shop = [];
+        shop_list = [];
+    };
+
     this.SaveShop = function () {
         $localStorage.Shop = shop_list;
     };

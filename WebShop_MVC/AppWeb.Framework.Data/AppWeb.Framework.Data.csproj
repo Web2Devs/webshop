@@ -53,6 +53,7 @@
     <Compile Include="DB\Control\UnitOfWork.cs" />
     <Compile Include="DB\Control\Venta.cs" />
     <Compile Include="DB\Interfaz\IEntidadDB.cs" />
+    <Compile Include="DB\Model\CreditCardData.cs" />
     <Compile Include="DB\Model\ModelShop.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -68,6 +69,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelShop.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DB\Model\ShopData.cs" />
     <Compile Include="DB\Model\TCabeceraVenta.cs">
       <DependentUpon>ModelShop.tt</DependentUpon>
     </Compile>

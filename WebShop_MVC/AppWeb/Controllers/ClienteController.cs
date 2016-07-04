@@ -100,7 +100,7 @@ namespace AppWeb.Controllers
                     return RedirectToAction("Register");
                 }
             }
-            catch (Exception e)
+            catch
             {
                 //throw e;
                 return RedirectToAction("Register");

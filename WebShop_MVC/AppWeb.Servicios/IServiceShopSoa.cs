@@ -57,7 +57,9 @@ namespace AppWeb.Servicios
 
         #region Operaciones
         [OperationContract]
-        TOrdenVenta AgregarNuevaVenta(TCliente cliente, List<TProducto> productos);
+        int AgregarNuevaVenta(TCliente cliente, List<ShopData> productos, CreditCardData card);
+        [OperationContract]
+        TOrdenVenta BuscarOrdenVenta(int id);
         [OperationContract]
         TCliente ValidarLoginCliente(string usuario, string password);
         #endregion

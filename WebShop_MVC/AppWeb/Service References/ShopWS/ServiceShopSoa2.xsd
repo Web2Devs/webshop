@@ -249,14 +249,29 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="cliente" nillable="true" type="q24:TCliente" />
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="productos" nillable="true" type="q25:ArrayOfTProducto" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="productos" nillable="true" type="q25:ArrayOfShopData" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="card" nillable="true" type="q26:CreditCardData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AgregarNuevaVentaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="AgregarNuevaVentaResult" nillable="true" type="q26:TOrdenVenta" />
+        <xs:element minOccurs="0" name="AgregarNuevaVentaResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarOrdenVenta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarOrdenVentaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="BuscarOrdenVentaResult" nillable="true" type="q27:TOrdenVenta" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -271,7 +286,7 @@
   <xs:element name="ValidarLoginClienteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="ValidarLoginClienteResult" nillable="true" type="q27:TCliente" />
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/AppWeb.Framework.Data.DB.Model" minOccurs="0" name="ValidarLoginClienteResult" nillable="true" type="q28:TCliente" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
