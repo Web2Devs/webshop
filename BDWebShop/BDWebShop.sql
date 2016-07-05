@@ -117,3 +117,17 @@ create table TCabeceraVenta
 	constraint pk_CabeVenta primary key (CodCliente,NroDetalleVenta)
 )
 go
+
+--Creación de la tabla TPromocion: 
+if OBJECT_ID('TPromocion') is not null
+	drop table TPromocion
+go
+create table TPromocion
+(	
+	CodPromicion int identity primary key,
+	CodProducto int,
+	Descuento decimal(7,2),
+	Total money CONSTRAINT producto_precio DEFAULT (0),
+	foreign key (CodProducto) references TProducto(CodProducto)
+)
+go
