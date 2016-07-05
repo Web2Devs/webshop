@@ -1,0 +1,49 @@
+﻿@model IEnumerable<AppWeb.ShopWS.TDetalleVenta>
+
+@{
+    ViewBag.Title = "ShopDetalle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ShopDetalle</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodProducto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NroDetalleVenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NroVenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrecioUnitario)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cantidad)
+        </td>
+        <td>
+            @Html.ActionLink(item.CodProducto.ToString(), "Info", "Producto", new { id = item.CodProducto }, null)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NroDetalleVenta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NroVenta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrecioUnitario)
+        </td>
+    </tr>
+}
+
+</table>

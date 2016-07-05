@@ -131,4 +131,29 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfTCategoria" nillable="true" type="tns:ArrayOfTCategoria" />
+  <xs:complexType name="ArrayOfShopData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ShopData" nillable="true" type="tns:ShopData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfShopData" nillable="true" type="tns:ArrayOfShopData" />
+  <xs:complexType name="ShopData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cantidad" type="xs:int" />
+      <xs:element minOccurs="0" name="Producto" nillable="true" type="tns:TProducto" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ShopData" nillable="true" type="tns:ShopData" />
+  <xs:complexType name="CreditCardData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CardCode" type="xs:int" />
+      <xs:element minOccurs="0" name="CardNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardholderName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreditCardType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExpireMonth" type="xs:int" />
+      <xs:element minOccurs="0" name="ExpireYear" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreditCardData" nillable="true" type="tns:CreditCardData" />
 </xs:schema>

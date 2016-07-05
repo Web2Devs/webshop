@@ -1,11 +1,13 @@
-﻿@{
+﻿@model AppWeb.ShopWS.TCliente
+
+@{
     ViewBag.Title = "Confirm";
     Layout = "~/Views/Shared/_ShopList.cshtml";
 }
 <div ng-controller="CarritoController">
     <div class="page checkout-confirm-page">
         <div class="page-title">
-            <h1>Confirm</h1>
+            <h1>Confirmar</h1>
         </div>
         <div class="page-body checkout-data">
             <div class="order-summary-body">
@@ -19,13 +21,16 @@
                                     </div>
                                     <div class="block-body">
                                         <div class="name">
-                                            Carlos
+                                            Nombre: @Html.DisplayFor(model => model.Apellidos) @Html.DisplayFor(model => model.Nombres)
                                         </div>
                                         <div class="email">
-                                            Email: .....
+                                            Email: @Html.DisplayFor(model => model.Email)
                                         </div>
                                         <div class="phone">
-                                            123456
+                                            Telefono: @Html.DisplayFor(model => model.Telefono)
+                                        </div>
+                                        <div class="name">
+                                            Documento: @Html.DisplayFor(model => model.NroDocumento)
                                         </div>
                                     </div>
                                 </div>
@@ -37,10 +42,16 @@
                                     </div>
                                     <div class="block-body">
                                         <div class="name">
-                                            ............
+                                            Distrito: @Html.DisplayFor(model => model.Distrito)
+                                        </div>
+                                        <div class="name">
+                                            Provincia: @Html.DisplayFor(model => model.Provincia)
+                                        </div>
+                                        <div class="name">
+                                            Ciudad: @Html.DisplayFor(model => model.Ciudad)
                                         </div>
                                         <div class="address1">
-                                            Direccion
+                                            Direccion: @Html.DisplayFor(model => model.Direccion)
                                         </div>
                                     </div>
                                 </div>

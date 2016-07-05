@@ -28,7 +28,7 @@ namespace AppWeb.Dashboard.Controllers
         public ActionResult Create(TSubCategoria subCategoria, int codCategoria)
         {
             var cod = proxy.BuscarCategoria(codCategoria);
-            subCategoria.TCategoria = cod;
+            subCategoria.CodCategoria = cod.CodCategoria;
             proxy.AgregarSubCategoria(subCategoria);
             return RedirectToAction("Index");
         }

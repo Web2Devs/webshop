@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<AppWeb.ShopWS.TOrdenVenta>
+
 @{
     ViewBag.Title = "ShopInfo";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,3 +7,37 @@
 
 <h2>ShopInfo</h2>
 
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NroVenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaEntrega)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaVenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(item.NroVenta.ToString(), "ShopDetalle", new { id = item.NroVenta })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaEntrega)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaVenta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+    </tr>
+}
+
+</table>

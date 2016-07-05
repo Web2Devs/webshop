@@ -38,7 +38,7 @@ namespace AppWeb.Controllers
                 Session["CompraSend"] = true;
                 Session["CompraData"] = data;
                 return Json(new RespShopCompra() { Tipo = 1, Mensaje = "Usuario No Logeado" });
-            } else if(data.Count <= 0)
+            } else if(data == null)
             {
                 return Json(new RespShopCompra() { Tipo = 2, Mensaje = "Carrito Vacio" });
             }
@@ -94,9 +94,12 @@ namespace AppWeb.Controllers
                 return RedirectToAction("MetodoPago", "Carrito");
 
 
-
-
-            return View();
+            int codCliente = (int)Session["CodCliente"];
+            using (ServiceShopSoaClient proxy = new ServiceShopSoaClient())
+            {
+                var cli = proxy.BuscarCliente(codCliente);
+                return View(cli);
+            }
         }
 
         [HttpPost]

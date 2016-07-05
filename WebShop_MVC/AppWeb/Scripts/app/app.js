@@ -7,15 +7,24 @@ var appmvc = angular.module('appmvc', ['angular-loading-bar', 'ngStorage'], func
 appmvc.controller('HomeController', function ($scope, $http) {
     $scope.productos = [];
     $scope.loading = true;
-    /*$http.get('/Content/promo.json')
-        .success(function (data) {
-            $scope.productos = chunkArray(data, 3);
-        })
-        .error(function (data, status, headers, config) {
-            console.log("error");
-        }).finally(function () {
-            $scope.loading = false;
-        });*/
+    
+    var data = [];
+    data.push({
+        CodProducto: 1,
+        Nombre: "CASE ANTRYX ELEGANT BATTLESHIP ( AC-EU120-NN ) 300W",
+        Precio: 100,
+        Descripcion: "ANTRYX"
+    });
+
+    data.push({
+        CodProducto: 24,
+        Nombre: "HDD EXTERNO ADATA 1 TERA HD720 ( AHD720-1TU3-CBK/CGR/CBL ) ANTI GOLPE",
+        Precio: 250,
+        Descripcion: "ADATA"
+    });
+
+    $scope.productos = chunkArray(data, 3);
+    $scope.loading = false;
 });
 
 appmvc.controller('MenuRightController', function ($scope, RestService) {

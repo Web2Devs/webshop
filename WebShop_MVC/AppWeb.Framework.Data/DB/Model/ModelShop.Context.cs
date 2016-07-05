@@ -13,10 +13,10 @@ namespace AppWeb.Framework.Data.DB.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BDWebShopEntities : DbContext
+    public partial class BDWebShopSQL : DbContext
     {
-        public BDWebShopEntities()
-            : base("name=BDWebShopEntities")
+        public BDWebShopSQL()
+            : base("name=BDWebShopSQL")
         {
             Configuration.ProxyCreationEnabled = false;
         }

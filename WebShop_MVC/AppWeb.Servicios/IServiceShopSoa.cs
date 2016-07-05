@@ -59,6 +59,10 @@ namespace AppWeb.Servicios
         [OperationContract]
         int AgregarNuevaVenta(TCliente cliente, List<ShopData> productos, CreditCardData card);
         [OperationContract]
+        List<TOrdenVenta> ListaOrdenVent(int cliente);
+        [OperationContract]
+        List<TDetalleVenta> ObtenerDetalleVenta(int codVenta);
+        [OperationContract]
         TOrdenVenta BuscarOrdenVenta(int id);
         [OperationContract]
         TCliente ValidarLoginCliente(string usuario, string password);

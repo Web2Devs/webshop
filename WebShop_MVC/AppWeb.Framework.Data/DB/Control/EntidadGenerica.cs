@@ -10,10 +10,10 @@ namespace AppWeb.Framework.Data.DB.Control
 {
     public class EntidadGenerica<TEntity> where TEntity : class
     {
-        private readonly BDWebShopEntities context;
+        private readonly BDWebShopSQL context;
         private readonly DbSet<TEntity> dbSet;
 
-        public EntidadGenerica(BDWebShopEntities _context)
+        public EntidadGenerica(BDWebShopSQL _context)
         {
             context = _context;
             dbSet = _context.Set<TEntity>();

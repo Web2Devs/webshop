@@ -11,7 +11,7 @@ namespace AppWeb.Framework.Data.DB.Control
     {
         public UnitOfWork()
         {
-            this.context = new BDWebShopEntities();
+            this.context = new BDWebShopSQL();
         }
 
         private Cliente _cliente;
@@ -58,6 +58,28 @@ namespace AppWeb.Framework.Data.DB.Control
             }
         }
 
+        private EntidadGenerica<TDetalleVenta> _detalleVenta;
+        public EntidadGenerica<TDetalleVenta> DetalleVenta
+        {
+            get
+            {
+                if (_detalleVenta == null)
+                    _detalleVenta = new EntidadGenerica<TDetalleVenta>(this.context);
+                return _detalleVenta;
+            }
+        }
+
+        private EntidadGenerica<TOrdenVenta> _ordenVenta;
+        public EntidadGenerica<TOrdenVenta> OrdenVenta
+        {
+            get
+            {
+                if (_ordenVenta == null)
+                    _ordenVenta = new EntidadGenerica<TOrdenVenta>(this.context);
+                return _ordenVenta;
+            }
+        }
+
         private Venta _venta;
         public Venta Venta
         {
@@ -74,6 +96,6 @@ namespace AppWeb.Framework.Data.DB.Control
             this.context.SaveChanges();
         }
 
-        private readonly BDWebShopEntities context;
+        private readonly BDWebShopSQL context;
     }
 }

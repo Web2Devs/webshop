@@ -127,6 +127,18 @@
   <wsdl:message name="IServiceShopSoa_AgregarNuevaVenta_OutputMessage">
     <wsdl:part name="parameters" element="tns:AgregarNuevaVentaResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_ListaOrdenVent_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListaOrdenVent" />
+  </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_ListaOrdenVent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListaOrdenVentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_ObtenerDetalleVenta_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerDetalleVenta" />
+  </wsdl:message>
+  <wsdl:message name="IServiceShopSoa_ObtenerDetalleVenta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerDetalleVentaResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceShopSoa_BuscarOrdenVenta_InputMessage">
     <wsdl:part name="parameters" element="tns:BuscarOrdenVenta" />
   </wsdl:message>
@@ -219,6 +231,14 @@
     <wsdl:operation name="AgregarNuevaVenta">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/AgregarNuevaVenta" message="tns:IServiceShopSoa_AgregarNuevaVenta_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceShopSoa/AgregarNuevaVentaResponse" message="tns:IServiceShopSoa_AgregarNuevaVenta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListaOrdenVent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/ListaOrdenVent" message="tns:IServiceShopSoa_ListaOrdenVent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceShopSoa/ListaOrdenVentResponse" message="tns:IServiceShopSoa_ListaOrdenVent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerDetalleVenta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/ObtenerDetalleVenta" message="tns:IServiceShopSoa_ObtenerDetalleVenta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceShopSoa/ObtenerDetalleVentaResponse" message="tns:IServiceShopSoa_ObtenerDetalleVenta_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="BuscarOrdenVenta">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceShopSoa/BuscarOrdenVenta" message="tns:IServiceShopSoa_BuscarOrdenVenta_InputMessage" />
@@ -404,6 +424,24 @@
     </wsdl:operation>
     <wsdl:operation name="AgregarNuevaVenta">
       <soap:operation soapAction="http://tempuri.org/IServiceShopSoa/AgregarNuevaVenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListaOrdenVent">
+      <soap:operation soapAction="http://tempuri.org/IServiceShopSoa/ListaOrdenVent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerDetalleVenta">
+      <soap:operation soapAction="http://tempuri.org/IServiceShopSoa/ObtenerDetalleVenta" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -16,7 +16,7 @@ namespace AppWeb.Controllers
         public ActionResult Index()
         {
             if (Session["CodCliente"] == null)
-                return RedirectToAction("Login");
+                return RedirectToAction("Register");
             int codCliente = int.Parse(Session["CodCliente"].ToString());
             TCliente _cli = proxy.BuscarCliente(codCliente);
             return View(_cli);
@@ -24,7 +24,23 @@ namespace AppWeb.Controllers
 
         public ActionResult ShopInfo()
         {
-            return View();
+            if (Session["CodCliente"] == null)
+                return RedirectToAction("Register");
+            int codCliente = (int)Session["CodCliente"];
+            var fin = proxy.ListaOrdenVent(codCliente);
+            return View(fin);
+        }
+
+        public ActionResult ShopDetalle(int id)
+        {
+            if (Session["CodCliente"] == null)
+                return RedirectToAction("Register");
+
+            if (id <= 0)
+                return RedirectToAction("ShopInfo");
+
+            var fin = proxy.ObtenerDetalleVenta(id);
+            return View(fin);
         }
 
         [HttpPost]

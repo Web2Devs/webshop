@@ -977,6 +977,9 @@
     <Content Include="Service References\ShopWS\AppWeb.ShopWS.TOrdenVenta.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\ShopWS\AppWeb.ShopWS.TDetalleVenta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\ShopWS\ServiceShopSoa.disco" />
     <None Include="Service References\ShopWS\configuration91.svcinfo" />
     <None Include="Service References\ShopWS\configuration.svcinfo" />
@@ -1042,12 +1045,14 @@
     <Content Include="Views\Producto\Lista.cshtml" />
     <Content Include="Views\Carrito\Index.cshtml" />
     <Content Include="Views\Shared\_ShopList.cshtml" />
-    <Content Include="Views\Cliente\ShopInfo.cshtml" />
+    <Content Include="Views\Cliente\ShopInfox.cshtml" />
     <Content Include="Views\Carrito\Compra.cshtml" />
     <Content Include="Views\Carrito\MetodoPago.cshtml" />
     <Content Include="Views\Carrito\Confirm.cshtml" />
     <Content Include="Views\Carrito\Resultx.cshtml" />
     <Content Include="Views\Carrito\Result.cshtml" />
+    <Content Include="Views\Cliente\ShopInfo.cshtml" />
+    <Content Include="Views\Cliente\ShopDetalle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

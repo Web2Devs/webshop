@@ -12,9 +12,9 @@ namespace AppWeb.Framework.Data.DB.Control
 {
     public class Cliente : IEntidadDB<TCliente>
     {
-        private BDWebShopEntities context { get; set; }
+        private BDWebShopSQL context { get; set; }
         private IDbSet<TCliente> _dbSet;
-        public Cliente(BDWebShopEntities _context)
+        public Cliente(BDWebShopSQL _context)
         {
             context = _context;
             _dbSet = context.Set<TCliente>();

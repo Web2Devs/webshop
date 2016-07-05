@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.ServiceModel;
 using AppWeb.Framework.Data.DB.Control;
 using AppWeb.Framework.Data.DB.Model;
@@ -124,6 +125,16 @@ namespace AppWeb.Servicios
         {
             TOrdenVenta ordenVenta = unit.Venta.Find(id);
             return ordenVenta;
+        }
+        public List<TDetalleVenta> ObtenerDetalleVenta(int codVenta)
+        {
+            var detalle = unit.DetalleVenta.Queryable().Where(x => x.NroVenta == codVenta).Select(x => x).ToList();
+            return detalle;
+        }
+        public List<TOrdenVenta> ListaOrdenVent(int cliente)
+        {
+            var orden = unit.OrdenVenta.Queryable().Where(x => x.CodCliente == cliente).Select(x => x).ToList();
+            return orden;
         }
         public TCliente ValidarLoginCliente(string usuario, string password)
         {

@@ -10,8 +10,8 @@ namespace AppWeb.Framework.Data.DB.Control
 {
     public class Venta
     {
-        private BDWebShopEntities context { get; set; }
-        public Venta(BDWebShopEntities _context)
+        private BDWebShopSQL context { get; set; }
+        public Venta(BDWebShopSQL _context)
         {
             context = _context;
         }
@@ -48,8 +48,10 @@ namespace AppWeb.Framework.Data.DB.Control
                             Cantidad = item.Cantidad,
                             PrecioUnitario = item.Producto.Precio
                         };
-                        _totalVenta += (item.Cantidad * item.Producto.Precio);
                         context.TDetalleVenta.Add(_detalle);
+                        TProducto pro = context.TProducto.Where(x => x.CodProducto == item.Producto.CodProducto).Select(x =>x).FirstOrDefault();
+                        pro.Stock -= item.Cantidad;
+                        _totalVenta += (item.Cantidad * item.Producto.Precio);
                     }
                     _orden.Total = _totalVenta;
 
