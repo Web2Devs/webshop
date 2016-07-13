@@ -130,6 +130,10 @@
     <Content Include="Content\loading-bar.css" />
     <Content Include="Content\loading-bar.min.css" />
     <Content Include="Content\css\Site.css" />
+    <Content Include="Content\ngDialog-custom-width.css" />
+    <Content Include="Content\ngDialog-theme-default.min.css" />
+    <Content Include="Content\ngDialog-theme-plain.min.css" />
+    <Content Include="Content\ngDialog.min.css" />
     <Content Include="Content\themes\bootstrap.css" />
     <Content Include="Content\themes\bootstrap.min.css" />
     <Content Include="Content\themes\default.css" />
@@ -137,6 +141,9 @@
     <Content Include="Content\themes\semantic.css" />
     <Content Include="Content\themes\semantic.min.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
+    <Content Include="Content\vistas\ProductoInfox.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -960,6 +967,7 @@
     <Content Include="Scripts\loading-bar.js" />
     <Content Include="Scripts\loading-bar.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\ngDialog.min.js" />
     <Content Include="Scripts\ngStorage.js" />
     <Content Include="Scripts\ngStorage.min.js" />
     <Content Include="Service References\ShopWS\AppWeb.ShopWS.TCategoria.datasource">

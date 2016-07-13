@@ -1,6 +1,6 @@
 ﻿
 
-var appmvc = angular.module('appmvc', ['angular-loading-bar', 'ngStorage'], function ($locationProvider) {
+var appmvc = angular.module('appmvc', ['angular-loading-bar', 'ngStorage', 'ngDialog'], function ($locationProvider) {
     //$locationProvider.html5Mode(true);
 });
 
@@ -72,7 +72,7 @@ appmvc.controller('SubCategoriaController', function ($scope, RestService) {
             });
 });
 
-appmvc.controller('ProductoCateController', function ($scope, RestService, ShopService) {
+appmvc.controller('ProductoCateController', function ($scope, RestService, ShopService, ngDialog) {
     $scope.productos = [];
     var pathArray = window.location.pathname.split('/');
     var meth = pathArray[2] || "Lista";
@@ -82,6 +82,45 @@ appmvc.controller('ProductoCateController', function ($scope, RestService, ShopS
             .then(function (data) {
                 $scope.productos = chunkArray(data, 3);
             });
+
+    $scope.AddProductoCart = function (id) {
+        RestService.productoinfoctl(id)
+            .then(function (data) {
+                producto = data;
+                var pro = {
+                    id: parseInt(id, 10),
+                    Cantidad: parseInt(1, 10),
+                    Producto: producto
+                };
+
+                alertify.success('Producto Agregado: ' + producto.Nombre),
+                ShopService.addProducto(pro);
+            });
+        return false;
+    };
+
+    $scope.ShowInfoDialog = function (id) {
+        var dialog = ngDialog.open({
+            template: '/Content/vistas/ProductoInfox.html', className: 'ngdialog-theme-default', controller: function ($scope, RestService, ShopService) {
+                $scope.Cantidad = 1;
+                RestService.productoinfoctl(id)
+                    .then(function (data) {
+                        $scope.producto = data;
+                    });
+                $scope.AddProducto = function () {
+                    var pro = {
+                        id: parseInt($scope.producto.CodProducto, 10),
+                        Cantidad: parseInt($scope.Cantidad, 10),
+                        Producto: $scope.producto
+                    };
+
+                    alertify.success('Producto Agregado: ' + $scope.producto.Nombre),
+                    ShopService.addProducto(pro);
+                    dialog.close();
+                };
+            }
+        });
+    };
 });
 
 appmvc.controller('ProductoController', function ($scope, RestService, ShopService) {
@@ -107,6 +146,8 @@ appmvc.controller('ProductoController', function ($scope, RestService, ShopServi
         alertify.success('Producto Agregado: ' + $scope.producto.Nombre),
         ShopService.addProducto(pro);
     };
+
+   
 });
 
 appmvc.controller('CarritoController', function ($scope, RestService, ShopService) {

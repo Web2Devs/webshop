@@ -12,49 +12,46 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.CodCliente) 
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombres) 
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Apellidos)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Ciudad)
+            @Html.DisplayNameFor(model => model.Genero) 
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CodCliente)
+            @Html.DisplayNameFor(model => model.TipoDocumento) 
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Contrasena)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Direccion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Distrito)
+            @Html.DisplayNameFor(model => model.NroDocumento) 
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Genero)
+            @Html.DisplayNameFor(model => model.Provincia) 
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Nombres)
+            @Html.DisplayNameFor(model => model.Ciudad)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NroDocumento)
+            @Html.DisplayNameFor(model => model.Distrito)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Provincia)
+           @Html.DisplayNameFor(model => model.Direccion) 
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.RazonSocial)
+           @Html.DisplayNameFor(model => model.Usuario) 
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Telefono)
+           @Html.DisplayNameFor(model => model.RazonSocial) 
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TipoDocumento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Usuario)
+           @Html.DisplayNameFor(model => model.Telefono)
         </th>
         <th></th>
     </tr>
@@ -62,54 +59,51 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Apellidos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ciudad)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.CodCliente)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Contrasena)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Direccion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Distrito)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Genero)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Nombres)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NroDocumento)
+            @Html.DisplayFor(modelItem => item.Apellidos) 
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Provincia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RazonSocial)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Telefono)
+            @Html.DisplayFor(modelItem => item.Genero)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TipoDocumento)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.NroDocumento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Provincia) 
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ciudad) 
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Distrito) 
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Direccion) 
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Usuario)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.DisplayFor(modelItem => item.RazonSocial) 
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefono) 
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CodCliente}) |
+            @Html.ActionLink("Details", "Details", new { id = item.CodCliente }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.CodCliente })
         </td>
     </tr>
 }

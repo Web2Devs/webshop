@@ -40,7 +40,8 @@ namespace AppWeb
                 "~/Scripts/angular-ui.min.js",
                 "~/Scripts/angular-loader.min.js",
                 "~/Scripts/loading-bar.min.js",
-                "~/Scripts/ngStorage.js"
+                "~/Scripts/ngStorage.js",
+                "~/Scripts/ngDialog.min.js"
                 ));
 
             
@@ -58,7 +59,10 @@ namespace AppWeb
                       "~/Content/css/header.css",
                       "~/Content/css/pnotify.css",
                       "~/Content/css/shopbar.css",
-                      "~/Content/css/slider.css"));
+                      "~/Content/css/slider.css",
+                      "~/Content/ngDialog.min.css",
+                      "~/Content/ngDialog-theme-default.min.css"
+                      ));
         }
     }
 }

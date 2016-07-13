@@ -3535,3 +3535,8 @@ fieldset>legend>* {
 .navbar {
     margin-bottom: 0px !important;
 }
+
+
+.ngdialog-content {
+    width: 940px !important;
+}

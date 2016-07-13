@@ -1,32 +1,4 @@
-﻿
-@{
-    ViewBag.Title = "Info";
-    Layout = "~/Views/Shared/_ProductoInfo.cshtml";
-}
-<div ng-controller="ProductoController" ng-cloak>
-    <ul id="breadcrumb" class="breadcrumb">
-        <li>
-            <a href="#" title="Top" itemprop="url">
-                <i class="fa fa-home"></i>
-            </a>
-            <span class="divider">/</span>
-        </li>
-        <li>
-            <span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
-                <a href="#" title="Mouse" itemprop="url">
-                    <span itemprop="title">Mouse</span>
-                </a>
-            </span>
-            <span class="divider">/</span>
-        </li>
-        <li>
-            <span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
-                <a href="#" title="Gamers" itemprop="url">
-                    <span itemprop="title">Gamers</span>
-                </a>
-            </span>
-            <span class="divider">/</span>
-        </li>
+﻿    <ul id="breadcrumb" class="breadcrumb">
         <li>
             {{producto.Nombre}}
         </li>
@@ -43,8 +15,8 @@
                                 <div id="pd-gallery" class="picture pd-gallery">
                                     <div class="sg-image-wrapper">
                                         <div class="sg-image" style="width: 270px; height: 300px; top: 0px; left: 84px;">
-                                            <a href="#" target="_blank">
-                                                <img ng-src="~/Content/Img/producto/{{producto.CodProducto}}.jpg" err-src="~/Content/Img/producto/default.jpg" data-zoom-image="{{producto.CodProducto}}.jpg" style="max-height: 300px; max-width: 400px" />
+                                            <a>
+                                                <img ng-src="/Content/Img/producto/{{producto.CodProducto}}.jpg" err-src="/Content/Img/producto/default.jpg" data-zoom-image="{{producto.CodProducto}}.jpg" style="max-height: 300px; max-width: 400px" />
                                             </a>
                                         </div>
                                     </div>
@@ -77,7 +49,7 @@
                                 <div class="add-to-cart line">
                                     <div class="form-inline clearfix" style="text-align: right;">
                                         <label class="qty-label">Cantidad</label>
-                                        <input id="Cantidad" name="Cantidad" ng-model="Cantidad" class="qty-input" type="text" style="width: 25px" value="1" />
+                                        <input id="Cantidad" name="Cantidad" ng-model="Cantidad" class="qty-input" type="text" style="width: 30px; height: 25px;" value="1" />
                                         <span style="margin-right: 5px;"></span>
                                         <button ng-click="submit()" class="btn btn-warning add-to-cart-button ajax-cart-link">
                                             Agregar
@@ -90,37 +62,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="bottom-content">
-                    <div id="product-detail-tabs" class="tabbable">
-                        <ul class="nav nav-tabs">
-                            <li class="active">
-                                <a href="#product-detail-tabs-1" data-toggle="tab" data-loaded="true">Detalles</a>
-                            </li>
-                            <li class="">
-                                <a href="#product-detail-tabs-2" data-toggle="tab" data-loaded="true">Caracteristicas</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane fade active in" id="product-detail-tabs-1">
-                                <div itemprop="description">
-                                    <div class="content">
-                                        {{producto.Descripcion}}
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="product-detail-tabs-2">
-                                <div class="product-review-list">
-                                    <div class="content">
-                                        {{producto.Especificacion}}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </article>
         </form>
     </div>
-</div>
